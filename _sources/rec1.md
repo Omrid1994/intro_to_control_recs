@@ -83,6 +83,7 @@ width: 60%
 name: fig-mass-spring-damper
 ---
 Diagram of the mass-spring-damper system.
+```
 
 The differential equation representing this system is:
 
