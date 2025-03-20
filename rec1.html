@@ -66,7 +66,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'rec1';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="" href="title.html" />
+    <link rel="prev" title="Intro to Control" href="title.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -166,7 +166,7 @@
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="title.html">
-                    
+                    Intro to Control
                 </a>
             </li>
         </ul>
@@ -448,7 +448,7 @@
 <p>The differential equation representing this system is:</p>
 <div class="math notranslate nohighlight" id="equation-eq-spring-damper">
 <span class="eqno">(3)<a class="headerlink" href="#equation-eq-spring-damper" title="Link to this equation">#</a></span>\[\ddot{x}(t) + 2\gamma\dot{x}(t) + \omega^2x(t) = a\dot{u}(t)-bu(t).\]</div>
-<p>Let <span class="math notranslate nohighlight">\(\gamma=4\)</span>, <span class="math notranslate nohighlight">\(\omega^2=3\)</span>, <span class="math notranslate nohighlight">\(a=2\)</span>, <span class="math notranslate nohighlight">\(b=3\)</span>. Define:</p>
+<p>Let <span class="math notranslate nohighlight">\(\gamma=4\)</span>, <span class="math notranslate nohighlight">\(\omega^2=3\)</span>, <span class="math notranslate nohighlight">\(a=2\)</span>, <span class="math notranslate nohighlight">\(b=3\)</span>. Assume zero initial conditions. Define:</p>
 <div class="math notranslate nohighlight">
 \[\hat{x}(s) = \mathcal{L}\{x(t)\},\quad \hat{u}(s)=\mathcal{L}\{u(t)\}.\]</div>
 <ol class="arabic simple">
@@ -473,7 +473,7 @@
 <div class="math notranslate nohighlight">
 \[\boxed{G(s) = \frac{\hat{x}(s)}{\hat{u}(s)} = \frac{as-b}{s^2 + 2\gamma s + \omega^2}}\]</div>
 <p>Note that the numerator corresponds to the excitation, and the denominator corresponds to the system itself.</p>
-<p>There is a zero at <span class="math notranslate nohighlight">\(s = \frac{a}{b}\)</span>. The poles are:</p>
+<p>There is a zero at <span class="math notranslate nohighlight">\(s = \frac{b}{a}\)</span>. The poles are:</p>
 <div class="math notranslate nohighlight" id="equation-eq-poles-ex1">
 <span class="eqno">(4)<a class="headerlink" href="#equation-eq-poles-ex1" title="Link to this equation">#</a></span>\[s^2 + 2\gamma s + \omega^2 = 0 \rightarrow s_{1,2} = -\gamma \pm \sqrt{\gamma^2 - \omega^2}.\]</div>
 <p>Substituting the values, we have:</p>
@@ -579,8 +579,8 @@
 <p>We build the following table:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\begin{array}{c|cccc}
-    s^n     &amp; b_n     &amp; b_{n-2} &amp; b_{n-4} &amp; \dots \\
-    s^{n-1} &amp; b_{n-1} &amp; b_{n-3} &amp; b_{n-5} &amp; \dots \\
+    s^n     &amp; a_n     &amp; a_{n-2} &amp; a_{n-4} &amp; \dots \\
+    s^{n-1} &amp; a_{n-1} &amp; a_{n-3} &amp; a_{n-5} &amp; \dots \\
     s^{n-2} &amp; c_1 &amp; c_2 &amp; c_3 &amp; \cdots \\
     s^{n-3} &amp; d_1 &amp; d_2 &amp; \cdots &amp; \cdots \\
     \vdots  &amp; \vdots  &amp; \vdots  &amp; \vdots  &amp; \vdots \\
@@ -589,13 +589,13 @@
 \end{array}\end{split}\]</div>
 <p>If <span class="math notranslate nohighlight">\(n\)</span> is even (odd), then the first row consists of the coefficients of all even (odd) powers, and the second row consists of the coefficients of all odd (even) powers. All other values are calculated recursively.</p>
 <div class="math notranslate nohighlight">
-\[c_1 = \frac{b_{n-1} b_{n-2} - b_n b_{n-3}}{b_{n-1}}, \quad
-c_2 = \frac{b_{n-1} b_{n-4} - b_n b_{n-5}}{b_{n-1}}, \quad
-c_3 = \frac{b_{n-1} b_{n-6} - b_n b_{n-7}}{b_{n-1}}\]</div>
+\[c_1 = \frac{a_{n-1} a_{n-2} - a_n a_{n-3}}{a_{n-1}}, \quad
+c_2 = \frac{a_{n-1} a_{n-4} - a_n a_{n-5}}{a_{n-1}}, \quad
+c_3 = \frac{a_{n-1} a_{n-6} - a_n a_{n-7}}{a_{n-1}}.\]</div>
 <div class="math notranslate nohighlight">
-\[d_1 = \frac{c_1 b_{n-3} - b_{n-1} c_2}{c_1}, \quad
-d_2 = \frac{c_1 b_{n-5} - b_{n-1} c_3}{c_1}, \quad
-d_3 = \frac{c_1 b_{n-7} - b_{n-1} c_4}{c_1}\]</div>
+\[d_1 = \frac{c_1 a_{n-3} - a_{n-1} c_2}{c_1}, \quad
+d_2 = \frac{c_1 a_{n-5} - a_{n-1} c_3}{c_1}, \quad
+d_3 = \frac{c_1 a_{n-7} - a_{n-1} c_4}{c_1}.\]</div>
 <p>We carry on in this way, computing new rows, which get shorter and shorter. Note that
 the table has in total <span class="math notranslate nohighlight">\(n+1\)</span> rows. The last row will contain only one element that is
 possibly non-zero.</p>
@@ -782,7 +782,7 @@ g_1 &amp;= \frac{f_1e_2 - f_2e_1}{f_1} = \frac{-50/3 \cdot -4}{-50/3} = -4.\end{
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"></p>
+        <p class="prev-next-title">Intro to Control</p>
       </div>
     </a>
 </div>

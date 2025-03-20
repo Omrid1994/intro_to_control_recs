@@ -1,4 +1,4 @@
-#  
+#  Intro to Control
 
 <p style="margin-top: 100px; text-align: center; font-size: 36px; font-weight: bold;">
 Introduction to Control Theory - Recitations
