@@ -92,7 +92,7 @@ The differential equation representing this system is:
 \ddot{x}(t) + 2\gamma\dot{x}(t) + \omega^2x(t) = a\dot{u}(t)-bu(t).
 ```
 
-Let $\gamma=4$, $\omega^2=3$, $a=2$, $b=3$. Define:
+Let $\gamma=4$, $\omega^2=3$, $a=2$, $b=3$. Assume zero initial conditions. Define:
 
 ```{math}
 \hat{x}(s) = \mathcal{L}\{x(t)\},\quad \hat{u}(s)=\mathcal{L}\{u(t)\}.
@@ -127,7 +127,7 @@ Thus, the **transfer function** is:
 ```
 Note that the numerator corresponds to the excitation, and the denominator corresponds to the system itself.
 
-There is a zero at $s = \frac{a}{b}$. The poles are:
+There is a zero at $s = \frac{b}{a}$. The poles are:
 
 ```{math}
 :label: eq:poles_ex1
@@ -302,8 +302,8 @@ We build the following table:
 
 ```{math}
 \begin{array}{c|cccc}
-    s^n     & b_n     & b_{n-2} & b_{n-4} & \dots \\
-    s^{n-1} & b_{n-1} & b_{n-3} & b_{n-5} & \dots \\
+    s^n     & a_n     & a_{n-2} & a_{n-4} & \dots \\
+    s^{n-1} & a_{n-1} & a_{n-3} & a_{n-5} & \dots \\
     s^{n-2} & c_1 & c_2 & c_3 & \cdots \\
     s^{n-3} & d_1 & d_2 & \cdots & \cdots \\
     \vdots  & \vdots  & \vdots  & \vdots  & \vdots \\
@@ -315,15 +315,15 @@ We build the following table:
 If $n$ is even (odd), then the first row consists of the coefficients of all even (odd) powers, and the second row consists of the coefficients of all odd (even) powers. All other values are calculated recursively.
 
 ```{math}
-c_1 = \frac{b_{n-1} b_{n-2} - b_n b_{n-3}}{b_{n-1}}, \quad
-c_2 = \frac{b_{n-1} b_{n-4} - b_n b_{n-5}}{b_{n-1}}, \quad
-c_3 = \frac{b_{n-1} b_{n-6} - b_n b_{n-7}}{b_{n-1}}
+c_1 = \frac{a_{n-1} a_{n-2} - a_n a_{n-3}}{a_{n-1}}, \quad
+c_2 = \frac{a_{n-1} a_{n-4} - a_n a_{n-5}}{a_{n-1}}, \quad
+c_3 = \frac{a_{n-1} a_{n-6} - a_n a_{n-7}}{a_{n-1}}.
 ```
 
 ```{math}
-d_1 = \frac{c_1 b_{n-3} - b_{n-1} c_2}{c_1}, \quad
-d_2 = \frac{c_1 b_{n-5} - b_{n-1} c_3}{c_1}, \quad
-d_3 = \frac{c_1 b_{n-7} - b_{n-1} c_4}{c_1}
+d_1 = \frac{c_1 a_{n-3} - a_{n-1} c_2}{c_1}, \quad
+d_2 = \frac{c_1 a_{n-5} - a_{n-1} c_3}{c_1}, \quad
+d_3 = \frac{c_1 a_{n-7} - a_{n-1} c_4}{c_1}.
 ```
 We carry on in this way, computing new rows, which get shorter and shorter. Note that
 the table has in total $n+1$ rows. The last row will contain only one element that is
