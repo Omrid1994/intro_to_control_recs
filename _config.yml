@@ -63,6 +63,7 @@ sphinx:
     - sphinx_proof
   config:
     numfig: true
+    #math_number_all: true
     latex_elements:
       preamble: |
         % Your custom LaTeX commands here
