@@ -32,6 +32,8 @@ launch_buttons:
   thebe: true
   
 html:
+  html: 
+    google_analytics_id: G-E2TD05MHVH
   use_repository_button: true
   use_issues_button: true
   use_thebe: true
