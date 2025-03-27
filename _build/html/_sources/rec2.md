@@ -376,7 +376,7 @@ d_1 = \frac{\frac{14-9k}{7}\cdot k-0}{\frac{14-9k}{7}}=k.
 Since the first three elements of the first column are positive, we need all the elements of the first column to be positive, thus:
 
 $$
-2-\frac{8}{7}k > 0 \quad \rightarrow \quad k > \frac{14}{9}.
+2-\frac{8}{7}k > 0 \quad \rightarrow \quad k < \frac{14}{9}.
 $$
 
 From the last row:
