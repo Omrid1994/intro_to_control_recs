@@ -583,14 +583,44 @@ $$
 \end{array}
 $$
 
-The table elements were computed as follows:
+:::{admonition} Click here for the derivation of the table elements
+:class: seealso, dropdown
+
+The general table is
 
 $$
-    \frac{1\cdot(1+k)-1\cdot(1+0.5k)}{1}&=0.5k,\\
-    \frac{1\cdot0.0625k-0}{1}&=0.0625k,\\
-    \frac{0.5k\cdot(1+0.5k)-0.0625k}{0.05k}&=0.875+0.5k,\\
-    \frac{(0.875+0.5k)\cdot(0.0625k)-0}{0.0875+0.5k}&=0.0625k.
+\begin{array}{c|ccc}
+s^4 & 1 & 1+k &0.0625k\\
+s^3 & 1 & 1+0.5k \\
+s^2 & b_1 & b_2 \\
+s^1 & c_1  \\
+s^0 & d_1 &  
+\end{array}
 $$
+
+In this case:
+
+```{math}
+b_1 = \frac{(1+k)-(1+0.5k)}{1}=0.5k, \quad
+b_2 = \frac{1*0.0625k-1*0}{1}.
+```
+
+Moreover,
+
+$$
+c_1&=\frac{b_1(1+0.5k)-b_2}{b_1}\\
+   &=\frac{0.5k(1+0.5k)-0.0625k}{0.5k}\\
+   &=\frac{0.5+0.25k-0.0625}{0.5}\\
+   &=0.875+0.5k.
+$$
+
+Finally, we have:
+
+```{math}
+d_1 = \frac{c_1b_2-b_1*0}{c_1}=b_2.
+```
+
+:::
 
 We need to make sure that all the elements of the first column are positive.
 
