@@ -1,0 +1,1070 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Introduction to Control – Recitation 3 &#8212; Recitations - Omri Dalin</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/proof.css?v=b4b7a797" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-E2TD05MHVH"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-E2TD05MHVH');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-E2TD05MHVH');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"loader": {"load": ["[tex]/tagformat"]}, "tex": {"tags": "ams", "tagformat": {"number": "({number})"}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'rec3';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Introduction to Control – Recitation 2" href="rec2.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="title.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="Recitations - Omri Dalin - Home"/>
+    <img src="_static/logo.png" class="logo__image only-dark pst-js-only" alt="Recitations - Omri Dalin - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="title.html">
+                    Intro to Control
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="rec1.html">Introduction to Control – Recitation 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rec2.html">Introduction to Control – Recitation 2</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Introduction to Control – Recitation 3</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Frec3.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/rec3.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Introduction to Control – Recitation 3</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#closed-loop-system-stability">Closed-Loop System Stability</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1">Exercise 1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution">Solution</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#steady-state-error-due-to-reference-signal">Steady State Error due to Reference Signal</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#system-type">System Type</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise">Exercise</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Solution</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">1.</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">2.</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">3.</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Exercise</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">Solution</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">1.</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">2.</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="introduction-to-control-recitation-3">
+<h1>Introduction to Control – Recitation 3<a class="headerlink" href="#introduction-to-control-recitation-3" title="Link to this heading">#</a></h1>
+<section id="closed-loop-system-stability">
+<h2>Closed-Loop System Stability<a class="headerlink" href="#closed-loop-system-stability" title="Link to this heading">#</a></h2>
+<p>Consider the following system:</p>
+<figure class="align-default" id="fig-closed-loop-1">
+<a class="reference internal image-reference" href="_images/closed_loop1.png"><img alt="_images/closed_loop1.png" src="_images/closed_loop1.png" style="width: 70%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 8 </span><span class="caption-text">The feedback connection of two SISO linear systems with transfer functions “Plant” and “Controller”.</span><a class="headerlink" href="#fig-closed-loop-1" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>We list each element in <a class="reference internal" href="#fig-closed-loop-1"><span class="std std-numref">Fig. 8</span></a>:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(P\)</span> is the transfer function of the plant.</p></li>
+<li><p><span class="math notranslate nohighlight">\(C\)</span> is the transfer function of the controller.</p></li>
+<li><p><span class="math notranslate nohighlight">\(d\)</span> is the <em>disturbance</em> acting on the plant.</p></li>
+<li><p><span class="math notranslate nohighlight">\(u\)</span> is the <em>input</em> signal of the plant.</p></li>
+<li><p><span class="math notranslate nohighlight">\(y\)</span> is the <em>output</em> signal of the plant.</p></li>
+<li><p><span class="math notranslate nohighlight">\(r\)</span> is the <em>reference</em> signal.</p></li>
+<li><p><span class="math notranslate nohighlight">\(e=r-y\)</span> is the <em>tracking error</em>.</p></li>
+</ul>
+<div class="admonition-remark admonition">
+<p class="admonition-title">Remark</p>
+<p>Note that the following block diagram</p>
+<figure class="align-default" id="fig-alt-closed-loop">
+<a class="reference internal image-reference" href="_images/alt_closed_loop.png"><img alt="_images/alt_closed_loop.png" src="_images/alt_closed_loop.png" style="width: 70%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 9 </span><span class="caption-text">The feedback connection of two SISO linear systems with transfer functions “Plant” and “Controller”.</span><a class="headerlink" href="#fig-alt-closed-loop" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Is equivalent to the block diagram in Figure <a class="reference internal" href="#fig-closed-loop-1"><span class="std std-numref">Fig. 8</span></a>, in the sense that the relations between all signals are the same, and all subsequent transfer functions are also the same.</p>
+</div>
+<p>We assume zero initial conditions, and denote the transfer function of the Plant by <span class="math notranslate nohighlight">\(P\)</span>, and the transfer function of the Controller by <span class="math notranslate nohighlight">\(C\)</span>. Then</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{bmatrix}
+    \hat{d}(s)\\\hat{r}(s)
+	\end{bmatrix}=\begin{bmatrix}
+        1&amp;-C(s)\\
+        P(s)&amp;1
+    \end{bmatrix}\begin{bmatrix}
+        \hat{u}(s)\\\hat{e}(s)
+    \end{bmatrix}.
+\end{split}\]</div>
+<p>This implies that</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    \begin{bmatrix}
+        \hat{u}\\\hat{e}
+    \end{bmatrix}&amp;=\begin{bmatrix}
+        1&amp;-C\\
+        P&amp;1
+    \end{bmatrix}^{-1}\begin{bmatrix}
+        \hat{d}\\\hat{r}
+    \end{bmatrix}\nonumber\\
+    &amp;=\begin{bmatrix}
+        (1+PC)^{-1}&amp;C(1+PC)^{-1}\\
+        -P(1+PC)^{-1}&amp;(1+PC)^{-1}
+    \end{bmatrix}\begin{bmatrix}
+        \hat{d}\\\hat{r}
+    \end{bmatrix}.
+\end{split}\]</div>
+<p>We call <span class="math notranslate nohighlight">\(PC\)</span> the <strong>loop gain</strong>. We define  <span class="math notranslate nohighlight">\(S:=(1+PC)^{-1}\)</span>,  and refer to this as the <strong>sensitivity function</strong>. Note that <span class="math notranslate nohighlight">\(S\)</span> is the  transfer function from <span class="math notranslate nohighlight">\(r\)</span> to <span class="math notranslate nohighlight">\(e\)</span> (or from <span class="math notranslate nohighlight">\(d\)</span> to <span class="math notranslate nohighlight">\(u\)</span>). We then have</p>
+<div class="math notranslate nohighlight" id="equation-eq-closed-loop-trasnferfunctions">
+<span class="eqno">(6)<a class="headerlink" href="#equation-eq-closed-loop-trasnferfunctions" title="Link to this equation">#</a></span>\[\begin{split}	\begin{bmatrix}
+        \hat{u}\\\hat{e}
+    \end{bmatrix}&amp;=\begin{bmatrix}
+        S&amp;CS\\
+        -PS&amp;S
+    \end{bmatrix}\begin{bmatrix}
+        \hat{d}\\\hat{r}
+	\end{bmatrix}.\end{split}\]</div>
+<div class="admonition-remark admonition">
+<p class="admonition-title">Remark</p>
+<p>If</p>
+<div class="math notranslate nohighlight">
+\[
+    P(s)C(s)=\frac{n(s)}{d(s)},
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(n(s)\)</span> and <span class="math notranslate nohighlight">\(d(s)\)</span> are polynomials, then</p>
+<div class="math notranslate nohighlight">
+\[
+    S(s)=\Big(1+\frac{n(s)}{d(s)}\Big)^{-1}=\frac{d(s)}{d(s)+n(s)}.
+\]</div>
+<p>Thus, we see that  the poles of <span class="math notranslate nohighlight">\(PC\)</span> become zeros of <span class="math notranslate nohighlight">\(S\)</span>.</p>
+</div>
+<div class="proof definition admonition" id="definition-0">
+<p class="admonition-title"><span class="caption-number">Definition 1 </span></p>
+<section class="definition-content" id="proof-content">
+<p>The feedback connection of <span class="math notranslate nohighlight">\(P\)</span> and <span class="math notranslate nohighlight">\(C\)</span> is called <strong>stable</strong> if the transfer function from <span class="math notranslate nohighlight">\((d,r)\)</span> to <span class="math notranslate nohighlight">\((u,e)\)</span> is stable, i.e., if all four
+entries of the matrix in <a class="reference internal" href="#equation-eq-closed-loop-trasnferfunctions">(6)</a> are stable.</p>
+</section>
+</div><div class="proof proposition admonition" id="prop:stable_closed_loop">
+<p class="admonition-title"><span class="caption-number">Proposition 1 </span></p>
+<section class="proposition-content" id="proof-content">
+<p>The feedback connection of <span class="math notranslate nohighlight">\(P\)</span> and <span class="math notranslate nohighlight">\(C\)</span> is stable if and only if the following two conditions hold:</p>
+<ol class="arabic simple">
+<li><p><span class="math notranslate nohighlight">\(S=(1+PC)^{-1}\)</span> is stable.</p></li>
+<li><p>There is no unstable pole-zero cancellation in the product <span class="math notranslate nohighlight">\(PC\)</span>.</p></li>
+</ol>
+</section>
+</div><div class="proof definition admonition" id="definition-2">
+<p class="admonition-title"><span class="caption-number">Definition 2 </span></p>
+<section class="definition-content" id="proof-content">
+<p>The closed-loop is called <strong>w-stable</strong> if</p>
+<div class="math notranslate nohighlight">
+\[
+     \big| P(\infty)C(\infty)\big|&lt;1.
+\]</div>
+</section>
+</div><div class="admonition-remark admonition">
+<p class="admonition-title">Remark</p>
+<p>If the loop-gain is strictly-proper, then the closed-loop system is <span class="math notranslate nohighlight">\(w\)</span>-stable.</p>
+</div>
+<section id="exercise-1">
+<h3>Exercise 1<a class="headerlink" href="#exercise-1" title="Link to this heading">#</a></h3>
+<p>Consider the closed-loop system with:</p>
+<div class="math notranslate nohighlight">
+\[
+    P(s)=\frac{s+b}{s+a},\; C(s)=\frac{1}{s}.
+\]</div>
+<p>For which values of <span class="math notranslate nohighlight">\(a,b\in\mathbb{R}\)</span> is the closed-loop system stable?</p>
+</section>
+<section id="solution">
+<h3>Solution<a class="headerlink" href="#solution" title="Link to this heading">#</a></h3>
+<p>We need to check that</p>
+<ol class="arabic simple">
+<li><p><span class="math notranslate nohighlight">\(S(s)\)</span> is stable.</p></li>
+<li><p>There are no unstable pole-zero cancellations in <span class="math notranslate nohighlight">\(P(s)C(s)\)</span>.</p></li>
+</ol>
+<p>We compute <span class="math notranslate nohighlight">\(S(s)\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    S(s)&amp;=\frac{1}{1+P(s)C(s)}\\
+        &amp;=\frac{1}{1+\frac{s+b}{s(s+a)}}\\
+        &amp;=\frac{1}{\frac{s^2+as+(s+b)}{s(s+a)}}\\
+        &amp;=\frac{s(a+b)}{s^2+s(a+1)+b}.
+\end{split}\]</div>
+<p>We have a polynomial of degree <span class="math notranslate nohighlight">\(2\)</span> in the denominator. We know that this polynomial has stable roots if all the coefficients are positive, that is, if</p>
+<div class="math notranslate nohighlight">
+\[
+    a+1&gt;0\quad\&amp;\quad b&gt;0.
+\]</div>
+<p>To summarize, <span class="math notranslate nohighlight">\(S(s)\)</span> is stable if</p>
+<div class="math notranslate nohighlight">
+\[
+    \boxed{b&gt;0\quad a&gt;-1}
+\]</div>
+<p>Next, we check for unstable cancellation in the loop-gain:</p>
+<div class="math notranslate nohighlight">
+\[
+    P(s)C(s)=\frac{s+b}{s(s+a)}.
+\]</div>
+<p>If <span class="math notranslate nohighlight">\(b=0\)</span>, there is an unstable pole-zero cancellation at <span class="math notranslate nohighlight">\(s=0\)</span>. If <span class="math notranslate nohighlight">\(b=a\)</span>, there is a cancellation, but it is not necessarily unstable. It will be unstable if <span class="math notranslate nohighlight">\(a=b&lt;0\)</span>. So, there are no unstable zero-pole cancellations in the loop gain if</p>
+<div class="math notranslate nohighlight">
+\[
+    \boxed{b\neq0\quad \text{or if }a=b\text{ then }a&gt;0}
+\]</div>
+<p>Combining both requirements, we have</p>
+<div class="math notranslate nohighlight">
+\[
+    \boxed{b&gt;0\quad a&gt;-1}
+\]</div>
+<p>Note that for  <span class="math notranslate nohighlight">\(-1&lt;a\leq0\)</span>, <span class="math notranslate nohighlight">\(P(s)\)</span> is unstable, but the closed-loop system is stable.</p>
+</section>
+</section>
+<section id="steady-state-error-due-to-reference-signal">
+<h2>Steady State Error due to Reference Signal<a class="headerlink" href="#steady-state-error-due-to-reference-signal" title="Link to this heading">#</a></h2>
+<p>In this section we assume <span class="math notranslate nohighlight">\(\hat{d}(s)=0\)</span>. For the system depicted in Figure <a class="reference internal" href="#fig-closed-loop-1"><span class="std std-numref">Fig. 8</span></a>,</p>
+<div class="math notranslate nohighlight">
+\[
+    \frac{\hat{e}(s)}{\hat{r}(s)}=S(s)=\frac{1}{1+P(s)C(s)}.
+\]</div>
+<p><mark>If the system is stable</mark>, the steady-state error can be computed using the <em>Final Value Theorem</em>:</p>
+<div class="math notranslate nohighlight">
+\[
+\boxed{e_{ss}=\lim_{t\rightarrow\infty}e(t)=\lim_{s \to 0} s \hat{e}(s) = \lim_{s\rightarrow0}s\cdot\frac{\hat{r}(s)}{1+P(s)C(s)}}
+\]</div>
+<div class="admonition-remark admonition">
+<p class="admonition-title">Remark</p>
+<p>This theorem is valid for any function <span class="math notranslate nohighlight">\(f(t)\)</span> where <span class="math notranslate nohighlight">\(F(s)\)</span> has left-half plane poles and at most a single pole at the origin.</p>
+</div>
+<section id="system-type">
+<h3>System Type<a class="headerlink" href="#system-type" title="Link to this heading">#</a></h3>
+<p>The system type is determined by the number of loop-gain poles at the origin:</p>
+<div class="math notranslate nohighlight">
+\[
+    P(s)C(s)=\frac{(b_0s+1)(b_1s+1)\cdots(b_ms+1)}{s^{\textcolor{red}{N}}(a_0s+1)(a_1s+1)\cdots(a_ns+1)}.
+\]</div>
+<p>Thus, the system type is <font color="red">N</font>.</p>
+<p>We consider three types of inputs:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\renewcommand{\arraystretch}{1.5}
+\begin{array}{|c|c|c|}
+    \hline
+    \text{Input} &amp; \text{Time Domain} &amp; \text{Laplace Domain} \\
+    \hline
+    \text{Step} &amp; r(t)=1(t) &amp; \frac{1}{s} \\
+    \hline
+    \text{Ramp} &amp; r(t)=t &amp; \frac{1}{s^2} \\
+    \hline
+    \text{Acceleration} &amp; r(t)=t^2 &amp; \frac{2}{s^3} \\
+    \hline
+\end{array}
+\end{split}\]</div>
+<p>Steady-state error for each system type and input type:</p>
+<div class="pst-scrollable-table-container"><table class="table" id="tbl-error-constants">
+<caption><span class="caption-number">Table 1 </span><span class="caption-text">Steady-State Error Constants for Different System Types</span><a class="headerlink" href="#tbl-error-constants" title="Link to this table">#</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>Type/Input</p></th>
+<th class="head"><p>Step</p></th>
+<th class="head"><p>Ramp</p></th>
+<th class="head"><p>Acceleration</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Type 0</p></td>
+<td><p><span class="math notranslate nohighlight">\(\frac{1}{1 + K_p}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\infty\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\infty\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>Type 1</p></td>
+<td><p><span class="math notranslate nohighlight">\(0\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\frac{1}{K_v}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\infty\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p>Type 2</p></td>
+<td><p><span class="math notranslate nohighlight">\(0\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(0\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\frac{1}{K_a}\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>where</p>
+<div class="math notranslate nohighlight" id="equation-eq-gains">
+<span class="eqno">(7)<a class="headerlink" href="#equation-eq-gains" title="Link to this equation">#</a></span>\[\begin{split}    K_p&amp;=\lim_{s\rightarrow0}P(s)C(s),\nonumber\\
+    K_v&amp;=\lim_{s\rightarrow0}sP(s)C(s),\\
+    K_a&amp;=\lim_{s\rightarrow0}s^2P(s)C(s).\nonumber\end{split}\]</div>
+<p>If a system diverges for a given input, an integrator controller can be added to increase system type.</p>
+<p><u>Solution Steps</u></p>
+<p>We always use a controller of the form <span class="math notranslate nohighlight">\(C(s)=\frac{k}{s^\ell}\)</span>, choosing integer <span class="math notranslate nohighlight">\(\ell\)</span> as small as possible such that conditions are met.</p>
+<ol class="arabic simple">
+<li><p>Determine system type from <span class="math notranslate nohighlight">\(P(s)\)</span>.</p></li>
+<li><p>Given the input, use <a class="reference internal" href="#tbl-error-constants"><span class="std std-numref">Table 1</span></a> to determine the required system type for finite steady-state error, selecting <span class="math notranslate nohighlight">\(\ell\)</span> accordingly.</p></li>
+<li><p>Compare the relevant value from the table to the system condition on <span class="math notranslate nohighlight">\(e_{ss}\)</span> to obtain value range for <span class="math notranslate nohighlight">\(K_p,\;K_v,\;K_a\)</span>.</p></li>
+<li><p>Compute <span class="math notranslate nohighlight">\(K_p,\;K_v,\;K_a\)</span> explicitly using <a class="reference internal" href="#equation-eq-gains">(7)</a> and compare with step 3. to find range of values of <span class="math notranslate nohighlight">\(k\)</span>.</p></li>
+<li><p>Compute the sensitivity transfer function <span class="math notranslate nohighlight">\(S(s)\)</span> and determine the range of values of <span class="math notranslate nohighlight">\(k\)</span> for stability.</p></li>
+<li><p>The valid <span class="math notranslate nohighlight">\(k\)</span> values are the intersection of step 4. and step 5. results.</p></li>
+<li><p>If unsuccessful, increase <span class="math notranslate nohighlight">\(\ell\)</span> by <span class="math notranslate nohighlight">\(1\)</span> and repeat steps 3.- 6. .</p></li>
+</ol>
+<p>For a general input , compute the Laplace transform and apply the Final Value Theorem.</p>
+</section>
+<section id="exercise">
+<h3>Exercise<a class="headerlink" href="#exercise" title="Link to this heading">#</a></h3>
+<p>Given the plant:</p>
+<div class="math notranslate nohighlight">
+\[
+P(s)=\frac{1}{s+1}.
+\]</div>
+<p>We design a controller of the form <span class="math notranslate nohighlight">\(C(s)=\frac{k}{s^\ell}\)</span> as simple as possible such that:</p>
+<ol class="arabic simple">
+<li><p>For a step input: <span class="math notranslate nohighlight">\(|e_{ss}| &lt; 0.1\)</span>.</p></li>
+<li><p>For a velocity input: <span class="math notranslate nohighlight">\(|e_{ss}| &lt; 0.1\)</span>.</p></li>
+<li><p>For an acceleration input: <span class="math notranslate nohighlight">\(K_a&gt;20\)</span>.</p></li>
+</ol>
+</section>
+<section id="id1">
+<h3>Solution<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+<p>We can write:</p>
+<div class="math notranslate nohighlight">
+\[
+P(s)C(s)=\frac{k}{s^\ell(s+1)}.
+\]</div>
+<p>Thus, the system is type <span class="math notranslate nohighlight">\(\ell\)</span>.</p>
+<section id="id2">
+<h4>1.<a class="headerlink" href="#id2" title="Link to this heading">#</a></h4>
+<p>From <a class="reference internal" href="#tbl-error-constants"><span class="std std-numref">Table 1</span></a>, we see that for system of type <span class="math notranslate nohighlight">\(0\)</span> and step input,</p>
+<div class="math notranslate nohighlight">
+\[
+    e_{ss}=\frac{1}{1+K_p},
+\]</div>
+<p>the steady-state error is finite, thus, we do not need to increase the system type. We take <span class="math notranslate nohighlight">\(\ell=0\)</span>.</p>
+<p>Finding the possible range for <span class="math notranslate nohighlight">\(K_p\)</span>:</p>
+<div class="math notranslate nohighlight" id="equation-eq-inequ">
+<span class="eqno">(8)<a class="headerlink" href="#equation-eq-inequ" title="Link to this equation">#</a></span>\[ |e_{ss}|=\Big|\frac{1}{1+K_p}\Big|&lt;0.1.\]</div>
+<p>If <span class="math notranslate nohighlight">\(K_p&gt;0\)</span>, then <a class="reference internal" href="#equation-eq-inequ">(8)</a> holds if</p>
+<div class="math notranslate nohighlight">
+\[
+    1+K_p=10\rightarrow K_p&gt;9.
+\]</div>
+<p>If <span class="math notranslate nohighlight">\(K_p&lt;0\)</span>, then <a class="reference internal" href="#equation-eq-inequ">(8)</a> holds if</p>
+<div class="math notranslate nohighlight">
+\[
+    1-K_p=10\rightarrow K_p&lt;-11.
+\]</div>
+<p>To summarize, <a class="reference internal" href="#equation-eq-inequ">(8)</a> holds if</p>
+<div class="math notranslate nohighlight">
+\[
+    K_p&gt;9\quad\text{or}\quad K_p&lt;-11.
+\]</div>
+<p>Next, we relate <span class="math notranslate nohighlight">\(K_p\)</span> and <span class="math notranslate nohighlight">\(k\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+    K_p=\lim_{s\rightarrow0}P(s)C(s)=\lim_{s\rightarrow0}\Big(k\cdot\frac{1}{s+1}\Big)=k.
+\]</div>
+<p>So the condition on the steady-state error holds if:</p>
+<div class="math notranslate nohighlight" id="equation-eq-ineq-k">
+<span class="eqno">(9)<a class="headerlink" href="#equation-eq-ineq-k" title="Link to this equation">#</a></span>\[    \boxed{k&gt;9\quad\text{or}\quad k&lt;-11}\]</div>
+<p>Next, we verify closed-loop stability: There is no cancellation of unstable pole/zero in the loop-gain. We check the sensitivity transfer function:</p>
+<div class="math notranslate nohighlight">
+\[
+    S(s)=\frac{1}{1+\frac{k}{s+1}}=\frac{s+1}{s+(1+k)}.
+\]</div>
+<p>The denominator is a first order polynomial, <span class="math notranslate nohighlight">\(S(s)\)</span> is thus stable if all the coefficients of the denominator are positive, that is</p>
+<div class="math notranslate nohighlight" id="equation-ineq-k2">
+<span class="eqno">(10)<a class="headerlink" href="#equation-ineq-k2" title="Link to this equation">#</a></span>\[    1+k&gt;0\rightarrow k&gt;-1.\]</div>
+<p>Unifying the inequalities in <a class="reference internal" href="#equation-eq-ineq-k">(9)</a> and <a class="reference internal" href="#equation-ineq-k2">(10)</a> we have:</p>
+<figure class="align-default" id="fig-closed-system">
+<a class="reference internal image-reference" href="_images/ineq.png"><img alt="_images/ineq.png" src="_images/ineq.png" style="width: 70%;" /></a>
+</figure>
+<p>So the controller is</p>
+<div class="math notranslate nohighlight">
+\[
+    C(s)=k,\quad k&gt;9. 
+\]</div>
+</section>
+<section id="id3">
+<h4>2.<a class="headerlink" href="#id3" title="Link to this heading">#</a></h4>
+<p>Now the input is a velocity <span class="math notranslate nohighlight">\(r(t)=t\)</span>. From <a class="reference internal" href="#tbl-error-constants"><span class="std std-numref">Table 1</span></a>, we see that for finite steady-state error, the loop-gain must be type 1. Thus, we choose <span class="math notranslate nohighlight">\(\ell=1\)</span>.</p>
+<p>Now the loop-gain transfer function is:</p>
+<div class="math notranslate nohighlight">
+\[
+    C(s)P(s)=\frac{k}{s(s+1)}.
+\]</div>
+<p>which is indeed type 1. From <a class="reference internal" href="#tbl-error-constants"><span class="std std-numref">Table 1</span></a>, we obtain:</p>
+<div class="math notranslate nohighlight" id="equation-eq-ineqb">
+<span class="eqno">(11)<a class="headerlink" href="#equation-eq-ineqb" title="Link to this equation">#</a></span>\[    e_{ss}=\frac{1}{K_v}\rightarrow\Big|\frac{1}{K_v}\Big|&lt;0.1.\]</div>
+<p>Clearly</p>
+<div class="math notranslate nohighlight">
+\[
+    K_v&gt;10\quad\text{or}\quad K_v&lt;-10.
+\]</div>
+<p>We write <span class="math notranslate nohighlight">\(K_v\)</span> in terms of <span class="math notranslate nohighlight">\(k\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    K_v&amp;=\lim_{s\rightarrow0}\big(sP(s)C(s)\big)\\
+    &amp;=\lim_{s\rightarrow0}\Big(s\cdot\frac{k}{s(s+1)}\Big)\\
+    &amp;=\lim_{s\rightarrow0}\frac{k}{s+1}\\
+    &amp;=k.
+\end{split}\]</div>
+<p>Thus, we get:</p>
+<div class="math notranslate nohighlight" id="equation-ineq-partb-e">
+<span class="eqno">(12)<a class="headerlink" href="#equation-ineq-partb-e" title="Link to this equation">#</a></span>\[   \boxed{ k&gt;10\quad\text{or}\quad k&lt;-10}\]</div>
+<p>Computing the sensitivity transfer function we have</p>
+<div class="math notranslate nohighlight">
+\[
+    S(s)=\frac{1}{1+\frac{k}{s(s+1)}}=\frac{s(s+1)}{s^2+s+k}.
+\]</div>
+<p>Since the denominator is second-order, all coefficients must be positive:</p>
+<div class="math notranslate nohighlight" id="equation-eq-ineq-partb-sen">
+<span class="eqno">(13)<a class="headerlink" href="#equation-eq-ineq-partb-sen" title="Link to this equation">#</a></span>\[	k&gt;0.\]</div>
+<p>Combining <a class="reference internal" href="#equation-ineq-partb-e">(12)</a> and <a class="reference internal" href="#equation-eq-ineq-partb-sen">(13)</a> we have</p>
+<div class="math notranslate nohighlight">
+\[
+    C(s)=\frac{k}{s},\quad k&gt;10.
+\]</div>
+</section>
+<section id="id4">
+<h4>3.<a class="headerlink" href="#id4" title="Link to this heading">#</a></h4>
+<p>Now the input is an acceleration input <span class="math notranslate nohighlight">\(r(t)=t^2\)</span>, requiring the loop-gain to be type 2. Thus, we choose:</p>
+<div class="math notranslate nohighlight">
+\[
+ \ell=2.
+\]</div>
+<p>Now, the loop-gain transfer function is:</p>
+<div class="math notranslate nohighlight">
+\[
+C(s)P(s)=\frac{k}{s^2(s+1)},
+\]</div>
+<p>which is indeed type 2. From <a class="reference internal" href="#tbl-error-constants"><span class="std std-numref">Table 1</span></a>:</p>
+<div class="math notranslate nohighlight">
+\[
+    e_{ss}=\frac{1}{K_a}.
+\]</div>
+<p>As we increase <span class="math notranslate nohighlight">\(K_a\)</span>, <span class="math notranslate nohighlight">\(e_{ss}\)</span> decreases. In this case <span class="math notranslate nohighlight">\(K_a&gt;20\)</span>, so the maximal value for <span class="math notranslate nohighlight">\(e_{ss}\)</span> is for <span class="math notranslate nohighlight">\(K_a=20\)</span>. The value will be</p>
+<div class="math notranslate nohighlight">
+\[
+    |e_{ss}|&lt;\frac{1}{20}=0.05.
+\]</div>
+<p>Computing <span class="math notranslate nohighlight">\(K_a\)</span> explicitly:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+K_a&amp;=\lim_{s\rightarrow0}\big(s^2 C(s)P(s)\big)\\
+&amp;=\lim_{s\rightarrow0}\Big(\frac{s^2k}{s^2(s+1)}\Big)\\
+&amp;=\lim_{s\rightarrow0}\frac{k}{s+1}\\
+&amp;=k.
+\end{split}\]</div>
+<p>We compute the sensitivity transfer function:</p>
+<div class="math notranslate nohighlight">
+\[
+    S(s)=\frac{1}{1+\frac{k}{s^2(s+1)}}=\frac{s^2(s+1)}{s^3+s^2+k}.
+\]</div>
+<p>A necessary (but not sufficient) condition for stability, is that all coefficient should be positive. Here, the coefficient of <span class="math notranslate nohighlight">\(s\)</span> is zero, making the system unstable for all <span class="math notranslate nohighlight">\(k\)</span>. Thus, the given controller cannot achieve stability, and a more complex controller is needed.</p>
+</section>
+</section>
+<section id="id5">
+<h3>Exercise<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
+<p>Consider the system:</p>
+<figure class="align-default" id="id6">
+<a class="reference internal image-reference" href="_images/closed_loop_system_for_Exercise.png"><img alt="_images/closed_loop_system_for_Exercise.png" src="_images/closed_loop_system_for_Exercise.png" style="width: 70%;" /></a>
+</figure>
+<p>Here</p>
+<div class="math notranslate nohighlight">
+\[
+    C(s)=k\frac{(s+\alpha)^2}{s^2+\omega_0^2},\quad P(s)=\frac{1}{s(s+1)}.
+\]</div>
+<ol class="arabic simple">
+<li><p>Assuming the system is stable, show that it can track a reference signal of the form:</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[
+r(t)=\sin(\omega_0 t),
+\]</div>
+<p>with zero steady-state error.</p>
+<ol class="arabic simple" start="2">
+<li><p>We no longer assume the system is stable. Find the range of gain values <span class="math notranslate nohighlight">\(k&gt;0\)</span> for which the closed-loop system is stable, given that <span class="math notranslate nohighlight">\(\omega_0=1,\;\alpha=0.25\)</span>.</p></li>
+</ol>
+</section>
+<section id="id7">
+<h3>Solution<a class="headerlink" href="#id7" title="Link to this heading">#</a></h3>
+<section id="id8">
+<h4>1.<a class="headerlink" href="#id8" title="Link to this heading">#</a></h4>
+<p>We begin by finding the relation between <span class="math notranslate nohighlight">\(\hat{e}(s)\)</span> and the input <span class="math notranslate nohighlight">\(\hat{r}(s)\)</span>. We know that, <span class="math notranslate nohighlight">\(\frac{\hat{e}(s)}{\hat{r}(s)}=S(s)\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[
+    S(s)=\frac{1}{1+k\frac{(s+\alpha)^2}{s^2+\omega_0^2}\frac{1}{s(s+1)}}=\frac{s(s+1)(s^2+\omega_0^2)}{s(s+1)(s^2+\omega_0^2)+k(s+\alpha)^2}.
+\]</div>
+<p>Note that</p>
+<div class="math notranslate nohighlight">
+\[
+    \hat{r}(s)=\frac{\omega_0}{s^2+\omega_0^2}.
+\]</div>
+<p>So</p>
+<div class="math notranslate nohighlight">
+\[
+    \hat{e}(s)=S(s)\hat{r}(s)=\frac{\omega_0s(s+1)}{s(s+1)(s^2+\omega_0^2)+k(s+\alpha)^2}.
+\]</div>
+<p>Since the closed-loop system is stable, this expression is also stable. We use the final value theorem:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    e_{ss}&amp;=\lim_{s\rightarrow0}s\hat{e}(s)\\
+          &amp;=\lim_{s\rightarrow0}\Big(s\cdot \frac{\omega_0s(s+1)}{s(s+1)(s^2+\omega_0^2)+k(s+\alpha)^2}\Big)\\
+          &amp;=0
+\end{split}\]</div>
+</section>
+<section id="id9">
+<h4>2.<a class="headerlink" href="#id9" title="Link to this heading">#</a></h4>
+<p>We find values of <span class="math notranslate nohighlight">\(k&gt;0\)</span> such that <span class="math notranslate nohighlight">\(S(s)\)</span> is stable.</p>
+<div class="math notranslate nohighlight">
+\[
+    S(s)=\frac{s(s+1)(s^2+\omega_0^2)}{s(s+1)(s^2+\omega_0^2)+k(s+\alpha)^2}.
+\]</div>
+<p>We focus on the denominator</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    p(s)&amp;=s(s+1)(s^2+\omega_0^2)+k(s+\alpha)^2\\
+    &amp;=s^4+s^3+(\omega_0^2+k)s^2+(\omega_o^2+2k\alpha)s+k\alpha^2.
+\end{split}\]</div>
+<p>Substituting the values for <span class="math notranslate nohighlight">\(\alpha,\;\omega_0\)</span> we have</p>
+<div class="math notranslate nohighlight">
+\[
+    p(s)=s^4+s^3+(1+k)s^2+(1+0.5k)s+0.0625k.
+\]</div>
+<p>A necessary condition for stability is that all coefficients of <span class="math notranslate nohighlight">\(p(s)\)</span> are positive:</p>
+<div class="math notranslate nohighlight">
+\[
+    1+k&gt;0,\;1+0.5k&gt;0,\;0.0625k&gt;0.
+\]</div>
+<p>Clearly, all three hold if <span class="math notranslate nohighlight">\(k&gt;0\)</span>. We find sufficient values for <span class="math notranslate nohighlight">\(k&gt;0\)</span> using the Routh table:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    \begin{array}{c|cccc}
+    s^4&amp;1&amp;1+k&amp;0.0625k\\
+    s^3&amp;1&amp;1+0.5k\\
+    s^2&amp;0.5k&amp;0.0625k\\
+    s^1&amp;0.875+0.5k\\
+    s^0&amp;0.0625k
+\end{array}
+\end{split}\]</div>
+<p>The table elements were computed as follows:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    \frac{1\cdot(1+k)-1\cdot(1+0.5k)}{1}&amp;=0.5k,\\
+    \frac{1\cdot0.0625k-0}{1}&amp;=0.0625k,\\
+    \frac{0.5k\cdot(1+0.5k)-0.0625k}{0.05k}&amp;=0.875+0.5k,\\
+    \frac{(0.875+0.5k)\cdot(0.0625k)-0}{0.0875+0.5k}&amp;=0.0625k.
+\end{split}\]</div>
+<p>We need to make sure that all the elements of the first column are positive.</p>
+<div class="math notranslate nohighlight">
+\[
+    0.5k,\;0.0625k&gt;0\rightarrow k&gt;0.
+\]</div>
+<p>Moreover,</p>
+<div class="math notranslate nohighlight">
+\[
+    0.875+0.5k&gt;0\rightarrow k&gt;-1.75.
+\]</div>
+<p>Negative elements are non-relevant. We conclude that the closed-loop system is stable for</p>
+<div class="math notranslate nohighlight">
+\[
+    k&gt;0.
+\]</div>
+<figure class="align-default" id="id10">
+<a class="reference internal image-reference" href="_images/error_different_k.png"><img alt="_images/error_different_k.png" src="_images/error_different_k.png" style="width: 70%;" /></a>
+</figure>
+<p>Note that as we increase <span class="math notranslate nohighlight">\(k\)</span> the error converges faster to zero.</p>
+</section>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "executablebooks/jupyter-book",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="rec2.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Introduction to Control – Recitation 2</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#closed-loop-system-stability">Closed-Loop System Stability</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1">Exercise 1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution">Solution</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#steady-state-error-due-to-reference-signal">Steady State Error due to Reference Signal</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#system-type">System Type</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise">Exercise</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Solution</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">1.</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">2.</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">3.</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Exercise</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">Solution</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">1.</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">2.</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Omri Dalin
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
