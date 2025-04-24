@@ -69,12 +69,5 @@ sphinx:
       preamble: |
         % Your custom LaTeX commands here
         \usepackage{pxfonts}
-    mathjax3_config:
-      loader:
-        load: ["[tex]/tagformat"]
-      tex:
-        tags: 'ams'  # Only numbers equations with labels
-        tagformat:
-          number: "({number})"  # Ensure numbering appears
-          
+    
 

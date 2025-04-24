@@ -42,7 +42,7 @@ The feedback connection of two SISO linear systems with transfer functions "Plan
 ```
 
 
-Is equivalent to the block diagram in Figure {numref}`fig:closed_loop_1`, in the sense that the relations between all signals are the same, and all subsequent transfer functions are also the same.
+Is equivalent to the block diagram in {numref}`fig:closed_loop_1`, in the sense that the relations between all signals are the same, and all subsequent transfer functions are also the same.
 :::
 
 We assume zero initial conditions, and denote the transfer function of the Plant by $P$, and the transfer function of the Controller by $C$. Then
