@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Notebooks with MyST Markdown &#8212; Recitations - Omri Dalin</title>
+    <title>Suammary – Transfer Functions &#8212; Recitations - Omri Dalin</title>
   
   
   
@@ -34,9 +34,9 @@
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="_static/proof.css?v=b4b7a797" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- So that users can add custom icons -->
@@ -74,9 +74,12 @@
                 gtag('config', 'G-E2TD05MHVH');
             </script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'markdown-notebooks';</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'RecSummary';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Introduction to Control – Recitation 4" href="rec4.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -127,8 +130,6 @@
     <div class="bd-container__inner bd-page-width">
       
       
-      
-        
       
       <dialog id="pst-primary-sidebar-modal"></dialog>
       <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
@@ -182,12 +183,12 @@
                 </a>
             </li>
         </ul>
-        <ul class="nav bd-sidenav">
+        <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="rec1.html">Introduction to Control – Recitation 1</a></li>
 <li class="toctree-l1"><a class="reference internal" href="rec2.html">Introduction to Control – Recitation 2</a></li>
 <li class="toctree-l1"><a class="reference internal" href="rec3.html">Introduction to Control – Recitation 3</a></li>
 <li class="toctree-l1"><a class="reference internal" href="rec4.html">Introduction to Control – Recitation 4</a></li>
-<li class="toctree-l1"><a class="reference internal" href="RecSummary.html">Note Regarding Alternative Block Diagram</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Suammary – Transfer Functions</a></li>
 </ul>
 
     </div>
@@ -239,37 +240,6 @@
 
 
 
-<div class="dropdown dropdown-launch-buttons">
-  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
-    <i class="fas fa-rocket"></i>
-  </button>
-  <ul class="dropdown-menu">
-      
-      
-      
-      <li>
-<button onclick="initThebeSBT()"
-  class="btn btn-sm btn-launch-thebe dropdown-item"
-  title="Launch Thebe"
-  data-bs-placement="left" data-bs-toggle="tooltip"
->
-  
-
-<span class="btn__icon-container">
-  <i class="fas fa-play"></i>
-  </span>
-<span class="btn__text-container">Live Code</span>
-</button>
-</li>
-      
-  </ul>
-</div>
-
-
-
-
-
-
 <div class="dropdown dropdown-source-buttons">
   <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
     <i class="fab fa-github"></i>
@@ -295,7 +265,7 @@
       
       
       
-      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fmarkdown-notebooks.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FRecSummary.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -325,24 +295,7 @@
       
       
       
-      <li><a href="_sources/markdown-notebooks.ipynb" target="_blank"
-   class="btn btn-sm btn-download-notebook-button dropdown-item"
-   title="Download notebook file"
-   data-bs-placement="left" data-bs-toggle="tooltip"
->
-  
-
-<span class="btn__icon-container">
-  <i class="fas fa-code"></i>
-  </span>
-<span class="btn__text-container">.ipynb</span>
-</a>
-</li>
-      
-      
-      
-      
-      <li><a href="_sources/markdown-notebooks.md" target="_blank"
+      <li><a href="_sources/RecSummary.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -418,7 +371,7 @@
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Notebooks with MyST Markdown</h1>
+    <h1>Suammary – Transfer Functions</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -428,9 +381,7 @@
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#an-example-cell">An example cell</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-notebook-with-myst-markdown">Create a notebook with MyST Markdown</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quickly-add-yaml-metadata-for-myst-notebooks">Quickly add YAML metadata for MyST Notebooks</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#note-regarding-alternative-block-diagram">Note Regarding Alternative Block Diagram</a></li>
 </ul>
             </nav>
         </div>
@@ -442,50 +393,107 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="notebooks-with-myst-markdown">
-<h1>Notebooks with MyST Markdown<a class="headerlink" href="#notebooks-with-myst-markdown" title="Link to this heading">#</a></h1>
-<p>Jupyter Book also lets you write text-based notebooks using MyST Markdown.
-See <a class="reference external" href="https://jupyterbook.org/file-types/myst-notebooks.html">the Notebooks with MyST Markdown documentation</a> for more detailed instructions.
-This page shows off a notebook written in MyST Markdown.</p>
-<section id="an-example-cell">
-<h2>An example cell<a class="headerlink" href="#an-example-cell" title="Link to this heading">#</a></h2>
-<p>With MyST Markdown, you can define code cells with a directive like so:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">2</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4
-</pre></div>
-</div>
-</div>
-</div>
-<p>When your book is built, the contents of any <code class="docutils literal notranslate"><span class="pre">{code-cell}</span></code> blocks will be
-executed with your default Jupyter kernel, and their outputs will be displayed
-in-line with the rest of your content.</p>
-<div class="admonition seealso">
-<p class="admonition-title">See also</p>
-<p>Jupyter Book uses <a class="reference external" href="https://jupytext.readthedocs.io/en/latest/">Jupytext</a> to convert text-based files to notebooks, and can support <a class="reference external" href="https://jupyterbook.org/file-types/jupytext.html">many other text-based notebook files</a>.</p>
-</div>
-</section>
-<section id="create-a-notebook-with-myst-markdown">
-<h2>Create a notebook with MyST Markdown<a class="headerlink" href="#create-a-notebook-with-myst-markdown" title="Link to this heading">#</a></h2>
-<p>MyST Markdown notebooks are defined by two things:</p>
-<ol class="arabic simple">
-<li><p>YAML metadata that is needed to understand if / how it should convert text files to notebooks (including information about the kernel needed).
-See the YAML at the top of this page for example.</p></li>
-<li><p>The presence of <code class="docutils literal notranslate"><span class="pre">{code-cell}</span></code> directives, which will be executed with your book.</p></li>
-</ol>
-<p>That’s all that is needed to get started!</p>
-</section>
-<section id="quickly-add-yaml-metadata-for-myst-notebooks">
-<h2>Quickly add YAML metadata for MyST Notebooks<a class="headerlink" href="#quickly-add-yaml-metadata-for-myst-notebooks" title="Link to this heading">#</a></h2>
-<p>If you have a markdown file and you’d like to quickly add YAML metadata to it, so that Jupyter Book will treat it as a MyST Markdown Notebook, run the following command:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">jupyter</span><span class="o">-</span><span class="n">book</span> <span class="n">myst</span> <span class="n">init</span> <span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">markdownfile</span><span class="o">.</span><span class="n">md</span>
-</pre></div>
-</div>
+  <section class="tex2jax_ignore mathjax_ignore" id="suammary-transfer-functions">
+<h1>Suammary – Transfer Functions<a class="headerlink" href="#suammary-transfer-functions" title="Link to this heading">#</a></h1>
+<p>In this course, we will deal with a system of the following form:</p>
+<figure class="align-default" id="fig-system-b-2">
+<a class="reference internal image-reference" href="_images/s1.png"><img alt="_images/s1.png" src="_images/s1.png" style="width: 70%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 15 </span><span class="caption-text">Negative Feedback Closed-Loop Block Diagram.</span><a class="headerlink" href="#fig-system-b-2" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>where <span class="math notranslate nohighlight">\( r(t) \)</span> is the input signal, <span class="math notranslate nohighlight">\( y(t) \)</span> is the output signal, <span class="math notranslate nohighlight">\( u(t) \)</span> is the control signal, and <span class="math notranslate nohighlight">\( e(t) \)</span> is the error signal or the tracking signal:</p>
+<div class="math notranslate nohighlight">
+\[
+e(t) = r(t) - y(t).
+\]</div>
+<p>The transfer function <span class="math notranslate nohighlight">\( P(s)=\frac{\hat{y{(s)}}}{\hat{u}(s)} \)</span> is the transfer function of the controlled system, also known as the <b>plant</b>. We can think of it as the transfer function representing the physical system that we want to control.</p>
+<p>The transfer function <span class="math notranslate nohighlight">\( C(s)=\frac{\hat{u}(s)}{\hat{e}(s)} \)</span> is the transfer function of the controller. <span class="math notranslate nohighlight">\( H(s) \)</span> is the feedback transfer function.</p>
+<p>The <b>loop-gain transfer function</b> is the transfer function of the system without feedback. That is, only the transfer functions between the summation point and the output signal:</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{\hat{y}(s)}{\hat{e}(s)} = G(s) = C(s)P(s).
+\]</div>
+<p>The <b>closed-loop transfer function</b> is the transfer function of the system with feedback between the output <span class="math notranslate nohighlight">\( y(t) \)</span> and the input <span class="math notranslate nohighlight">\( r(t) \)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\hat{y}(s) &amp;= \hat{e}(s) G(s) \\
+          &amp;= \big(\hat{r}(s) - \hat{y}(s) H(s)\big) G(s) \\
+\Rightarrow \hat{y}(s) + \hat{y}(s) H(s) G(s) &amp;= \hat{r}(s) G(s).
+\end{split}\]</div>
+<p>Thus, we get:</p>
+<div class="math notranslate nohighlight">
+\[
+\hat{y}(s)(1 + H(s)G(s)) = \hat{r}(s)G(s),
+\]</div>
+<p>and we obtain:</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{\hat{y}(s)}{\hat{r}(s)} = \frac{G(s)}{1 + H(s)G(s)}.
+\]</div>
+<p>In the course so far, we have dealt with cases where <span class="math notranslate nohighlight">\( H(s) = 1 \)</span>. Therefore, we refer to the closed-loop transfer function as:</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{\hat{y}(s)}{\hat{r}(s)} = \frac{G(s)}{1 + G(s)}.
+\]</div>
+<p>Now we will find the transfer function between the error signal <span class="math notranslate nohighlight">\( e(t) \)</span> and the input <span class="math notranslate nohighlight">\( r(t) \)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+\hat{e}(s) = \hat{r}(s) - \hat{y}(s) H(s).
+\]</div>
+<p>Note that <span class="math notranslate nohighlight">\( \hat{y}(s) = \hat{e}(s) C(s) P(s) = \hat{e}(s) G(s) \)</span>. Substituting this, we get:</p>
+<div class="math notranslate nohighlight">
+\[
+\hat{e}(s) = \hat{r}(s) - \hat{e}(s) G(s) H(s).
+\]</div>
+<p>Rearranging the terms:</p>
+<div class="math notranslate nohighlight">
+\[
+\hat{e}(s)(1 + G(s)H(s)) = \hat{r}(s),
+\]</div>
+<p>thus, we obtain:</p>
+<p>[
+\frac{\hat{e}(s)}{\hat{r}(s)} = S(s) = \frac{1}{1 + G(s)H(s)}.
+]</p>
+<p>This is also called the <b>sensitivity transfer function</b>. In our course so far, <span class="math notranslate nohighlight">\( H(s) = 1 \)</span>, so we get:</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{\hat{e}(s)}{\hat{r}(s)} = S(s) = \frac{1}{1 + G(s)}.
+\]</div>
+<p>Notice that the denominator of the sensitivity transfer function and the closed-loop transfer function is identical.</p>
+<section id="note-regarding-alternative-block-diagram">
+<h2>Note Regarding Alternative Block Diagram<a class="headerlink" href="#note-regarding-alternative-block-diagram" title="Link to this heading">#</a></h2>
+<figure class="align-default" id="id1">
+<a class="reference internal image-reference" href="_images/s2.png"><img alt="_images/s2.png" src="_images/s2.png" style="width: 70%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 16 </span><span class="caption-text">Negative Feedback Closed-Loop Block Diagram.</span><a class="headerlink" href="#id1" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>This system is equivalent to the system shown at the beginning of the document with the addition of a disturbance signal. Simply place the controller <span class="math notranslate nohighlight">\( C(s) \)</span> below, but it is still connected in the same line with <span class="math notranslate nohighlight">\( P(s) \)</span>. Note that the input <span class="math notranslate nohighlight">\( r(t) \)</span> enters the lower right part and the feedback enters the system in the same way as at the beginning of the document. Essentially, we can move the controller <span class="math notranslate nohighlight">\( C(s) \)</span> to the left of <span class="math notranslate nohighlight">\( P(s) \)</span> to obtain the system at the beginning of the document. Additionally, since <span class="math notranslate nohighlight">\( d = 0 \)</span>, the signals <span class="math notranslate nohighlight">\( v \)</span> and <span class="math notranslate nohighlight">\( u \)</span> merge into a single signal.</p>
+<p>\section*{Disturbance Signal}</p>
+<p>A system with a disturbance signal will be of the following form:</p>
+<figure class="align-default" id="id2">
+<a class="reference internal image-reference" href="_images/s3.png"><img alt="_images/s3.png" src="_images/s3.png" style="width: 70%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 17 </span><span class="caption-text">Negative Feedback Closed-Loop Block Diagram with disturbance signal.</span><a class="headerlink" href="#id2" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>When we work with a disturbance signal <span class="math notranslate nohighlight">\( d(t) \)</span>, we will use superposition between the disturbance signal and the reference/input signal <span class="math notranslate nohighlight">\( r(t) \)</span>. To calculate the transfer function between the disturbance signal and the output signal, we set the reference signal to zero.</p>
+<p>Notice that in this case, we can think of <span class="math notranslate nohighlight">\( H(s)C(s) \)</span> as the feedback transfer function because if we analyze the exit point from <span class="math notranslate nohighlight">\( C(s) \)</span>, we see that the input signal there is:</p>
+<div class="math notranslate nohighlight">
+\[
+-\hat{y}(s) H(s) C(s).
+\]</div>
+<p>Therefore, the transfer function between the output and the disturbance signal is simply the closed-loop transfer function with feedback transfer function <span class="math notranslate nohighlight">\( H(s)C(s) \)</span> and open-loop transfer function composed only of <span class="math notranslate nohighlight">\( P(s) \)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{\hat{y}(s)}{\hat{d}(s)} = \frac{P(s)}{1 + H(s)C(s)P(s)}.
+\]</div>
+<p>In our case, <span class="math notranslate nohighlight">\( H(s) = 1 \)</span>, so we get:</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{\hat{y}(s)}{\hat{d}(s)} = \frac{P(s)}{1 + C(s)P(s)}.
+\]</div>
 </section>
 </section>
 
@@ -519,6 +527,15 @@ See the YAML at the top of this page for example.</p></li>
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="rec4.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Introduction to Control – Recitation 4</p>
+      </div>
+    </a>
 </div>
                 </footer>
               
@@ -536,9 +553,7 @@ See the YAML at the top of this page for example.</p></li>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#an-example-cell">An example cell</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-notebook-with-myst-markdown">Create a notebook with MyST Markdown</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quickly-add-yaml-metadata-for-myst-notebooks">Quickly add YAML metadata for MyST Notebooks</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#note-regarding-alternative-block-diagram">Note Regarding Alternative Block Diagram</a></li>
 </ul>
   </nav></div>
 
