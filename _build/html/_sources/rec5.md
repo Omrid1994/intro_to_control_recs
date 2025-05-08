@@ -80,7 +80,7 @@ Therefore, every point in the Root-Locus must satisfy these two conditions.
 We describe the loop-gain system as a ratio of polynomials:
 
 $$
-    k\tilde{G}(s) = k\frac{n(s)}{d(s)}
+    k\tilde{G}(s) = k\frac{n(s)}{d(s)}.
 $$
 
 where $n(s)$ is a polynomial of degree $w$, and $d(s)$ is a polynomial of degree $m$. Since we are dealing with **proper** systems, $m \leq n$.
@@ -193,7 +193,7 @@ k = \Bigg|\frac{n(s_0)}{d(s_0)}\Bigg|.
 
 
 
-### Exercise 
+### Exercise 1
 
 Consider a system with:
 
@@ -374,7 +374,7 @@ $$
 $$
 
 
-### Exercise
+### Exercise 2
 
 Given a system with:
 
@@ -532,7 +532,7 @@ The Root Locus diagram of $G(s)=k\frac{(s+2)(s+3)}{s(s+1)}$.
 
 The system is under-damped if $0<\zeta<1$. That is, if the pole of the closed-loop system has an imaginary component. A system is damped if $\zeta=0$. As $k$ increases from 0 to $0.0718$ the poles are on the real axis, so the system is damped for these values. For $0.0718<k<13.93$ the poles are complex so the system is under-damped. For $13.93\leq k <\infty$ the poles are again real so the system is damped.
 
-### Exercise
+### Exercise 3
 
 Consider the loop-gain with:
 
@@ -726,7 +726,7 @@ $$
 7 < k < 16.
 $$
 
-### Exercise
+### Exercise 4
 
 Consider the closed-loop system with PD controller
 
