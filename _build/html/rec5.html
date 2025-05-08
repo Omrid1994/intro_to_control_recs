@@ -1,0 +1,1325 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Introduction to Control – Recitation 5 &#8212; Recitations - Omri Dalin</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/proof.css?v=b4b7a797" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-E2TD05MHVH"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-E2TD05MHVH');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-E2TD05MHVH');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'rec5';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Suammary – Transfer Functions" href="RecSummary.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="title.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="Recitations - Omri Dalin - Home"/>
+    <img src="_static/logo.png" class="logo__image only-dark pst-js-only" alt="Recitations - Omri Dalin - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="title.html">
+                    Intro to Control
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="rec1.html">Introduction to Control – Recitation 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rec2.html">Introduction to Control – Recitation 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rec3.html">Introduction to Control – Recitation 3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rec4.html">Introduction to Control – Recitation 4</a></li>
+<li class="toctree-l1"><a class="reference internal" href="RecSummary.html">Suammary – Transfer Functions</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Introduction to Control – Recitation 5</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Frec5.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/rec5.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Introduction to Control – Recitation 5</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#root-locus-diagram">Root Locus Diagram</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#drawing-a-root-locus-diagram">Drawing a Root Locus Diagram</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#finding-the-gain-corresponding-to-some-point-s-0-on-the-root-locus-diagram">Finding the Gain Corresponding to some Point <span class="math notranslate nohighlight">\(s_0\)</span> on the Root Locus Diagram</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise">Exercise</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution">Solution</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Exercise</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">Solution</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">Exercise</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">Solution</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id17">Exercise</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id18">Solution</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="introduction-to-control-recitation-5">
+<h1>Introduction to Control – Recitation 5<a class="headerlink" href="#introduction-to-control-recitation-5" title="Link to this heading">#</a></h1>
+<section id="root-locus-diagram">
+<h2>Root Locus Diagram<a class="headerlink" href="#root-locus-diagram" title="Link to this heading">#</a></h2>
+<p>We usually deal with loop-gain of the form <span class="math notranslate nohighlight">\(P(s)C(s)=k\tilde{G}(s)\)</span>. In this case, the closed-loop system is:</p>
+<div class="math notranslate nohighlight">
+\[
+    T(s) = \frac{k\tilde{G}(s)}{1 + k\tilde{G}(s)}.
+\]</div>
+<p>If we write <span class="math notranslate nohighlight">\(C(s)P(s) = k\frac{n(s)}{d(s)}\)</span>, we obtain:</p>
+<div class="math notranslate nohighlight">
+\[
+    T(s) = \frac{k n(s)}{d(s) +  kn(s)}.
+\]</div>
+<p>Of course, every choice of <span class="math notranslate nohighlight">\(k\)</span> yields different denominator roots.</p>
+<div class="proof example admonition" id="example-0">
+<p class="admonition-title"><span class="caption-number">Example 1 </span></p>
+<section class="example-content" id="proof-content">
+<p>Let</p>
+<div class="math notranslate nohighlight">
+\[
+    C(s)=k,\quad P(s) = \frac{1}{s(s+2)},
+\]</div>
+<p>we get the closed-loop system:</p>
+<div class="math notranslate nohighlight">
+\[
+    P(s) = \frac{5k}{s^2+s + 5k}.
+\]</div>
+<p>For <span class="math notranslate nohighlight">\(k = 0\)</span>, we obtain the roots: <span class="math notranslate nohighlight">\(s = -1, 0\)</span>. For <span class="math notranslate nohighlight">\(k = 1\)</span>, we obtain the roots <span class="math notranslate nohighlight">\(s=-0.5\pm j\frac{\sqrt{19}}{2}\)</span>.</p>
+</section>
+</div><div class="math notranslate nohighlight">
+\[
+\boxed{\text{The Root-Locus diagram provides all the possible poles that can be achieved from the system for all values of $k\in\mathbb{R}$}}
+\]</div>
+<p>We focus on the denominator of the closed-loop system:</p>
+<div class="math notranslate nohighlight">
+\[
+    1 + k\tilde{G}(s) = 0,
+\]</div>
+<p>which always satisfies:</p>
+<div class="math notranslate nohighlight">
+\[
+    k\tilde{G}(s) = -1.
+\]</div>
+<p>From this, we can define two conditions in the complex plane for the open-loop system:</p>
+<p><strong>Magnitude Condition:</strong></p>
+<div class="math notranslate nohighlight">
+\[
+    |k\tilde{G}(s)| = 1.
+\]</div>
+<p><strong>Phase Condition:</strong></p>
+<div class="math notranslate nohighlight">
+\[
+    \angle k\tilde{G}(s) = (2\ell+1) \pi, \quad \ell \in \mathbb{Z}.
+\]</div>
+<div class="proof remark admonition" id="remark-1">
+<p class="admonition-title"><span class="caption-number">Remark 2 </span></p>
+<section class="remark-content" id="proof-content">
+<p>If <span class="math notranslate nohighlight">\(k&lt;0\)</span>, the phase condition becomes</p>
+<div class="math notranslate nohighlight">
+\[
+        \angle k\tilde{G}(s)=2\pi\ell,\quad \ell\in\mathbb{Z}.
+\]</div>
+</section>
+</div><p>Therefore, every point in the Root-Locus must satisfy these two conditions.</p>
+<p>We describe the loop-gain system as a ratio of polynomials:</p>
+<div class="math notranslate nohighlight">
+\[
+    k\tilde{G}(s) = k\frac{n(s)}{d(s)}
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(n(s)\)</span> is a polynomial of degree <span class="math notranslate nohighlight">\(w\)</span>, and <span class="math notranslate nohighlight">\(d(s)\)</span> is a polynomial of degree <span class="math notranslate nohighlight">\(m\)</span>. Since we are dealing with <strong>proper</strong> systems, <span class="math notranslate nohighlight">\(m \leq n\)</span>.</p>
+<section id="drawing-a-root-locus-diagram">
+<h3>Drawing a Root Locus Diagram<a class="headerlink" href="#drawing-a-root-locus-diagram" title="Link to this heading">#</a></h3>
+<p>Below are some general rules of thumb for the Root Locus diagram:</p>
+<ul class="simple">
+<li><p>There will be <span class="math notranslate nohighlight">\(\tilde{n}\)</span> curves when <span class="math notranslate nohighlight">\(\tilde{n}=\max(m,w)\)</span>. If the system is proper, there will be <span class="math notranslate nohighlight">\(w\)</span> curves.</p></li>
+<li><p>As <span class="math notranslate nohighlight">\(k\)</span> increases from <span class="math notranslate nohighlight">\(0\)</span> to infinity, the curves move from the poles of <span class="math notranslate nohighlight">\(G(s)\)</span> to the zeros of <span class="math notranslate nohighlight">\(G(s)\)</span>.</p></li>
+<li><p>Complex roots always appear in conjugate pairs, making the diagram symmetric about the real axis.</p></li>
+<li><p>The branches do not intersect, meaning there are no loops. If two branches meet, they split apart at that point.</p></li>
+</ul>
+<p>These rules will not be used to draw the Root Locus but can serve as a consistency check to ensure the diagram aligns with the fundamental rules.</p>
+<p>Using these rules along with the magnitude and angle conditions, we can construct the Root Locus:</p>
+<ol class="arabic simple">
+<li><p><strong>Marking Poles and Zeros of the Loop-Gain on the Complex Plane</strong>: Poles are marked with an ‘X’, and zeros are marked with a circle.</p></li>
+<li><p><strong>Determining the Real Axis Branches</strong>: We use the angle condition to determine segments of the Root Locus along the real axis. A real pole contributes an angle of <span class="math notranslate nohighlight">\(180^\circ\)</span>, and a real zero contributes an angle of <span class="math notranslate nohighlight">\(0^\circ\)</span>. The angles from complex pole-zero pairs cancel out. A segment belongs to the Root Locus if the sum of angles contributed by all poles and zeros to that segment is <span class="math notranslate nohighlight">\(180^\circ\)</span>.
+<strong>Alternative Real Axis Rule</strong>: If the number of poles and zeros to the right of a segment is odd, that segment belongs to the Root Locus; otherwise, it does not.</p></li>
+</ol>
+<div class="proof remark admonition" id="remark-2">
+<p class="admonition-title"><span class="caption-number">Remark 3 </span></p>
+<section class="remark-content" id="proof-content">
+<p>For <span class="math notranslate nohighlight">\(k&lt;0\)</span>, a real point <span class="math notranslate nohighlight">\(s\in\mathbb{R}\)</span> is included in the root locus plot if and only if the number of real poles and zeros of <span class="math notranslate nohighlight">\(\frac{n(s)}{d(s)}\)</span> to the right of <span class="math notranslate nohighlight">\(s\)</span> is even.</p>
+</section>
+</div><ol class="arabic simple" start="3">
+<li><p><strong>Asymptotes</strong>: The angles of the asymptotes are given by:</p></li>
+</ol>
+<div class="math notranslate nohighlight" id="equation-eq-asymptotoes">
+<span class="eqno">(18)<a class="headerlink" href="#equation-eq-asymptotoes" title="Link to this equation">#</a></span>\[\theta = \frac{180^\circ}{m-w}\cdot\ell, \]</div>
+<p>where <span class="math notranslate nohighlight">\(\ell\)</span> runs through the first <span class="math notranslate nohighlight">\(m-w\)</span> <strong>odd</strong> numbers if <span class="math notranslate nohighlight">\(k&gt;0\)</span> and through the first <span class="math notranslate nohighlight">\(m-w\)</span> <strong>even</strong> numbers if <span class="math notranslate nohighlight">\(k&lt;0\)</span>.</p>
+<p>The center of the asymptotes is given by:</p>
+<div class="math notranslate nohighlight">
+\[
+\gamma = \frac{\sum_{i=1}^m p_i - \sum_{i=1}^w z_i}{m-w},
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(p_i\)</span> are the real parts of the poles and <span class="math notranslate nohighlight">\(z_i\)</span> are the real parts of the zeros.</p>
+<ol class="arabic simple" start="4">
+<li><p><strong>Break-away and Break-in Points</strong>:
+If two Root Locus branches meet on the real axis, they split apart at a breakaway or break-in point.</p></li>
+</ol>
+<p>To find breakaway points, we express the characteristic equation as:</p>
+<div class="math notranslate nohighlight">
+\[
+d(s)+kn(s)=0\rightarrow k=-\frac{d(s)}{n(s)}.
+\]</div>
+<p>We differentiate and set it to zero:</p>
+<div class="math notranslate nohighlight" id="equation-eq-breakinpoint">
+<span class="eqno">(19)<a class="headerlink" href="#equation-eq-breakinpoint" title="Link to this equation">#</a></span>\[\frac{dk}{ds}= \frac{d'(s)n(s)-d(s)n'(s)}{n^2(s)} = 0.\]</div>
+<p>The roots of this equation give the breakaway points. *<em>A root is valid only if it is real and belongs to the Root Locus</em>.</p>
+<ol class="arabic simple" start="5">
+<li><p><strong>Exit and Entry Angles</strong>:
+The Root Locus leaves complex poles and enters complex zeros at specific angles. The angle of departure from a complex pole is:</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[
+\theta_{exit} = 180^\circ - \sum (\text{angles from other poles}) + \sum (\text{angles from other zeros}).
+\]</div>
+<p>Similarly, the angle of entry to a complex zero is:</p>
+<div class="math notranslate nohighlight">
+\[
+\theta_{entry} = 180^\circ - \sum (\text{angles from other zeros}) + \sum (\text{angles from poles}).
+\]</div>
+<p>where the sums are taken over all other poles and zeros relative to the given pole or zero.</p>
+<div class="proof remark admonition" id="remark-3">
+<p class="admonition-title"><span class="caption-number">Remark 4 </span></p>
+<section class="remark-content" id="proof-content">
+<p>The angles between two poles (or any two points on the complex plane) is as follows: First, we draw a straight line between the poles. Then, we draw a horizontal line to the right of the first pole. The angle between the first pole and the second pole is the angle between the horizontal line and the line connecting the poles.</p>
+<figure class="align-default" id="fig-closed-system-1">
+<a class="reference internal image-reference" href="_images/angle_between_roots.png"><img alt="_images/angle_between_roots.png" src="_images/angle_between_roots.png" style="width: 70%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 18 </span><span class="caption-text">Angle between <span class="math notranslate nohighlight">\(p_1\)</span> and <span class="math notranslate nohighlight">\(p_2\)</span>.</span><a class="headerlink" href="#fig-closed-system-1" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+</div><ol class="arabic simple" start="6">
+<li><p><strong>Imaginary Axis Crossings</strong>:
+To find where the Root Locus crosses the imaginary axis, we set <span class="math notranslate nohighlight">\(s = j\omega\)</span> in the characteristic equation and separate the real and imaginary parts. Solving for <span class="math notranslate nohighlight">\(\omega\)</span> and <span class="math notranslate nohighlight">\(k\)</span> gives the crossing point and the corresponding gain.</p></li>
+</ol>
+</section>
+<section id="finding-the-gain-corresponding-to-some-point-s-0-on-the-root-locus-diagram">
+<h3>Finding the Gain Corresponding to some Point <span class="math notranslate nohighlight">\(s_0\)</span> on the Root Locus Diagram<a class="headerlink" href="#finding-the-gain-corresponding-to-some-point-s-0-on-the-root-locus-diagram" title="Link to this heading">#</a></h3>
+<p>Every point <span class="math notranslate nohighlight">\(s_0\)</span> on the Root Locus satisfies the magnitude condition:</p>
+<div class="math notranslate nohighlight">
+\[
+|k\tilde{G}(s_0)|=k\Bigg|\frac{n(s_0)}{d(s_0)}\Bigg| = 1.
+\]</div>
+<p>To find the gain for a specific system requirement, locate the desired point on the Root Locus,<span class="math notranslate nohighlight">\(s_0\)</span>, and solve for <span class="math notranslate nohighlight">\(k\)</span> using:</p>
+<div class="math notranslate nohighlight" id="equation-eq-k-for-s">
+<span class="eqno">(20)<a class="headerlink" href="#equation-eq-k-for-s" title="Link to this equation">#</a></span>\[k = \Bigg|\frac{n(s_0)}{d(s_0)}\Bigg|.\]</div>
+</section>
+<section id="exercise">
+<h3>Exercise<a class="headerlink" href="#exercise" title="Link to this heading">#</a></h3>
+<p>Consider a system with:</p>
+<div class="math notranslate nohighlight">
+\[
+C(s)P(s) = \frac{k}{s(s^2+4s+8)}.
+\]</div>
+<p>Sketch the Root Locus diagram for the system. For which values of <span class="math notranslate nohighlight">\(k\)</span> is the closed-loop system stable?</p>
+</section>
+<section id="solution">
+<h3>Solution<a class="headerlink" href="#solution" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p><strong>Poles and Zeros of the Open-Loop System</strong>:</p></li>
+</ol>
+<p>The loop-gain has the following poles:</p>
+<div class="math notranslate nohighlight">
+\[
+    s=0,\;-2\pm j2.
+\]</div>
+<figure class="align-default" id="id1">
+<a class="reference internal image-reference" href="_images/Ex1.1.png"><img alt="_images/Ex1.1.png" src="_images/Ex1.1.png" style="width: 70%;" /></a>
+</figure>
+<ol class="arabic simple" start="2">
+<li><p><strong>Root Locus Branches on the Real Axis</strong>:</p></li>
+</ol>
+<ul class="simple">
+<li><p>If no poles or zeros exist to the right of a segment, the Root Locus does not pass through it.</p></li>
+<li><p>If the number of poles to the right is odd, then the segment belongs to the Root Locus.
+In this case, if <span class="math notranslate nohighlight">\(s&lt;0\)</span> there are no poles and zeros to the right on the real axis. If <span class="math notranslate nohighlight">\(s&gt;0\)</span> there is an odd number of poles and zeros (one pole) on the real axis, this pole will contribute <span class="math notranslate nohighlight">\(-180^\circ\)</span>.</p></li>
+</ul>
+<figure class="align-default" id="id2">
+<a class="reference internal image-reference" href="_images/Ex1.2.png"><img alt="_images/Ex1.2.png" src="_images/Ex1.2.png" style="width: 70%;" /></a>
+</figure>
+<ol class="arabic simple" start="3">
+<li><p><strong>Determining Asymptotes</strong>:</p></li>
+</ol>
+<p>The degree of the denominator is <span class="math notranslate nohighlight">\(m=3\)</span>, the degree of the numerator is <span class="math notranslate nohighlight">\(w=0\)</span>. We have <span class="math notranslate nohighlight">\(m-w=3\)</span>.</p>
+<p>To compute the angles of the asymptotes, we use :</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    \theta_1&amp;=\frac{180^\circ}{3-0}\cdot 1=\frac{180^\circ}{3}\cdot1=60^\circ,\\
+    \theta_2&amp;=\frac{180^\circ}{3-0}\cdot 3=\frac{180^\circ}{3}\cdot 3=180^\circ,\\
+    \theta_3&amp;=\frac{180^\circ}{3-0}\cdot 5=\frac{180^\circ}{3}\cdot 5=300^\circ=-60^\circ.
+\end{split}\]</div>
+<p>The center point of the asymptotes on the real axis is:</p>
+<div class="math notranslate nohighlight">
+\[
+    \gamma=\frac{0-2-2}{3-0}=-\frac{4}{3}.
+\]</div>
+<figure class="align-default" id="id3">
+<a class="reference internal image-reference" href="_images/Ex1.3.png"><img alt="_images/Ex1.3.png" src="_images/Ex1.3.png" style="width: 70%;" /></a>
+</figure>
+<ol class="arabic simple" start="4">
+<li><p><strong>Finding Breakaway Points</strong>:</p></li>
+</ol>
+<p>We have:</p>
+<div class="math notranslate nohighlight">
+\[
+n(s)=1,\quad d(s)=s^3+4s^2+8s.
+\]</div>
+<p>differentiating we have:</p>
+<div class="math notranslate nohighlight">
+\[
+    n'(s)=0,\quad d'(s)=3s^2+8s+8.
+\]</div>
+<p>Substituting in  we have:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+d'(s)n(s)-d(s)n'(s)&amp;=3s^2+8s+8-0\\
+                   &amp;=3s^2+8s+8.
+\end{split}\]</div>
+<p>Comparing to zero and solving this equation, we obtain:</p>
+<div class="math notranslate nohighlight">
+\[
+s_{1,2} =-1.333\pm j0.943. 
+\]</div>
+<p>Since these roots are not on the real axis, they do not form valid break-away and break-in points. Therefore, there are no break-in and break-out points.</p>
+<ol class="arabic simple" start="5">
+<li><p><strong>Exit Angles from Complex Poles</strong>:</p></li>
+</ol>
+<p>We compute the exit angle from the pole <span class="math notranslate nohighlight">\(-2+j2\)</span>. From symmetry, this also gives the exit angle from <span class="math notranslate nohighlight">\(-2-j2\)</span>.</p>
+<p>The angle between <span class="math notranslate nohighlight">\(-2-j2\)</span> and <span class="math notranslate nohighlight">\(-2+j2\)</span> is <span class="math notranslate nohighlight">\(90^\circ\)</span>. The angle between <span class="math notranslate nohighlight">\(s=0\)</span> and <span class="math notranslate nohighlight">\(-2+j2\)</span> is <span class="math notranslate nohighlight">\(135^\circ\)</span>.</p>
+<figure class="align-default" id="id4">
+<a class="reference internal image-reference" href="_images/Ex1.4.png"><img alt="_images/Ex1.4.png" src="_images/Ex1.4.png" style="width: 70%;" /></a>
+</figure>
+<p>The sum of these angles and the exit angles from <span class="math notranslate nohighlight">\(-2+j2\)</span> should be <span class="math notranslate nohighlight">\(\pm180^\circ\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+    -\theta_3-\theta_2-\theta_3=-90^\circ-\theta_2-135^\circ=180.
+\]</div>
+<p>We obtain <span class="math notranslate nohighlight">\(\theta_2=-405^\circ=-45^\circ\)</span>.</p>
+<p>By symmetry, the exit angle from the other complex pole is <span class="math notranslate nohighlight">\(45\)</span> degrees.</p>
+<figure class="align-default" id="id5">
+<a class="reference internal image-reference" href="_images/Ex1.5.png"><img alt="_images/Ex1.5.png" src="_images/Ex1.5.png" style="width: 70%;" /></a>
+</figure>
+<ol class="arabic simple" start="6">
+<li><p><strong>Imaginary Axis Crossing</strong>:
+The denominator of the closed-loop is:</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[
+    p(s)=d(s)+kn(s)=s^3+4s^2+8s+k.
+\]</div>
+<p>Substituting <span class="math notranslate nohighlight">\(s=j\omega\)</span> we have:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    p(j\omega)&amp;=(j\omega)^3+4(j\omega)^2+8j\omega+k\\
+              &amp;=k-4\omega^2+j\omega(8-\omega^2).
+\end{split}\]</div>
+<p>Comparing with zero we have:</p>
+<div class="math notranslate nohighlight">
+\[
+    k-4\omega^2+j\omega(8-\omega^2)=0.
+\]</div>
+<p>We separately compare the real and imaginary parts with zero:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    k-4\omega^2&amp;=0,\\
+    \omega(8-\omega^2)&amp;=0.
+\end{split}\]</div>
+<p>Solving, we obtain the following pairs:</p>
+<div class="math notranslate nohighlight">
+\[
+    (\omega,k)=(0,0),\quad (\omega,k)=(\pm\sqrt{8},32).
+\]</div>
+<p>Clearly we already found the origin. The intersection with the imaginary axis is at <span class="math notranslate nohighlight">\(\pm j\sqrt{8}\)</span>. The intersection is obtained for <span class="math notranslate nohighlight">\(k=32\)</span>.</p>
+<p>We are ready to draw the root locus diagram.</p>
+<figure class="align-default" id="fig-ex1rl">
+<a class="reference internal image-reference" href="_images/EX1_final.png"><img alt="_images/EX1_final.png" src="_images/EX1_final.png" style="width: 70%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 19 </span><span class="caption-text">The Root Locus diagram of <span class="math notranslate nohighlight">\(G(s)=\frac{k}{s(s^2+4s+8)}\)</span>.</span><a class="headerlink" href="#fig-ex1rl" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>We know the closed-loop system is stable if <strong>all</strong> the poles of the closed-loop system have a negative real part. Figure <a class="reference internal" href="#fig-ex1rl"><span class="std std-numref">Fig. 19</span></a> gives us all possible poles of the closed-loop system for <span class="math notranslate nohighlight">\(k&gt;0\)</span>. For <span class="math notranslate nohighlight">\(k=0\)</span> the poles are exactly the poles of the loop-gain. As we increase <span class="math notranslate nohighlight">\(k\)</span> the poles go along the root locus diagram. They will all have a negative real part until we intersect the imaginary axis. We know this happends for <span class="math notranslate nohighlight">\(k=32\)</span>. To conclude, the closed-loop system is stable for</p>
+<div class="math notranslate nohighlight">
+\[
+    0&lt;k&lt;32.
+\]</div>
+</section>
+<section id="id6">
+<h3>Exercise<a class="headerlink" href="#id6" title="Link to this heading">#</a></h3>
+<p>Given a system with:</p>
+<div class="math notranslate nohighlight">
+\[
+C(s)=k,\quad P(s)= \frac{(s+2)(s+3)}{s(s+1)}.
+\]</div>
+<ul class="simple">
+<li><p>Draw the Root Locus of the system.</p></li>
+<li><p>Determine the gain range for which the system is under-damped.</p></li>
+</ul>
+</section>
+<section id="id7">
+<h3>Solution<a class="headerlink" href="#id7" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p><strong>Marking the Poles and Zeros of the Open-Loop System</strong>:</p></li>
+</ol>
+<p>The system has the following open-loop poles and zeros:</p>
+<div class="math notranslate nohighlight">
+\[
+\text{Poles: } s = -1,
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\text{Zeros: } s = -2,-3.
+\]</div>
+<figure class="align-default" id="id8">
+<a class="reference internal image-reference" href="_images/r5_ex2.1.png"><img alt="_images/r5_ex2.1.png" src="_images/r5_ex2.1.png" style="width: 70%;" /></a>
+</figure>
+<ol class="arabic simple" start="2">
+<li><p><strong>Root Locus Branches on the Real Axis</strong>:</p></li>
+</ol>
+<p>Using the angle condition, we determine segments of the Root Locus along the real axis:</p>
+<div class="math notranslate nohighlight">
+\[
+    \angle k\frac{(s+2)(s+3)}{s(s+1)}=\angle(s+2)+\angle(s+3)-\angle s-\angle(s+1).
+\]</div>
+<p>We want this sum to be <span class="math notranslate nohighlight">\(\pm180^\circ\)</span>. For the interval <span class="math notranslate nohighlight">\(s\in(-\infty, -3)\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+    \angle(s+2)+\angle(s+3)-\angle s-\angle(s+1)=0^\circ+0^\circ-0^\circ-0^\circ=0^\circ.
+\]</div>
+<p>Even number of poles and zeros to the right implies no root locus. For the interval <span class="math notranslate nohighlight">\(s\in(-3, -2)\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+    \angle(s+2)+\angle(s+3)-\angle s-\angle(s+1)=0^\circ+0^\circ-180^\circ-0^\circ=-180^\circ.
+\]</div>
+<p>Odd number of poles and zeros to the right implies root locus exists. For the interval <span class="math notranslate nohighlight">\(s\in(-2, -1)\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+    \angle(s+2)+\angle(s+3)-\angle s-\angle(s+1)=0^\circ+0^\circ-180^\circ-180^\circ=-360^\circ.
+\]</div>
+<p>Even number of poles and zeros to the right implies no root Locus. For the interval <span class="math notranslate nohighlight">\(s\in(-1, 0)\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+    \angle(s+2)+\angle(s+3)-\angle s-\angle(s+1)=180^\circ+0^\circ-180^\circ-180^\circ=-180^\circ.
+\]</div>
+<p>Odd number of poles and zeros to the right implies root locus exists. For the interval <span class="math notranslate nohighlight">\(s\in(0, \infty)\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+    \angle(s+2)+\angle(s+3)-\angle s-\angle(s+1)=180^\circ+180^\circ-180^\circ-180^\circ=0^\circ.
+\]</div>
+<p>No poles or zeros to the right implies no root locus.</p>
+<figure class="align-default" id="id9">
+<a class="reference internal image-reference" href="_images/r5_ex2.2.png"><img alt="_images/r5_ex2.2.png" src="_images/r5_ex2.2.png" style="width: 70%;" /></a>
+</figure>
+<ol class="arabic simple" start="3">
+<li><p><strong>Determining Asymptotes</strong>:</p></li>
+</ol>
+<p>Since <span class="math notranslate nohighlight">\(n = m\)</span>, there are no asymptotes.</p>
+<ol class="arabic simple" start="4">
+<li><p>Finding Breakaway Points:</p></li>
+</ol>
+<p>In this case</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    n(s)&amp;=(s+2)(s+3)=s^2+5s+6.\\
+    d(s)&amp;=s(s+1)=s^2+s.
+\end{split}\]</div>
+<p>Differentiating we have</p>
+<div class="math notranslate nohighlight">
+\[
+    n'(s)=2s+5,\quad d'(s)=2s+1.
+\]</div>
+<p>Substituting in  we have</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    d'(s)n(s)-n'(s)d(s)&amp;=(2s+1)(s^2+5s+6)-(2s+5)(s^2+s)\\
+    &amp;=4s^2+12s+16.
+\end{split}\]</div>
+<p>Comparing with zero and solving for <span class="math notranslate nohighlight">\(s\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+s = -\frac{3}{2}\pm\frac{\sqrt{3}}{2}.
+\]</div>
+<p>These roots are real, but this is not enough for them to be valid breakaway points. They must also be on the root locus. Note that</p>
+<div class="math notranslate nohighlight">
+\[
+    -\frac{3}{2}+\frac{\sqrt{3}}{2}\approx-0.63,
+\]</div>
+<p>which is on the root locus. Moreover,</p>
+<div class="math notranslate nohighlight">
+\[
+    -\frac{3}{2}-\frac{\sqrt{3}}{2}\approx-2.36,
+\]</div>
+<p>which is also on the root locus. Since the root locus goes from the poles of the loop-gain to the zeros of the loop-gain, <span class="math notranslate nohighlight">\(-\frac{3}{2}+\frac{\sqrt{3}}{2}\)</span> is the breakout point and <span class="math notranslate nohighlight">\(-\frac{3}{2}-\frac{\sqrt{3}}{2}\)</span> is the break-in point. The corresponding gain values at these points can be obtained using :</p>
+<div class="math notranslate nohighlight">
+\[
+k_{s_{in}}=\Bigg|\frac{s(s+1)}{(s+2)(s+3)}\Bigg|_{s=-\frac{3}{2}-\frac{\sqrt{3}}{2}}=13.93,\quad k_{s_{out}}= \Bigg|\frac{s(s+1)}{(s+2)(s+3)}\Bigg|_{s=-\frac{3}{2}+\frac{\sqrt{3}}{2}}=0.0718.
+\]</div>
+<figure class="align-default" id="id10">
+<a class="reference internal image-reference" href="_images/r5_ex2.3.png"><img alt="_images/r5_ex2.3.png" src="_images/r5_ex2.3.png" style="width: 70%;" /></a>
+</figure>
+<ol class="arabic simple" start="5">
+<li><p><strong>Exit Angles from Complex Poles</strong>:</p></li>
+</ol>
+<p>There are no complex poles and zeros so there are no exit angles.</p>
+<p>We are ready to draw the root locus diagram.</p>
+<figure class="align-default" id="fig-ex2rl">
+<a class="reference internal image-reference" href="_images/RL_Rec5_Ex2.png"><img alt="_images/RL_Rec5_Ex2.png" src="_images/RL_Rec5_Ex2.png" style="width: 70%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 20 </span><span class="caption-text">The Root Locus diagram of <span class="math notranslate nohighlight">\(G(s)=k\frac{(s+2)(s+3)}{s(s+1)}\)</span>.</span><a class="headerlink" href="#fig-ex2rl" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>The system is under-damped if <span class="math notranslate nohighlight">\(0&lt;\zeta&lt;1\)</span>. That is, if the pole of the closed-loop system has an imaginary component. A system is damped if <span class="math notranslate nohighlight">\(\zeta=0\)</span>. As <span class="math notranslate nohighlight">\(k\)</span> increases from 0 to <span class="math notranslate nohighlight">\(0.0718\)</span> the poles are on the real axis, so the system is damped for these values. For <span class="math notranslate nohighlight">\(0.0718&lt;k&lt;13.93\)</span> the poles are complex so the system is under-damped. For <span class="math notranslate nohighlight">\(13.93\leq k &lt;\infty\)</span> the poles are again real so the system is damped.</p>
+</section>
+<section id="id11">
+<h3>Exercise<a class="headerlink" href="#id11" title="Link to this heading">#</a></h3>
+<p>Consider the loop-gain with:</p>
+<div class="math notranslate nohighlight">
+\[
+    C(s)=\frac{k}{(s-1)},\quad P(s)=\frac{1}{s^2+4s+7}.
+\]</div>
+<ul class="simple">
+<li><p>Draw the Root Locus diagram of the open-loop system.</p></li>
+<li><p>Determine the values of <span class="math notranslate nohighlight">\(k\)</span> for which the closed-loop system is stable.</p></li>
+</ul>
+</section>
+<section id="id12">
+<h3>Solution<a class="headerlink" href="#id12" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p><strong>Loop-Gain Poles</strong></p></li>
+</ol>
+<p>The open-loop poles are:</p>
+<div class="math notranslate nohighlight">
+\[
+s = 1,\;-2\pm j\sqrt{3}.
+\]</div>
+<figure class="align-default" id="id13">
+<a class="reference internal image-reference" href="_images/r5_ex3.1.png"><img alt="_images/r5_ex3.1.png" src="_images/r5_ex3.1.png" style="width: 70%;" /></a>
+</figure>
+<ol class="arabic simple" start="2">
+<li><p><strong>Root Locus Branches on the Real Axis</strong>:</p></li>
+</ol>
+<p>From <span class="math notranslate nohighlight">\(s\rightarrow\infty\)</span> to <span class="math notranslate nohighlight">\(s = 1\)</span>, there are no poles or zeros to the right.
+From <span class="math notranslate nohighlight">\(s = 1\)</span> to <span class="math notranslate nohighlight">\(s\rightarrow-\infty\)</span>, there is one pole, which is an odd number, so there is a Root Locus branch along this segment.</p>
+<figure class="align-default" id="id14">
+<a class="reference internal image-reference" href="_images/r5_ex3.2.png"><img alt="_images/r5_ex3.2.png" src="_images/r5_ex3.2.png" style="width: 70%;" /></a>
+</figure>
+<ol class="arabic simple" start="3">
+<li><p><strong>Asymptotes</strong>:</p></li>
+</ol>
+<p>In this case <span class="math notranslate nohighlight">\(m=3\)</span> and <span class="math notranslate nohighlight">\(n=0\)</span> so there are <span class="math notranslate nohighlight">\(m-n=3\)</span> asymptotes. The angles</p>
+<p>To compute the angles of the asymptotes, we use :</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    \theta_1&amp;=\frac{180^\circ}{3-0}\cdot 1=\frac{180^\circ}{3}\cdot1=60^\circ,\\
+    \theta_2&amp;=\frac{180^\circ}{3-0}\cdot 3=\frac{180^\circ}{3}\cdot 3=180^\circ,\\
+    \theta_3&amp;=\frac{180^\circ}{3-0}\cdot 5=\frac{180^\circ}{3}\cdot 5=300^\circ=-60^\circ.
+\end{split}\]</div>
+<p>The center point of the asymptotes on the real axis is:</p>
+<div class="math notranslate nohighlight">
+\[
+    \gamma=\frac{1-2-2}{3-0}=-1.
+\]</div>
+<figure class="align-default" id="id15">
+<a class="reference internal image-reference" href="_images/r5_ex3.3.png"><img alt="_images/r5_ex3.3.png" src="_images/r5_ex3.3.png" style="width: 70%;" /></a>
+</figure>
+<ol class="arabic simple" start="4">
+<li><p><strong>Exit Angles from Complex Poles</strong>:</p></li>
+</ol>
+<p>We compute the angle between <span class="math notranslate nohighlight">\(s=1\)</span> and <span class="math notranslate nohighlight">\(s=-2+j\sqrt{3}\)</span>:</p>
+<figure class="align-default" id="fig-ex2323">
+<a class="reference internal image-reference" href="_images/r5_ex3.4.png"><img alt="_images/r5_ex3.4.png" src="_images/r5_ex3.4.png" style="width: 70%;" /></a>
+</figure>
+<p>From this figure, it is clear that</p>
+<div class="math notranslate nohighlight">
+\[
+    \varphi=\arctan\Big(\frac{\sqrt{3}}{3}\Big)=30^\circ.
+\]</div>
+<p>Then the angle between <span class="math notranslate nohighlight">\(s=-1\)</span> and <span class="math notranslate nohighlight">\(s=-2+j\sqrt{3}\)</span> is</p>
+<div class="math notranslate nohighlight">
+\[
+    180^\circ-\varphi=180^\circ-30^\circ=150^\circ.
+\]</div>
+<p>The angle between pole <span class="math notranslate nohighlight">\(p_2\)</span> and pole <span class="math notranslate nohighlight">\(p_3\)</span> is 90 degrees. The total sum must be 180 degrees, so:</p>
+<div class="math notranslate nohighlight">
+\[
+-90^\circ-150^\circ-\theta=-180^\circ\rightarrow\theta=-60^\circ.
+\]</div>
+<p>By symmetry, the exit angle from pole <span class="math notranslate nohighlight">\(s=-2-j\sqrt{3}\)</span> is also 60 degrees.</p>
+<figure class="align-default" id="id16">
+<a class="reference internal image-reference" href="_images/r5_ex3.5.png"><img alt="_images/r5_ex3.5.png" src="_images/r5_ex3.5.png" style="width: 70%;" /></a>
+</figure>
+<ol class="arabic simple" start="5">
+<li><p><strong>Breakaway Points</strong>:</p></li>
+</ol>
+<p>In this case</p>
+<div class="math notranslate nohighlight">
+\[
+    n(s)=1,\quad d(s)=(s-1)(s^2+4s+7).
+\]</div>
+<p>Differentiating we have</p>
+<div class="math notranslate nohighlight">
+\[
+    n'(s)=0,\quad d'(s)=3s^2+6s+3.
+\]</div>
+<p>Substituting in <a class="reference internal" href="#equation-eq-breakinpoint">(19)</a>, we have</p>
+<div class="math notranslate nohighlight">
+\[d'(s)n(s) - n'(s)d(s) = 3s^2 + 6s + 3\]</div>
+<p>Finding the roots we have</p>
+<div class="math notranslate nohighlight">
+\[
+    s_{1,2}=-1.    
+\]</div>
+<p>Thus, the breakaway occurs at <span class="math notranslate nohighlight">\(s = -1\)</span>.</p>
+<ol class="arabic simple" start="6">
+<li><p><strong>Imaginary Axis Intersection</strong></p></li>
+</ol>
+<p>The characteristic equation of the closed-loop system is:</p>
+<div class="math notranslate nohighlight">
+\[
+d(s)+kn(s)=s^3+3s^2+3s-7+k.
+\]</div>
+<p>Setting <span class="math notranslate nohighlight">\(s = j\omega\)</span> and comparing to zero we have:</p>
+<div class="math notranslate nohighlight">
+\[
+(j\omega)^3+3(j\omega)^2+3j\omega-7+k = 0.
+\]</div>
+<p>We re-write and obtain</p>
+<div class="math notranslate nohighlight">
+\[
+    k-7-3\omega^2+j\omega(3-\omega^2)=0.
+\]</div>
+<p>Equating the real and imaginary parts:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    k-7-3\omega^2&amp;=0,\\
+    \omega(3-\omega^2)&amp;=0.
+\end{split}\]</div>
+<p>The solutions are the pairs:</p>
+<div class="math notranslate nohighlight">
+\[
+    (\omega,k)=(0,7),\quad (\omega,k)=(\pm \sqrt{3},16).
+\]</div>
+<p>We can now draw the root locus diagram.</p>
+<figure class="align-default" id="fig-ex3">
+<a class="reference internal image-reference" href="_images/r5_ex3.6.png"><img alt="_images/r5_ex3.6.png" src="_images/r5_ex3.6.png" style="width: 70%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 21 </span><span class="caption-text">Root Locus of <span class="math notranslate nohighlight">\(G(s)=k\frac{1}{(s-1)(s^2+4s+7)}\)</span>.</span><a class="headerlink" href="#fig-ex3" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p><strong>Stability Analysis</strong>:</p>
+<p>From <span class="math notranslate nohighlight">\(k = 0\)</span> to <span class="math notranslate nohighlight">\(k = 7\)</span>, the system is unstable since the poles are in the right half-plane.
+From <span class="math notranslate nohighlight">\(k = 7\)</span> to <span class="math notranslate nohighlight">\(k = 16\)</span>, the system is stable as all poles are in the left half-plane.
+For <span class="math notranslate nohighlight">\(k &gt; 16\)</span>, the system becomes unstable again as poles move back to the right half-plane.</p>
+<p>Thus, stability is achieved for:</p>
+<div class="math notranslate nohighlight">
+\[
+7 &lt; k &lt; 16.
+\]</div>
+</section>
+<section id="id17">
+<h3>Exercise<a class="headerlink" href="#id17" title="Link to this heading">#</a></h3>
+<p>Consider the closed-loop system with PD controller</p>
+<div class="math notranslate nohighlight">
+\[
+    C(s)=K_p(1+T_ds),
+\]</div>
+<p>and plant</p>
+<div class="math notranslate nohighlight">
+\[
+    P(s)=\frac{1}{10000(s^2-1.1772)}.
+\]</div>
+<ul class="simple">
+<li><p>Using the Root Locus method, design the PD controller constants <span class="math notranslate nohighlight">\(K_p\)</span> and <span class="math notranslate nohighlight">\(T_d\)</span> such that the closed-loop damping ratio is <span class="math notranslate nohighlight">\(\zeta=0.7\)</span> and the natural frequency is <span class="math notranslate nohighlight">\(\omega_n=0.5 \text{ rad/sec}\)</span>.</p></li>
+<li><p>Plot the Root Locus diagram for the <span class="math notranslate nohighlight">\(T_d\)</span> you found, determine the values of <span class="math notranslate nohighlight">\(K_p\)</span> for which the system is stable, and for which the system is under-damped.</p></li>
+</ul>
+</section>
+<section id="id18">
+<h3>Solution<a class="headerlink" href="#id18" title="Link to this heading">#</a></h3>
+<p>Note that since the system is a second order system, we want to design the controller such that the closed-loop system has a pair of complex poles:</p>
+<div class="math notranslate nohighlight">
+\[
+s = -\zeta \omega_n \pm j \omega_n \sqrt{1 - \zeta^2}=-0.35\pm j0.357.
+\]</div>
+<p>The loop-gain transfer function is:</p>
+<div class="math notranslate nohighlight">
+\[
+G(s) = \frac{K_pT_d(s+\frac{1}{T_d})}{10000(s^2-1.1772)}.
+\]</div>
+<p>where we have control over the location of the loop-gain zero, and there is an overall gain <span class="math notranslate nohighlight">\(K_p\)</span> as required by the RL method. The loop-gain poles are:</p>
+<div class="math notranslate nohighlight">
+\[
+s_{1,2}=\pm\sqrt{1.1772}=\pm1.085.
+\]</div>
+<p>We mark the gain-loop poles with an ‘X’ and the gain-loop poles with circles. The goal is to design the controller such that <span class="math notranslate nohighlight">\(s=-0.35\pm j0.357\)</span> lie on the root locus.</p>
+<figure class="align-default" id="id19">
+<a class="reference internal image-reference" href="_images/r5_ex4.1.png"><img alt="_images/r5_ex4.1.png" src="_images/r5_ex4.1.png" style="width: 70%;" /></a>
+</figure>
+<p>To ensure that these points are on the root locus, they must satisfy the angle condition. We will design the zero <span class="math notranslate nohighlight">\(\frac{1}{T_d}\)</span> such that these points meet the angle condition. We find the angle between each pole and zero with respect to the desired pole location.</p>
+<figure class="align-default" id="id20">
+<a class="reference internal image-reference" href="_images/r5_ex4.2.png"><img alt="_images/r5_ex4.2.png" src="_images/r5_ex4.2.png" style="width: 70%;" /></a>
+</figure>
+<p>It is clear from the figure that</p>
+<div class="math notranslate nohighlight">
+\[
+    \theta'=\arctan\Big(\frac{0.357}{1.435}\Big)=13.9^\circ,\quad\theta_2=\arctan\Big(\frac{0.357}{0.735}\Big)=25.9^\circ.
+\]</div>
+<p>This implies that</p>
+<div class="math notranslate nohighlight">
+\[
+    \theta_1=180^\circ-\theta'=166.03^\circ.
+\]</div>
+<p>The phase condition is</p>
+<div class="math notranslate nohighlight">
+\[
+    \theta_1+\theta_2-\phi_1=166.03^\circ+25.9^\circ-\phi_1=180^\circ.
+\]</div>
+<p>From this we obtain that</p>
+<div class="math notranslate nohighlight">
+\[
+    \phi_1=11.93^\circ.
+\]</div>
+<p>Clearly, this angle depends on <span class="math notranslate nohighlight">\(T_d\)</span>. We have</p>
+<div class="math notranslate nohighlight">
+\[
+    \tan(11.93)=\frac{0.357}{\frac{1}{T_d}-0.357}=0.211.
+\]</div>
+<p>From here we obtain that</p>
+<div class="math notranslate nohighlight">
+\[
+    \boxed{T_d=0.49}
+\]</div>
+<p>For this <span class="math notranslate nohighlight">\(T_d\)</span>, <span class="math notranslate nohighlight">\(s=-0.35\pm j0.357\)</span> is part of the root locus. We need to find the value of <span class="math notranslate nohighlight">\(K_p\)</span> for which these values are obtained as the closed-loop poles.</p>
+<p>For any point <span class="math notranslate nohighlight">\(s_0\)</span> on the root locus, the magnitude condition holds:</p>
+<div class="math notranslate nohighlight">
+\[
+|G(s_0)| = 1.
+\]</div>
+<p>In our case, after substituting <span class="math notranslate nohighlight">\(T_d=0.49\)</span> and <span class="math notranslate nohighlight">\(s=-0.35+j0.357\)</span> we have</p>
+<div class="math notranslate nohighlight" id="equation-eq-ex4-amp-cond">
+<span class="eqno">(21)<a class="headerlink" href="#equation-eq-ex4-amp-cond" title="Link to this equation">#</a></span>\[    \frac{0.49K_p}{10^4}\Bigg|\frac{-0.35+j0.357+2.039}{\big(-0.35+j0.357)^2-1.1772\big)}\Bigg|=1.\]</div>
+<p>For the magnitude we have</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    \Bigg|\frac{-0.35+j0.357+2.039}{\big(-0.35+j0.357)^2-1.1772\big)}\Bigg|&amp;=\sqrt{\frac{(1.689)^2+(0.357)^2}{(1.182)^2+(0.499)^2}}\\
+    &amp;=\sqrt{\frac{2.98}{1.646}}\\
+    &amp;=\sqrt{1.81}\\
+    &amp;=1.34.
+\end{split}\]</div>
+<p>Substituting back in <a class="reference internal" href="#equation-eq-ex4-amp-cond">(21)</a> we have</p>
+<div class="math notranslate nohighlight">
+\[
+    \frac{0.49\cdot K_p\cdot1.34}{10^4}=1\rightarrow\boxed{K_p=14273}
+\]</div>
+<p>To conclude, if <span class="math notranslate nohighlight">\(T_d=0.49\)</span> and <span class="math notranslate nohighlight">\(K_p=14273\)</span>, the poles of the closed-loop system are <span class="math notranslate nohighlight">\(s=-0.35\pm j0.357\)</span>.</p>
+<p><strong>Plotting the Root Locus Diagram</strong>:</p>
+<p>We take <span class="math notranslate nohighlight">\(T_d=0.49\)</span>. We root the root locus of the gain-loop:</p>
+<div class="math notranslate nohighlight">
+\[
+G(s) = K_p\frac{0.49(s+2.04)}{10000(s^2-1.1772)}.
+\]</div>
+<ol class="arabic simple">
+<li><p><strong>Drawing Poles and Zeros of the Loop-Gain</strong>:</p></li>
+</ol>
+<p>The poles of the system are:</p>
+<div class="math notranslate nohighlight">
+\[
+s_{1,2} = \pm 1.08.
+\]</div>
+<p>The zero of the system is:</p>
+<div class="math notranslate nohighlight">
+\[
+s = -2.04.
+\]</div>
+<figure class="align-default" id="id21">
+<a class="reference internal image-reference" href="_images/r5_ex4.3.png"><img alt="_images/r5_ex4.3.png" src="_images/r5_ex4.3.png" style="width: 70%;" /></a>
+</figure>
+<ol class="arabic simple" start="2">
+<li><p><strong>Determining the RL along the Real Axis</strong>:</p></li>
+</ol>
+<p>Using the root locus rule, if to the right of a given point there is an odd number of poles and zeros, the root locus exists at that segment.</p>
+<p>For our system:</p>
+<ul class="simple">
+<li><p>From <span class="math notranslate nohighlight">\(-\infty\)</span> to <span class="math notranslate nohighlight">\(-2.04\)</span>: Odd number (<span class="math notranslate nohighlight">\(3\)</span>) of poles/zeros to the right <span class="math notranslate nohighlight">\(\rightarrow\)</span> root locus exists.</p></li>
+<li><p>From <span class="math notranslate nohighlight">\(-2.04\)</span> to <span class="math notranslate nohighlight">\(-1.085\)</span>: Even number (<span class="math notranslate nohighlight">\(2\)</span>) of poles/zeros to the right <span class="math notranslate nohighlight">\(\rightarrow\)</span> root locus does not exists.</p></li>
+<li><p>From <span class="math notranslate nohighlight">\(-1.085\)</span> to <span class="math notranslate nohighlight">\(1.085\)</span>: Odd number (<span class="math notranslate nohighlight">\(1\)</span>) of poles/zeros to the right <span class="math notranslate nohighlight">\(\rightarrow\)</span> root locus exists.</p></li>
+<li><p>From <span class="math notranslate nohighlight">\(1.085\)</span> to <span class="math notranslate nohighlight">\(+\infty\)</span>: even number (<span class="math notranslate nohighlight">\(0\)</span>) of poles/zeros to the right <span class="math notranslate nohighlight">\(\rightarrow\)</span> RL does not exists.</p></li>
+</ul>
+<figure class="align-default" id="id22">
+<a class="reference internal image-reference" href="_images/r5_ex4.4.png"><img alt="_images/r5_ex4.4.png" src="_images/r5_ex4.4.png" style="width: 70%;" /></a>
+</figure>
+<ol class="arabic simple" start="3">
+<li><p><strong>Asymptotes Calculation</strong>:</p></li>
+</ol>
+<p>In this case <span class="math notranslate nohighlight">\(m=2\)</span> and <span class="math notranslate nohighlight">\(n=1\)</span>, so we will have <span class="math notranslate nohighlight">\(m-n=1\)</span> asymptotes. The single asymptote is at <span class="math notranslate nohighlight">\(-180^\circ\)</span> as we already calculated. Since it is the only asymptote it is not critical to calculate its midpoint.</p>
+<ol class="arabic simple" start="4">
+<li><p><strong>Breakaway Points</strong>:</p></li>
+</ol>
+<p>In our case we have</p>
+<div class="math notranslate nohighlight">
+\[
+    n(s)=0.49s+0.99,\quad d(s)=10000s^2-11772.
+\]</div>
+<p>Differentiating we have</p>
+<div class="math notranslate nohighlight">
+\[
+    n'(s)=0.49,\quad d'(s)=20000s.
+\]</div>
+<p>Substituting in \eqref{eq:breakinpoint} we have</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    d'(s)n(s)-n'(s)d(s)&amp;=20000s\cdot(0.49s+0.99)-0.49\cdot(10000s^2-11772)\\
+    &amp;=4900s^2+19800s+5768.28.
+\end{split}\]</div>
+<p>Comparing with zero and solving for <span class="math notranslate nohighlight">\(s\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+s_{1,2}\approx-3.42,\;-0.31.
+\]</div>
+<p>These roots are real and they are on the root locus so they are valid break-away and break-in points:</p>
+<figure class="align-default" id="id23">
+<a class="reference internal image-reference" href="_images/r5_ex4.5.png"><img alt="_images/r5_ex4.5.png" src="_images/r5_ex4.5.png" style="width: 70%;" /></a>
+</figure>
+<ol class="arabic simple" start="5">
+<li><p><strong>Exit Angles from Complex Poles</strong>:</p></li>
+</ol>
+<p>Since there are no complex poles, there are no exit angles.</p>
+<ol class="arabic simple" start="6">
+<li><p><strong>Intersection with the Imaginary Axis</strong>:</p></li>
+</ol>
+<p>The denominator of the closed-loop transfer function is</p>
+<div class="math notranslate nohighlight">
+\[
+    p(s)=d(s)+kn(s).
+\]</div>
+<p>In this case</p>
+<div class="math notranslate nohighlight">
+\[
+    p(s)=10000s^2-11772+k(0.49s+0.99).
+\]</div>
+<p>Substituting <span class="math notranslate nohighlight">\(s=j\omega\)</span> we have</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    p(j\omega)&amp;=10000(j\omega)^2-11772+K_p(0.49j\omega+0.99)\\
+     &amp;=0.99K_p-11772-10000\omega^2+j0.49k\omega.
+\end{split}\]</div>
+<p>We compare the real and imaginary part with zero and obtain</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    0.99K_p-11772-10000\omega^2=0,\\
+    j0.49K_p\omega=0.
+\end{split}\]</div>
+<p>For <span class="math notranslate nohighlight">\(\omega=0\)</span> (which corresponds to the origin) we obtain</p>
+<div class="math notranslate nohighlight">
+\[
+    0.99K_p-11772=0\rightarrow K_p=11891.
+\]</div>
+<p>This is the only intersection with the imaginary axis.</p>
+<p>We are ready to draw the root locus.</p>
+<figure class="align-default" id="fig-ex4">
+<a class="reference internal image-reference" href="_images/r5_ex4.6.png"><img alt="_images/r5_ex4.6.png" src="_images/r5_ex4.6.png" style="width: 70%;" /></a>
+</figure>
+<p><strong>Stability Condition</strong>:
+The system is stable for any <span class="math notranslate nohighlight">\(K_p\)</span> such that all the poles have a negative real part. For <span class="math notranslate nohighlight">\(K_p=0\)</span> the system is not stable since we obtain all poles of the loop-gain. As we increase <span class="math notranslate nohighlight">\(K_p\)</span>, we go along the loci of the root locus, from the poles to the zero and the asymptote. We know that for <span class="math notranslate nohighlight">\(K_p=11891\)</span> the root locus crosses from the positive real part to the negative real part (crosses the imaginary axis). It is clear from Figure <span class="xref std std-ref">fig:ex4</span> that we stay in the left hand plane. So the system is stable for <span class="math notranslate nohighlight">\(K_p&gt;11891\)</span>.</p>
+<p>The system is damped if all the poles are real. The system is under-damped if some poles have an imaginary part. We need to find the values of <span class="math notranslate nohighlight">\(K_p\)</span> for which we have breakaway points. We know that the poles which correspond to the breakaway points are <span class="math notranslate nohighlight">\(s\approx-3.42,\;-0.31\)</span>. Substituting in \eqref{eq:k_for_s} for <span class="math notranslate nohighlight">\(s=-3.42\)</span> we have:</p>
+<div class="math notranslate nohighlight">
+\[
+    K_p=\Bigg|\frac{10000\big((-3.42)^2-1.1772\big)}{0.49(-3.42+2.04)}\Bigg|\approx155563.
+\]</div>
+<p>For <span class="math notranslate nohighlight">\(s=-0.31\)</span> we have</p>
+<div class="math notranslate nohighlight">
+\[
+    K_p=\Bigg|\frac{10000\big((-0.31)^2-1.1772\big)}{0.49(-3.42+2.04)}\Bigg|\approx15988.
+\]</div>
+<p>The break-out point is at <span class="math notranslate nohighlight">\(s=-0.31\)</span>, it is obtained for <span class="math notranslate nohighlight">\(K_p=15988\)</span>. The break-in point is <span class="math notranslate nohighlight">\(s=-3.42\)</span> and is obtained for <span class="math notranslate nohighlight">\(K_p=155563\)</span>. The system is under-damped for</p>
+<div class="math notranslate nohighlight">
+\[
+    15988&lt;K_p&lt;155563,
+\]</div>
+<p>since in this region the closed-loop transfer function will have complex poles.</p>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "executablebooks/jupyter-book",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="RecSummary.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Suammary – Transfer Functions</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#root-locus-diagram">Root Locus Diagram</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#drawing-a-root-locus-diagram">Drawing a Root Locus Diagram</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#finding-the-gain-corresponding-to-some-point-s-0-on-the-root-locus-diagram">Finding the Gain Corresponding to some Point <span class="math notranslate nohighlight">\(s_0\)</span> on the Root Locus Diagram</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise">Exercise</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution">Solution</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Exercise</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">Solution</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">Exercise</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">Solution</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id17">Exercise</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id18">Solution</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Omri Dalin
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
