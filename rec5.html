@@ -34,9 +34,9 @@
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="_static/proof.css?v=b4b7a797" />
+    <link rel="stylesheet" type="text/css" href="_static/proof.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- So that users can add custom icons -->
@@ -385,14 +385,14 @@
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#root-locus-diagram">Root Locus Diagram</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#drawing-a-root-locus-diagram">Drawing a Root Locus Diagram</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#finding-the-gain-corresponding-to-some-point-s-0-on-the-root-locus-diagram">Finding the Gain Corresponding to some Point <span class="math notranslate nohighlight">\(s_0\)</span> on the Root Locus Diagram</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise">Exercise</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1">Exercise 1</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution">Solution</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Exercise</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">Solution</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">Exercise</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">Solution</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id17">Exercise</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id18">Solution</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2">Exercise 2</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Solution</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3">Exercise 3</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">Solution</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4">Exercise 4</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">Solution</a></li>
 </ul>
 </li>
 </ul>
@@ -474,7 +474,7 @@
 <p>We describe the loop-gain system as a ratio of polynomials:</p>
 <div class="math notranslate nohighlight">
 \[
-    k\tilde{G}(s) = k\frac{n(s)}{d(s)}
+    k\tilde{G}(s) = k\frac{n(s)}{d(s)}.
 \]</div>
 <p>where <span class="math notranslate nohighlight">\(n(s)\)</span> is a polynomial of degree <span class="math notranslate nohighlight">\(w\)</span>, and <span class="math notranslate nohighlight">\(d(s)\)</span> is a polynomial of degree <span class="math notranslate nohighlight">\(m\)</span>. Since we are dealing with <strong>proper</strong> systems, <span class="math notranslate nohighlight">\(m \leq n\)</span>.</p>
 <section id="drawing-a-root-locus-diagram">
@@ -564,8 +564,8 @@ To find where the Root Locus crosses the imaginary axis, we set <span class="mat
 <div class="math notranslate nohighlight" id="equation-eq-k-for-s">
 <span class="eqno">(20)<a class="headerlink" href="#equation-eq-k-for-s" title="Link to this equation">#</a></span>\[k = \Bigg|\frac{n(s_0)}{d(s_0)}\Bigg|.\]</div>
 </section>
-<section id="exercise">
-<h3>Exercise<a class="headerlink" href="#exercise" title="Link to this heading">#</a></h3>
+<section id="exercise-1">
+<h3>Exercise 1<a class="headerlink" href="#exercise-1" title="Link to this heading">#</a></h3>
 <p>Consider a system with:</p>
 <div class="math notranslate nohighlight">
 \[
@@ -703,8 +703,8 @@ The denominator of the closed-loop is:</p></li>
     0&lt;k&lt;32.
 \]</div>
 </section>
-<section id="id6">
-<h3>Exercise<a class="headerlink" href="#id6" title="Link to this heading">#</a></h3>
+<section id="exercise-2">
+<h3>Exercise 2<a class="headerlink" href="#exercise-2" title="Link to this heading">#</a></h3>
 <p>Given a system with:</p>
 <div class="math notranslate nohighlight">
 \[
@@ -715,8 +715,8 @@ C(s)=k,\quad P(s)= \frac{(s+2)(s+3)}{s(s+1)}.
 <li><p>Determine the gain range for which the system is under-damped.</p></li>
 </ul>
 </section>
-<section id="id7">
-<h3>Solution<a class="headerlink" href="#id7" title="Link to this heading">#</a></h3>
+<section id="id6">
+<h3>Solution<a class="headerlink" href="#id6" title="Link to this heading">#</a></h3>
 <ol class="arabic simple">
 <li><p><strong>Marking the Poles and Zeros of the Open-Loop System</strong>:</p></li>
 </ol>
@@ -729,7 +729,7 @@ C(s)=k,\quad P(s)= \frac{(s+2)(s+3)}{s(s+1)}.
 \[
 \text{Zeros: } s = -2,-3.
 \]</div>
-<figure class="align-default" id="id8">
+<figure class="align-default" id="id7">
 <a class="reference internal image-reference" href="_images/r5_ex2.1.png"><img alt="_images/r5_ex2.1.png" src="_images/r5_ex2.1.png" style="width: 70%;" /></a>
 </figure>
 <ol class="arabic simple" start="2">
@@ -766,7 +766,7 @@ C(s)=k,\quad P(s)= \frac{(s+2)(s+3)}{s(s+1)}.
     \angle(s+2)+\angle(s+3)-\angle s-\angle(s+1)=180^\circ+180^\circ-180^\circ-180^\circ=0^\circ.
 \]</div>
 <p>No poles or zeros to the right implies no root locus.</p>
-<figure class="align-default" id="id9">
+<figure class="align-default" id="id8">
 <a class="reference internal image-reference" href="_images/r5_ex2.2.png"><img alt="_images/r5_ex2.2.png" src="_images/r5_ex2.2.png" style="width: 70%;" /></a>
 </figure>
 <ol class="arabic simple" start="3">
@@ -813,7 +813,7 @@ s = -\frac{3}{2}\pm\frac{\sqrt{3}}{2}.
 \[
 k_{s_{in}}=\Bigg|\frac{s(s+1)}{(s+2)(s+3)}\Bigg|_{s=-\frac{3}{2}-\frac{\sqrt{3}}{2}}=13.93,\quad k_{s_{out}}= \Bigg|\frac{s(s+1)}{(s+2)(s+3)}\Bigg|_{s=-\frac{3}{2}+\frac{\sqrt{3}}{2}}=0.0718.
 \]</div>
-<figure class="align-default" id="id10">
+<figure class="align-default" id="id9">
 <a class="reference internal image-reference" href="_images/r5_ex2.3.png"><img alt="_images/r5_ex2.3.png" src="_images/r5_ex2.3.png" style="width: 70%;" /></a>
 </figure>
 <ol class="arabic simple" start="5">
@@ -829,8 +829,8 @@ k_{s_{in}}=\Bigg|\frac{s(s+1)}{(s+2)(s+3)}\Bigg|_{s=-\frac{3}{2}-\frac{\sqrt{3}}
 </figure>
 <p>The system is under-damped if <span class="math notranslate nohighlight">\(0&lt;\zeta&lt;1\)</span>. That is, if the pole of the closed-loop system has an imaginary component. A system is damped if <span class="math notranslate nohighlight">\(\zeta=0\)</span>. As <span class="math notranslate nohighlight">\(k\)</span> increases from 0 to <span class="math notranslate nohighlight">\(0.0718\)</span> the poles are on the real axis, so the system is damped for these values. For <span class="math notranslate nohighlight">\(0.0718&lt;k&lt;13.93\)</span> the poles are complex so the system is under-damped. For <span class="math notranslate nohighlight">\(13.93\leq k &lt;\infty\)</span> the poles are again real so the system is damped.</p>
 </section>
-<section id="id11">
-<h3>Exercise<a class="headerlink" href="#id11" title="Link to this heading">#</a></h3>
+<section id="exercise-3">
+<h3>Exercise 3<a class="headerlink" href="#exercise-3" title="Link to this heading">#</a></h3>
 <p>Consider the loop-gain with:</p>
 <div class="math notranslate nohighlight">
 \[
@@ -841,8 +841,8 @@ k_{s_{in}}=\Bigg|\frac{s(s+1)}{(s+2)(s+3)}\Bigg|_{s=-\frac{3}{2}-\frac{\sqrt{3}}
 <li><p>Determine the values of <span class="math notranslate nohighlight">\(k\)</span> for which the closed-loop system is stable.</p></li>
 </ul>
 </section>
-<section id="id12">
-<h3>Solution<a class="headerlink" href="#id12" title="Link to this heading">#</a></h3>
+<section id="id10">
+<h3>Solution<a class="headerlink" href="#id10" title="Link to this heading">#</a></h3>
 <ol class="arabic simple">
 <li><p><strong>Loop-Gain Poles</strong></p></li>
 </ol>
@@ -851,7 +851,7 @@ k_{s_{in}}=\Bigg|\frac{s(s+1)}{(s+2)(s+3)}\Bigg|_{s=-\frac{3}{2}-\frac{\sqrt{3}}
 \[
 s = 1,\;-2\pm j\sqrt{3}.
 \]</div>
-<figure class="align-default" id="id13">
+<figure class="align-default" id="id11">
 <a class="reference internal image-reference" href="_images/r5_ex3.1.png"><img alt="_images/r5_ex3.1.png" src="_images/r5_ex3.1.png" style="width: 70%;" /></a>
 </figure>
 <ol class="arabic simple" start="2">
@@ -859,7 +859,7 @@ s = 1,\;-2\pm j\sqrt{3}.
 </ol>
 <p>From <span class="math notranslate nohighlight">\(s\rightarrow\infty\)</span> to <span class="math notranslate nohighlight">\(s = 1\)</span>, there are no poles or zeros to the right.
 From <span class="math notranslate nohighlight">\(s = 1\)</span> to <span class="math notranslate nohighlight">\(s\rightarrow-\infty\)</span>, there is one pole, which is an odd number, so there is a Root Locus branch along this segment.</p>
-<figure class="align-default" id="id14">
+<figure class="align-default" id="id12">
 <a class="reference internal image-reference" href="_images/r5_ex3.2.png"><img alt="_images/r5_ex3.2.png" src="_images/r5_ex3.2.png" style="width: 70%;" /></a>
 </figure>
 <ol class="arabic simple" start="3">
@@ -878,7 +878,7 @@ From <span class="math notranslate nohighlight">\(s = 1\)</span> to <span class=
 \[
     \gamma=\frac{1-2-2}{3-0}=-1.
 \]</div>
-<figure class="align-default" id="id15">
+<figure class="align-default" id="id13">
 <a class="reference internal image-reference" href="_images/r5_ex3.3.png"><img alt="_images/r5_ex3.3.png" src="_images/r5_ex3.3.png" style="width: 70%;" /></a>
 </figure>
 <ol class="arabic simple" start="4">
@@ -904,7 +904,7 @@ From <span class="math notranslate nohighlight">\(s = 1\)</span> to <span class=
 -90^\circ-150^\circ-\theta=-180^\circ\rightarrow\theta=-60^\circ.
 \]</div>
 <p>By symmetry, the exit angle from pole <span class="math notranslate nohighlight">\(s=-2-j\sqrt{3}\)</span> is also 60 degrees.</p>
-<figure class="align-default" id="id16">
+<figure class="align-default" id="id14">
 <a class="reference internal image-reference" href="_images/r5_ex3.5.png"><img alt="_images/r5_ex3.5.png" src="_images/r5_ex3.5.png" style="width: 70%;" /></a>
 </figure>
 <ol class="arabic simple" start="5">
@@ -975,8 +975,8 @@ For <span class="math notranslate nohighlight">\(k &gt; 16\)</span>, the system 
 7 &lt; k &lt; 16.
 \]</div>
 </section>
-<section id="id17">
-<h3>Exercise<a class="headerlink" href="#id17" title="Link to this heading">#</a></h3>
+<section id="exercise-4">
+<h3>Exercise 4<a class="headerlink" href="#exercise-4" title="Link to this heading">#</a></h3>
 <p>Consider the closed-loop system with PD controller</p>
 <div class="math notranslate nohighlight">
 \[
@@ -992,8 +992,8 @@ For <span class="math notranslate nohighlight">\(k &gt; 16\)</span>, the system 
 <li><p>Plot the Root Locus diagram for the <span class="math notranslate nohighlight">\(T_d\)</span> you found, determine the values of <span class="math notranslate nohighlight">\(K_p\)</span> for which the system is stable, and for which the system is under-damped.</p></li>
 </ul>
 </section>
-<section id="id18">
-<h3>Solution<a class="headerlink" href="#id18" title="Link to this heading">#</a></h3>
+<section id="id15">
+<h3>Solution<a class="headerlink" href="#id15" title="Link to this heading">#</a></h3>
 <p>Note that since the system is a second order system, we want to design the controller such that the closed-loop system has a pair of complex poles:</p>
 <div class="math notranslate nohighlight">
 \[
@@ -1010,11 +1010,11 @@ G(s) = \frac{K_pT_d(s+\frac{1}{T_d})}{10000(s^2-1.1772)}.
 s_{1,2}=\pm\sqrt{1.1772}=\pm1.085.
 \]</div>
 <p>We mark the gain-loop poles with an ‘X’ and the gain-loop poles with circles. The goal is to design the controller such that <span class="math notranslate nohighlight">\(s=-0.35\pm j0.357\)</span> lie on the root locus.</p>
-<figure class="align-default" id="id19">
+<figure class="align-default" id="id16">
 <a class="reference internal image-reference" href="_images/r5_ex4.1.png"><img alt="_images/r5_ex4.1.png" src="_images/r5_ex4.1.png" style="width: 70%;" /></a>
 </figure>
 <p>To ensure that these points are on the root locus, they must satisfy the angle condition. We will design the zero <span class="math notranslate nohighlight">\(\frac{1}{T_d}\)</span> such that these points meet the angle condition. We find the angle between each pole and zero with respect to the desired pole location.</p>
-<figure class="align-default" id="id20">
+<figure class="align-default" id="id17">
 <a class="reference internal image-reference" href="_images/r5_ex4.2.png"><img alt="_images/r5_ex4.2.png" src="_images/r5_ex4.2.png" style="width: 70%;" /></a>
 </figure>
 <p>It is clear from the figure that</p>
@@ -1089,7 +1089,7 @@ s_{1,2} = \pm 1.08.
 \[
 s = -2.04.
 \]</div>
-<figure class="align-default" id="id21">
+<figure class="align-default" id="id18">
 <a class="reference internal image-reference" href="_images/r5_ex4.3.png"><img alt="_images/r5_ex4.3.png" src="_images/r5_ex4.3.png" style="width: 70%;" /></a>
 </figure>
 <ol class="arabic simple" start="2">
@@ -1103,7 +1103,7 @@ s = -2.04.
 <li><p>From <span class="math notranslate nohighlight">\(-1.085\)</span> to <span class="math notranslate nohighlight">\(1.085\)</span>: Odd number (<span class="math notranslate nohighlight">\(1\)</span>) of poles/zeros to the right <span class="math notranslate nohighlight">\(\rightarrow\)</span> root locus exists.</p></li>
 <li><p>From <span class="math notranslate nohighlight">\(1.085\)</span> to <span class="math notranslate nohighlight">\(+\infty\)</span>: even number (<span class="math notranslate nohighlight">\(0\)</span>) of poles/zeros to the right <span class="math notranslate nohighlight">\(\rightarrow\)</span> RL does not exists.</p></li>
 </ul>
-<figure class="align-default" id="id22">
+<figure class="align-default" id="id19">
 <a class="reference internal image-reference" href="_images/r5_ex4.4.png"><img alt="_images/r5_ex4.4.png" src="_images/r5_ex4.4.png" style="width: 70%;" /></a>
 </figure>
 <ol class="arabic simple" start="3">
@@ -1135,7 +1135,7 @@ s = -2.04.
 s_{1,2}\approx-3.42,\;-0.31.
 \]</div>
 <p>These roots are real and they are on the root locus so they are valid break-away and break-in points:</p>
-<figure class="align-default" id="id23">
+<figure class="align-default" id="id20">
 <a class="reference internal image-reference" href="_images/r5_ex4.5.png"><img alt="_images/r5_ex4.5.png" src="_images/r5_ex4.5.png" style="width: 70%;" /></a>
 </figure>
 <ol class="arabic simple" start="5">
@@ -1258,14 +1258,14 @@ The system is stable for any <span class="math notranslate nohighlight">\(K_p\)<
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#root-locus-diagram">Root Locus Diagram</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#drawing-a-root-locus-diagram">Drawing a Root Locus Diagram</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#finding-the-gain-corresponding-to-some-point-s-0-on-the-root-locus-diagram">Finding the Gain Corresponding to some Point <span class="math notranslate nohighlight">\(s_0\)</span> on the Root Locus Diagram</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise">Exercise</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1">Exercise 1</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution">Solution</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Exercise</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">Solution</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">Exercise</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">Solution</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id17">Exercise</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id18">Solution</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2">Exercise 2</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Solution</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3">Exercise 3</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">Solution</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4">Exercise 4</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">Solution</a></li>
 </ul>
 </li>
 </ul>
