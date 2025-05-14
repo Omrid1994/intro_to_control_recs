@@ -1,0 +1,170 @@
+Traceback (most recent call last):
+  File "C:\Users\Omri\AppData\Local\Programs\Python\Python313\Lib\site-packages\jupyter_cache\executors\utils.py", line 58, in single_nb_execution
+    executenb(
+    ~~~~~~~~~^
+        nb,
+        ^^^
+    ...<4 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Omri\AppData\Local\Programs\Python\Python313\Lib\site-packages\nbclient\client.py", line 1319, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Omri\AppData\Local\Programs\Python\Python313\Lib\site-packages\jupyter_core\utils\__init__.py", line 165, in wrapped
+    return loop.run_until_complete(inner)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\Omri\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 720, in run_until_complete
+    return future.result()
+           ~~~~~~~~~~~~~^^
+  File "C:\Users\Omri\AppData\Local\Programs\Python\Python313\Lib\site-packages\nbclient\client.py", line 709, in async_execute
+    await self.async_execute_cell(
+        cell, index, execution_count=self.code_cells_executed + 1
+    )
+  File "C:\Users\Omri\AppData\Local\Programs\Python\Python313\Lib\site-packages\nbclient\client.py", line 1062, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "C:\Users\Omri\AppData\Local\Programs\Python\Python313\Lib\site-packages\nbclient\client.py", line 918, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+import numpy as np
+import matplotlib.pyplot as plt
+import control as ctl
+
+# Define the transfer function G(s) = 40 / (s(s+3)(s+1))
+num = [40]  # Numerator: 40
+den = np.polymul([1, 0], np.polymul([1, 3], [1, 1]))  # Denominator: s(s+3)(s+1)
+
+# Create transfer function
+G = ctl.tf(num, den)
+
+# Compute Bode plot and margins
+mag, phase, omega = ctl.bode(G, dB=True, deg=True, Plot=False)
+gm, pm, wg, wp = ctl.margin(G)
+
+# Create figure for Bode plot
+fig, (ax_mag, ax_phase) = plt.subplots(2, 1, figsize=(8, 6), sharex=True)
+
+# Magnitude plot
+ax_mag.semilogx(omega, 20 * np.log10(mag), label="Magnitude")
+ax_mag.axvline(wg, color='r', linestyle='--', label=f"Gain Crossover: {wg:.2f} rad/s")
+ax_mag.set_ylabel("Magnitude (dB)")
+ax_mag.grid(True)
+ax_mag.legend()
+
+# Phase plot
+ax_phase.semilogx(omega, phase, label="Phase")
+ax_phase.axhline(-180, color='gray', linestyle='--', alpha=0.7)
+ax_phase.axvline(wp, color='b', linestyle='--', label=f"Phase Crossover: {wp:.2f} rad/s")
+ax_phase.set_xlabel("Frequency (rad/s)")
+ax_phase.set_ylabel("Phase (degrees)")
+ax_phase.grid(True)
+ax_phase.legend()
+
+# Display Gain and Phase Margins
+plt.suptitle(f"Gain Margin: {20*np.log10(gm):.2f} dB, Phase Margin: {pm:.2f}°")
+
+plt.show()
+
+------------------
+
+
+[1;31m---------------------------------------------------------------------------[0m
+[1;31mAttributeError[0m                            Traceback (most recent call last)
+Cell [1;32mIn[28], line 13[0m
+[0;32m     10[0m G [38;5;241m=[39m ctl[38;5;241m.[39mtf(num, den)
+[0;32m     12[0m [38;5;66;03m# Compute Bode plot and margins[39;00m
+[1;32m---> 13[0m mag, phase, omega [38;5;241m=[39m [43mctl[49m[38;5;241;43m.[39;49m[43mbode[49m[43m([49m[43mG[49m[43m,[49m[43m [49m[43mdB[49m[38;5;241;43m=[39;49m[38;5;28;43;01mTrue[39;49;00m[43m,[49m[43m [49m[43mdeg[49m[38;5;241;43m=[39;49m[38;5;28;43;01mTrue[39;49;00m[43m,[49m[43m [49m[43mPlot[49m[38;5;241;43m=[39;49m[38;5;28;43;01mFalse[39;49;00m[43m)[49m
+[0;32m     14[0m gm, pm, wg, wp [38;5;241m=[39m ctl[38;5;241m.[39mmargin(G)
+[0;32m     16[0m [38;5;66;03m# Create figure for Bode plot[39;00m
+
+File [1;32m~\AppData\Local\Programs\Python\Python313\Lib\site-packages\control\freqplot.py:706[0m, in [0;36mbode_plot[1;34m(data, omega, ax, omega_limits, omega_num, plot, plot_magnitude, plot_phase, overlay_outputs, overlay_inputs, phase_label, magnitude_label, label, display_margins, margins_method, title, sharex, sharey, *fmt, **kwargs)[0m
+[0;32m    703[0m pltfcn [38;5;241m=[39m ax_mag[38;5;241m.[39msemilogx [38;5;28;01mif[39;00m dB [38;5;28;01melse[39;00m ax_mag[38;5;241m.[39mloglog
+[0;32m    705[0m [38;5;66;03m# Plot the main data[39;00m
+[1;32m--> 706[0m lines [38;5;241m=[39m [43mpltfcn[49m[43m([49m
+[0;32m    707[0m [43m    [49m[43momega_plot[49m[43m,[49m[43m [49m[43mmag_plot[49m[43m,[49m[43m [49m[38;5;241;43m*[39;49m[43mfmt[49m[43m,[49m[43m [49m[43mlabel[49m[38;5;241;43m=[39;49m[43mlabel[49m[43m,[49m[43m [49m[38;5;241;43m*[39;49m[38;5;241;43m*[39;49m[43mkwargs[49m[43m)[49m
+[0;32m    708[0m out[mag_map[i, j]] [38;5;241m+[39m[38;5;241m=[39m lines
+[0;32m    710[0m [38;5;66;03m# Save the information needed for the Nyquist line[39;00m
+
+File [1;32m~\AppData\Local\Programs\Python\Python313\Lib\site-packages\matplotlib\axes\_axes.py:1965[0m, in [0;36mAxes.semilogx[1;34m(self, *args, **kwargs)[0m
+[0;32m   1961[0m d [38;5;241m=[39m {k: v [38;5;28;01mfor[39;00m k, v [38;5;129;01min[39;00m kwargs[38;5;241m.[39mitems()
+[0;32m   1962[0m      [38;5;28;01mif[39;00m k [38;5;129;01min[39;00m [[38;5;124m'[39m[38;5;124mbase[39m[38;5;124m'[39m, [38;5;124m'[39m[38;5;124msubs[39m[38;5;124m'[39m, [38;5;124m'[39m[38;5;124mnonpositive[39m[38;5;124m'[39m,
+[0;32m   1963[0m               [38;5;124m'[39m[38;5;124mbasex[39m[38;5;124m'[39m, [38;5;124m'[39m[38;5;124msubsx[39m[38;5;124m'[39m, [38;5;124m'[39m[38;5;124mnonposx[39m[38;5;124m'[39m]}
+[0;32m   1964[0m [38;5;28mself[39m[38;5;241m.[39mset_xscale([38;5;124m'[39m[38;5;124mlog[39m[38;5;124m'[39m, [38;5;241m*[39m[38;5;241m*[39md)
+[1;32m-> 1965[0m [38;5;28;01mreturn[39;00m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43mplot[49m[43m([49m
+[0;32m   1966[0m [43m    [49m[38;5;241;43m*[39;49m[43margs[49m[43m,[49m[43m [49m[38;5;241;43m*[39;49m[38;5;241;43m*[39;49m[43m{[49m[43mk[49m[43m:[49m[43m [49m[43mv[49m[43m [49m[38;5;28;43;01mfor[39;49;00m[43m [49m[43mk[49m[43m,[49m[43m [49m[43mv[49m[43m [49m[38;5;129;43;01min[39;49;00m[43m [49m[43mkwargs[49m[38;5;241;43m.[39;49m[43mitems[49m[43m([49m[43m)[49m[43m [49m[38;5;28;43;01mif[39;49;00m[43m [49m[43mk[49m[43m [49m[38;5;129;43;01mnot[39;49;00m[43m [49m[38;5;129;43;01min[39;49;00m[43m [49m[43md[49m[43m}[49m[43m)[49m
+
+File [1;32m~\AppData\Local\Programs\Python\Python313\Lib\site-packages\matplotlib\axes\_axes.py:1777[0m, in [0;36mAxes.plot[1;34m(self, scalex, scaley, data, *args, **kwargs)[0m
+[0;32m   1534[0m [38;5;250m[39m[38;5;124;03m"""[39;00m
+[0;32m   1535[0m [38;5;124;03mPlot y versus x as lines and/or markers.[39;00m
+[0;32m   1536[0m 
+[1;32m   (...)[0m
+[0;32m   1774[0m [38;5;124;03m(``'green'``) or hex strings (``'#008000'``).[39;00m
+[0;32m   1775[0m [38;5;124;03m"""[39;00m
+[0;32m   1776[0m kwargs [38;5;241m=[39m cbook[38;5;241m.[39mnormalize_kwargs(kwargs, mlines[38;5;241m.[39mLine2D)
+[1;32m-> 1777[0m lines [38;5;241m=[39m [[38;5;241m*[39m[38;5;28mself[39m[38;5;241m.[39m_get_lines([38;5;28mself[39m, [38;5;241m*[39margs, data[38;5;241m=[39mdata, [38;5;241m*[39m[38;5;241m*[39mkwargs)]
+[0;32m   1778[0m [38;5;28;01mfor[39;00m line [38;5;129;01min[39;00m lines:
+[0;32m   1779[0m     [38;5;28mself[39m[38;5;241m.[39madd_line(line)
+
+File [1;32m~\AppData\Local\Programs\Python\Python313\Lib\site-packages\matplotlib\axes\_base.py:297[0m, in [0;36m_process_plot_var_args.__call__[1;34m(self, axes, data, return_kwargs, *args, **kwargs)[0m
+[0;32m    295[0m     this [38;5;241m+[39m[38;5;241m=[39m args[[38;5;241m0[39m],
+[0;32m    296[0m     args [38;5;241m=[39m args[[38;5;241m1[39m:]
+[1;32m--> 297[0m [38;5;28;01myield from[39;00m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43m_plot_args[49m[43m([49m
+[0;32m    298[0m [43m    [49m[43maxes[49m[43m,[49m[43m [49m[43mthis[49m[43m,[49m[43m [49m[43mkwargs[49m[43m,[49m[43m [49m[43mambiguous_fmt_datakey[49m[38;5;241;43m=[39;49m[43mambiguous_fmt_datakey[49m[43m,[49m
+[0;32m    299[0m [43m    [49m[43mreturn_kwargs[49m[38;5;241;43m=[39;49m[43mreturn_kwargs[49m
+[0;32m    300[0m [43m[49m[43m)[49m
+
+File [1;32m~\AppData\Local\Programs\Python\Python313\Lib\site-packages\matplotlib\axes\_base.py:546[0m, in [0;36m_process_plot_var_args._plot_args[1;34m(self, axes, tup, kwargs, return_kwargs, ambiguous_fmt_datakey)[0m
+[0;32m    544[0m     [38;5;28;01mreturn[39;00m [38;5;28mlist[39m(result)
+[0;32m    545[0m [38;5;28;01melse[39;00m:
+[1;32m--> 546[0m     [38;5;28;01mreturn[39;00m [43m[[49m[43ml[49m[43m[[49m[38;5;241;43m0[39;49m[43m][49m[43m [49m[38;5;28;43;01mfor[39;49;00m[43m [49m[43ml[49m[43m [49m[38;5;129;43;01min[39;49;00m[43m [49m[43mresult[49m[43m][49m
+
+File [1;32m~\AppData\Local\Programs\Python\Python313\Lib\site-packages\matplotlib\axes\_base.py:539[0m, in [0;36m<genexpr>[1;34m(.0)[0m
+[0;32m    534[0m [38;5;28;01melse[39;00m:
+[0;32m    535[0m     [38;5;28;01mraise[39;00m [38;5;167;01mValueError[39;00m(
+[0;32m    536[0m         [38;5;124mf[39m[38;5;124m"[39m[38;5;124mlabel must be scalar or have the same length as the input [39m[38;5;124m"[39m
+[0;32m    537[0m         [38;5;124mf[39m[38;5;124m"[39m[38;5;124mdata, but found [39m[38;5;132;01m{[39;00m[38;5;28mlen[39m(label)[38;5;132;01m}[39;00m[38;5;124m for [39m[38;5;132;01m{[39;00mn_datasets[38;5;132;01m}[39;00m[38;5;124m datasets.[39m[38;5;124m"[39m)
+[1;32m--> 539[0m result [38;5;241m=[39m ([43mmake_artist[49m[43m([49m[43maxes[49m[43m,[49m[43m [49m[43mx[49m[43m[[49m[43m:[49m[43m,[49m[43m [49m[43mj[49m[43m [49m[38;5;241;43m%[39;49m[43m [49m[43mncx[49m[43m][49m[43m,[49m[43m [49m[43my[49m[43m[[49m[43m:[49m[43m,[49m[43m [49m[43mj[49m[43m [49m[38;5;241;43m%[39;49m[43m [49m[43mncy[49m[43m][49m[43m,[49m[43m [49m[43mkw[49m[43m,[49m
+[0;32m    540[0m [43m                      [49m[43m{[49m[38;5;241;43m*[39;49m[38;5;241;43m*[39;49m[43mkwargs[49m[43m,[49m[43m [49m[38;5;124;43m'[39;49m[38;5;124;43mlabel[39;49m[38;5;124;43m'[39;49m[43m:[49m[43m [49m[43mlabel[49m[43m}[49m[43m)[49m
+[0;32m    541[0m           [38;5;28;01mfor[39;00m j, label [38;5;129;01min[39;00m [38;5;28menumerate[39m(labels))
+[0;32m    543[0m [38;5;28;01mif[39;00m return_kwargs:
+[0;32m    544[0m     [38;5;28;01mreturn[39;00m [38;5;28mlist[39m(result)
+
+File [1;32m~\AppData\Local\Programs\Python\Python313\Lib\site-packages\matplotlib\axes\_base.py:338[0m, in [0;36m_process_plot_var_args._make_line[1;34m(self, axes, x, y, kw, kwargs)[0m
+[0;32m    336[0m kw [38;5;241m=[39m {[38;5;241m*[39m[38;5;241m*[39mkw, [38;5;241m*[39m[38;5;241m*[39mkwargs}  [38;5;66;03m# Don't modify the original kw.[39;00m
+[0;32m    337[0m [38;5;28mself[39m[38;5;241m.[39m_setdefaults([38;5;28mself[39m[38;5;241m.[39m_getdefaults(kw), kw)
+[1;32m--> 338[0m seg [38;5;241m=[39m [43mmlines[49m[38;5;241;43m.[39;49m[43mLine2D[49m[43m([49m[43mx[49m[43m,[49m[43m [49m[43my[49m[43m,[49m[43m [49m[38;5;241;43m*[39;49m[38;5;241;43m*[39;49m[43mkw[49m[43m)[49m
+[0;32m    339[0m [38;5;28;01mreturn[39;00m seg, kw
+
+File [1;32m~\AppData\Local\Programs\Python\Python313\Lib\site-packages\matplotlib\lines.py:407[0m, in [0;36mLine2D.__init__[1;34m(self, xdata, ydata, linewidth, linestyle, color, gapcolor, marker, markersize, markeredgewidth, markeredgecolor, markerfacecolor, markerfacecoloralt, fillstyle, antialiased, dash_capstyle, solid_capstyle, dash_joinstyle, solid_joinstyle, pickradius, drawstyle, markevery, **kwargs)[0m
+[0;32m    403[0m [38;5;28mself[39m[38;5;241m.[39mset_markeredgewidth(markeredgewidth)
+[0;32m    405[0m [38;5;66;03m# update kwargs before updating data to give the caller a[39;00m
+[0;32m    406[0m [38;5;66;03m# chance to init axes (and hence unit support)[39;00m
+[1;32m--> 407[0m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43m_internal_update[49m[43m([49m[43mkwargs[49m[43m)[49m
+[0;32m    408[0m [38;5;28mself[39m[38;5;241m.[39mpickradius [38;5;241m=[39m pickradius
+[0;32m    409[0m [38;5;28mself[39m[38;5;241m.[39mind_offset [38;5;241m=[39m [38;5;241m0[39m
+
+File [1;32m~\AppData\Local\Programs\Python\Python313\Lib\site-packages\matplotlib\artist.py:1233[0m, in [0;36mArtist._internal_update[1;34m(self, kwargs)[0m
+[0;32m   1226[0m [38;5;28;01mdef[39;00m[38;5;250m [39m[38;5;21m_internal_update[39m([38;5;28mself[39m, kwargs):
+[0;32m   1227[0m [38;5;250m    [39m[38;5;124;03m"""[39;00m
+[0;32m   1228[0m [38;5;124;03m    Update artist properties without prenormalizing them, but generating[39;00m
+[0;32m   1229[0m [38;5;124;03m    errors as if calling `set`.[39;00m
+[0;32m   1230[0m 
+[0;32m   1231[0m [38;5;124;03m    The lack of prenormalization is to maintain backcompatibility.[39;00m
+[0;32m   1232[0m [38;5;124;03m    """[39;00m
+[1;32m-> 1233[0m     [38;5;28;01mreturn[39;00m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43m_update_props[49m[43m([49m
+[0;32m   1234[0m [43m        [49m[43mkwargs[49m[43m,[49m[43m [49m[38;5;124;43m"[39;49m[38;5;132;43;01m{cls.__name__}[39;49;00m[38;5;124;43m.set() got an unexpected keyword argument [39;49m[38;5;124;43m"[39;49m
+[0;32m   1235[0m [43m        [49m[38;5;124;43m"[39;49m[38;5;132;43;01m{prop_name!r}[39;49;00m[38;5;124;43m"[39;49m[43m)[49m
+
+File [1;32m~\AppData\Local\Programs\Python\Python313\Lib\site-packages\matplotlib\artist.py:1206[0m, in [0;36mArtist._update_props[1;34m(self, props, errfmt)[0m
+[0;32m   1204[0m             func [38;5;241m=[39m [38;5;28mgetattr[39m([38;5;28mself[39m, [38;5;124mf[39m[38;5;124m"[39m[38;5;124mset_[39m[38;5;132;01m{[39;00mk[38;5;132;01m}[39;00m[38;5;124m"[39m, [38;5;28;01mNone[39;00m)
+[0;32m   1205[0m             [38;5;28;01mif[39;00m [38;5;129;01mnot[39;00m [38;5;28mcallable[39m(func):
+[1;32m-> 1206[0m                 [38;5;28;01mraise[39;00m [38;5;167;01mAttributeError[39;00m(
+[0;32m   1207[0m                     errfmt[38;5;241m.[39mformat([38;5;28mcls[39m[38;5;241m=[39m[38;5;28mtype[39m([38;5;28mself[39m), prop_name[38;5;241m=[39mk),
+[0;32m   1208[0m                     name[38;5;241m=[39mk)
+[0;32m   1209[0m             ret[38;5;241m.[39mappend(func(v))
+[0;32m   1210[0m [38;5;28;01mif[39;00m ret:
+
+[1;31mAttributeError[0m: Line2D.set() got an unexpected keyword argument 'Plot'
+

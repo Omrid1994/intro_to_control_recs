@@ -1,0 +1,1283 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Introduction to Control – Recitation 6 &#8212; Recitations - Omri Dalin</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/proof.css?v=b4b7a797" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-E2TD05MHVH"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-E2TD05MHVH');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-E2TD05MHVH');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'rec6';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Introduction to Control – Recitation 5" href="rec5.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="title.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="Recitations - Omri Dalin - Home"/>
+    <img src="_static/logo.png" class="logo__image only-dark pst-js-only" alt="Recitations - Omri Dalin - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="title.html">
+                    Intro to Control
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="rec1.html">Introduction to Control – Recitation 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rec2.html">Introduction to Control – Recitation 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rec3.html">Introduction to Control – Recitation 3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rec4.html">Introduction to Control – Recitation 4</a></li>
+<li class="toctree-l1"><a class="reference internal" href="RecSummary.html">Suammary – Transfer Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rec5.html">Introduction to Control – Recitation 5</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Introduction to Control – Recitation 6</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Frec6.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/rec6.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Introduction to Control – Recitation 6</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nyquist-plot">Nyquist Plot</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reminder-cauchys-principle">Reminder – Cauchy’s Principle</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example">Example</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#magnitude-function-of-a-transfer-function">Magnitude Function of a Transfer Function</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#phase-function-of-a-transform-function">Phase Function of a Transform Function</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nyquist-plot-drawing-rules">Nyquist Plot Drawing Rules</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stability-condition">Stability Condition</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1">Exercise 1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution">Solution</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#affect-of-gain-on-the-nyquist-plot">Affect of Gain on the Nyquist Plot</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Example</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2">Exercise 2</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Solution</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nyquist-plot-of-a-transfer-function-with-imaginary-poles">Nyquist Plot of a Transfer Function with Imaginary Poles</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3">Exercise 3</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Solution</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4">Exercise - 4</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">Solution</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="introduction-to-control-recitation-6">
+<h1>Introduction to Control – Recitation 6<a class="headerlink" href="#introduction-to-control-recitation-6" title="Link to this heading">#</a></h1>
+<section id="nyquist-plot">
+<h2>Nyquist Plot<a class="headerlink" href="#nyquist-plot" title="Link to this heading">#</a></h2>
+<p>The denominator of a closed-loop system is of the form:</p>
+<div class="math notranslate nohighlight">
+\[
+1 + G(s).
+\]</div>
+<p>The idea behind the Nyquist plot is to study this expression as a function of frequency <span class="math notranslate nohighlight">\(\omega\)</span> to determine at whether the system is unstable.</p>
+</section>
+<section id="reminder-cauchys-principle">
+<h2>Reminder – Cauchy’s Principle<a class="headerlink" href="#reminder-cauchys-principle" title="Link to this heading">#</a></h2>
+<p>If we map a contour <span class="math notranslate nohighlight">\(\Gamma_s\)</span> in the <span class="math notranslate nohighlight">\(s\)</span>-plane to the <span class="math notranslate nohighlight">\(\omega\)</span>-plane, we obtain a contour <span class="math notranslate nohighlight">\(\Gamma_\omega\)</span> that encircles the origin <span class="math notranslate nohighlight">\(N\)</span> times in the counter-clockwise direction, then:</p>
+<div class="math notranslate nohighlight">
+\[
+N = P-Z.
+\]</div>
+<p>Where <span class="math notranslate nohighlight">\(P\)</span> is the number of poles of <span class="math notranslate nohighlight">\(G(s)\)</span> enclosed by <span class="math notranslate nohighlight">\(\Gamma_s\)</span> in the original plane, and <span class="math notranslate nohighlight">\(Z\)</span> is the number of zeros of <span class="math notranslate nohighlight">\(G(s)\)</span> enclosed by <span class="math notranslate nohighlight">\(\Gamma_s\)</span>. Essentially, there are <span class="math notranslate nohighlight">\(N\)</span> more zeros than poles.</p>
+<section id="example">
+<h3>Example<a class="headerlink" href="#example" title="Link to this heading">#</a></h3>
+<p>For a given transfer function:</p>
+<div class="math notranslate nohighlight">
+\[
+G(s) = \frac{(s-1)(s-2)}{s-3}.
+\]</div>
+<p>There are two zeros in the right half-plane, <span class="math notranslate nohighlight">\(s=1,2\)</span> and one pole in the right half-plane, <span class="math notranslate nohighlight">\(s=3\)</span>, so:</p>
+<figure class="align-default" id="fig-ex4">
+<a class="reference internal image-reference" href="_images/rec61.png"><img alt="_images/rec61.png" src="_images/rec61.png" style="width: 70%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 22 </span><span class="caption-text">Contour <span class="math notranslate nohighlight">\(\Gamma_s\)</span> in the <span class="math notranslate nohighlight">\(s\)</span>-plane and <span class="math notranslate nohighlight">\(\Gamma_\omega\)</span> in the <span class="math notranslate nohighlight">\(\omega\)</span>-plane.</span><a class="headerlink" href="#fig-ex4" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<div class="math notranslate nohighlight">
+\[
+N = 2 - 1 = 1.
+\]</div>
+<p>This means there is one encirclement of the origin. The number of encirclements around the origin indicates how many more zeros exist than poles. However, we prefer to have no zeros at all (since a zero in <span class="math notranslate nohighlight">\(1+G(s)\)</span> corresponds to a pole in the closed-loop system). Hence, we want to know the number of poles in advance.</p>
+<p>To determine if there are zeros in the right half-plane of <span class="math notranslate nohighlight">\(1 + G(s) \)</span>, we choose a contour <span class="math notranslate nohighlight">\(\Gamma_s\)</span> that encloses the entire right half-plane. This means it extends from <span class="math notranslate nohighlight">\(-j\infty\)</span> to <span class="math notranslate nohighlight">\(+j\infty\)</span>, encloses the right half-plane, and returns to the origin.</p>
+<p>The Nyquist plot is the contour in the <span class="math notranslate nohighlight">\(\omega\)</span>-plane, <span class="math notranslate nohighlight">\(\Gamma_\omega\)</span> corresponding to the contour <span class="math notranslate nohighlight">\(\Gamma_s\)</span> in the <span class="math notranslate nohighlight">\(s\)</span>-plane that encloses the right half-plane.</p>
+<p>Instead of plotting <span class="math notranslate nohighlight">\(1+G(s)\)</span>, we directly plot the Nyquist plot of <span class="math notranslate nohighlight">\(G(s)\)</span> and analyze encirclements around <span class="math notranslate nohighlight">\(-1\)</span>. By symmetry, we can calculate only the upper half-plane and mirror it downwards.</p>
+</section>
+</section>
+<section id="magnitude-function-of-a-transfer-function">
+<h2>Magnitude Function of a Transfer Function<a class="headerlink" href="#magnitude-function-of-a-transfer-function" title="Link to this heading">#</a></h2>
+<p>Consider the transfer function:</p>
+<div class="math notranslate nohighlight">
+\[
+    H(j\omega)=\frac{j\omega(j\omega+a)(j\omega-d)}{(j\omega+b)(j\omega-c)j\omega},\quad a,b,c,d&gt;0.
+\]</div>
+<p>Then the magnitude function of <span class="math notranslate nohighlight">\(H(j\omega)\)</span> is:</p>
+<div class="math notranslate nohighlight">
+\[
+    \big|H(j\omega)\big|=\frac{\omega\sqrt{\omega^2+a^2}\sqrt{\omega^2+d^2}}{\omega\sqrt{\omega^2+b^2}\sqrt{\omega^2+c^2}}.
+\]</div>
+<div class="proof remark admonition" id="remark-0">
+<p class="admonition-title"><span class="caption-number">Remark 5 </span></p>
+<section class="remark-content" id="proof-content">
+<p>If we write</p>
+<div class="math notranslate nohighlight">
+\[
+     H(j\omega)=\frac{a+jb}{c+jd},\quad a,b,c,d\in\mathbb{R},
+\]</div>
+<p>then</p>
+<div class="math notranslate nohighlight">
+\[
+    \big|H(j\omega)\big|=\frac{\sqrt{a^2+b^2}}{\sqrt{c^2+d^2}}.
+\]</div>
+</section>
+</div></section>
+<section id="phase-function-of-a-transform-function">
+<h2>Phase Function of a Transform Function<a class="headerlink" href="#phase-function-of-a-transform-function" title="Link to this heading">#</a></h2>
+<p>Consider the transfer function:</p>
+<div class="math notranslate nohighlight">
+\[
+    H(j\omega)=\frac{j\omega(j\omega+a)(j\omega-d)}{(j\omega+b)(j\omega-c)j\omega},\quad a,b,c,d&gt;0.
+\]</div>
+<p>Elements in the numerator will contribute <span class="math notranslate nohighlight">\(\tan^{-1}(\cdot)\)</span>, elements in the denominator will contribute <span class="math notranslate nohighlight">\(-\tan^{-1}(\cdot)\)</span>, a zero [pole] will contribute <span class="math notranslate nohighlight">\(90^\circ\)</span> [<span class="math notranslate nohighlight">\(-90^\circ\)</span>].</p>
+<div class="proof remark admonition" id="remark-1">
+<p class="admonition-title"><span class="caption-number">Remark 6 </span></p>
+<section class="remark-content" id="proof-content">
+<p>Since <span class="math notranslate nohighlight">\(-90^\circ\leq\tan^{-1}(x)\leq90^\circ\)</span>, if a complex number is in the left-hand plane, we will add <span class="math notranslate nohighlight">\(180^\circ\)</span>. In our case, since <span class="math notranslate nohighlight">\(\omega&gt;0\)</span> if we have a right-handed pole/zero we will add <span class="math notranslate nohighlight">\(180^\circ\)</span>.</p>
+</section>
+</div><p>We obtain</p>
+<div class="math notranslate nohighlight">
+\[
+    \angle H(j\omega)=90^\circ+\tan^{-1}\big(\frac{\omega}{a}\big)+\tan^{-1}\big(\frac{\omega}{-d}\big)+180^\circ-\tan^{-1}\big(\frac{\omega}{b}\big)-\tan^{-1}\big(\frac{\omega}{-c}\big)-180^\circ-90^\circ.
+\]</div>
+<p>We also remind that</p>
+<div class="math notranslate nohighlight">
+\[
+    \lim_{\theta\rightarrow\infty}\tan^{-1}(\theta)=90^\circ,\;\lim_{\theta\rightarrow-\theta}\tan^{-1}(\theta)=-90^\circ,\;\lim_{\theta\rightarrow0}\tan^{-1}(\theta)=0.
+\]</div>
+<p>We also note that for <span class="math notranslate nohighlight">\(|\theta|\ll1\)</span>, then <span class="math notranslate nohighlight">\(\tan^{-1}(\theta)\approx\theta\)</span>. Finally we give the following formula which we will use later on:</p>
+<div class="math notranslate nohighlight" id="equation-eq-arctan-formula">
+<span class="eqno">(22)<a class="headerlink" href="#equation-eq-arctan-formula" title="Link to this equation">#</a></span>\[    \tan^{-1}(\alpha)\pm\tan^{-1}(\beta)=\tan^{-1}\Big(\frac{\alpha\pm\beta}{1\mp \alpha\beta}\Big).\]</div>
+</section>
+<section id="nyquist-plot-drawing-rules">
+<h2>Nyquist Plot Drawing Rules<a class="headerlink" href="#nyquist-plot-drawing-rules" title="Link to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p>Substitute <span class="math notranslate nohighlight">\(s=j\omega\)</span> in <span class="math notranslate nohighlight">\(G(s)\)</span>.</p></li>
+<li><p>Compute <span class="math notranslate nohighlight">\(\big|G(j\omega)\big|\)</span> and <span class="math notranslate nohighlight">\(\angle G(j\omega)\)</span>.</p></li>
+<li><p>Evaluate <span class="math notranslate nohighlight">\(\big|G(j\omega)\big|\)</span> and <span class="math notranslate nohighlight">\(\angle G(j\omega)\)</span> at <span class="math notranslate nohighlight">\(\omega\rightarrow0\)</span> and <span class="math notranslate nohighlight">\(\omega\rightarrow\infty\)</span>.</p></li>
+<li><p>Evaluate the trend of the curve.</p></li>
+<li><p>Find intersections with the real and imaginary axis.</p></li>
+<li><p>Draw the curve for <span class="math notranslate nohighlight">\(\omega\in[0,\infty)\)</span>.</p></li>
+<li><p>Reflect with respect to the real axis.</p></li>
+</ol>
+<div class="proof remark admonition" id="remark-2">
+<p class="admonition-title"><span class="caption-number">Remark 7 </span></p>
+<section class="remark-content" id="proof-content">
+<p>Note that the Nyquist plot is the plot of the complex function <span class="math notranslate nohighlight">\(G(j\omega):\mathbb{R}\rightarrow\mathbb{C}\)</span> for all values of <span class="math notranslate nohighlight">\(\omega\in\mathbb{R}\)</span>.</p>
+</section>
+</div><div class="proof remark admonition" id="remark-3">
+<p class="admonition-title"><span class="caption-number">Remark 8 </span></p>
+<section class="remark-content" id="proof-content">
+<p>The intersection with the real axis can be obtained by finding the values of <span class="math notranslate nohighlight">\(\omega\geq0\)</span> such that</p>
+<div class="math notranslate nohighlight">
+\[
+    \text{Img}\big(G(j\omega)\big)=0.
+\]</div>
+<p>After finding the relevant values of <span class="math notranslate nohighlight">\(\omega\)</span>, we substitute into <span class="math notranslate nohighlight">\(\big|G(j\omega)\big|\)</span> and <span class="math notranslate nohighlight">\(\angle G(j\omega)\)</span> to find the exact location of the intersection on the real axis. Alternatively, we can find the values of <span class="math notranslate nohighlight">\(\omega\)</span> using</p>
+<div class="math notranslate nohighlight">
+\[
+    \angle G(j\omega)=\pm180^\circ,0,360^\circ.
+\]</div>
+</section>
+</div><div class="proof remark admonition" id="remark-4">
+<p class="admonition-title"><span class="caption-number">Remark 9 </span></p>
+<section class="remark-content" id="proof-content">
+<p>The intersection with the imaginary axis can be obtained by finding the values of <span class="math notranslate nohighlight">\(\omega\geq0\)</span> such that</p>
+<div class="math notranslate nohighlight">
+\[
+    \text{Re}\big(G(j\omega)\big)=0.
+\]</div>
+<p>After finding the relevant values of <span class="math notranslate nohighlight">\(\omega\)</span>, we substitute into <span class="math notranslate nohighlight">\(\big|G(j\omega)\big|\)</span> and <span class="math notranslate nohighlight">\(\angle G(j\omega)\)</span> to find the exact location of the intersection on the imaginary axis. Alternatively, we can find the values of <span class="math notranslate nohighlight">\(\omega\)</span> using</p>
+<div class="math notranslate nohighlight">
+\[
+    \angle G(j\omega)=\pm90^\circ,\pm270^\circ.
+\]</div>
+</section>
+</div><div class="proof remark admonition" id="remark-5">
+<p class="admonition-title"><span class="caption-number">Remark 10 </span></p>
+<section class="remark-content" id="proof-content">
+<p>We can find the trend of the curve in many ways. First note that the Nyquist plot is one uniform continuous curve, so if we find the trend of the curve in one place, we know the trend of the plot throughout. One way is to examine the phase for <span class="math notranslate nohighlight">\(\omega\ll1\)</span>. If the phase increases, the curve goes counter-clockwise, if the phase decreases, the curve goes clockwise. If we have the Bode plot of <span class="math notranslate nohighlight">\(G(j\omega)\)</span> we can examine it and see if the phase increases or decreases around <span class="math notranslate nohighlight">\(\omega=0\)</span>.</p>
+</section>
+</div></section>
+<section id="stability-condition">
+<h2>Stability Condition<a class="headerlink" href="#stability-condition" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(P\)</span> is the number of right-handed poles of <span class="math notranslate nohighlight">\(G(s)\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(N\)</span> is the number of \underline{counter-clockwise} encirclements around <span class="math notranslate nohighlight">\(-1\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(Z\)</span> is the number of unstable poles of the closed-loop transfer function.</p></li>
+</ul>
+<p>We want to have <span class="math notranslate nohighlight">\(Z=0\)</span>, when the following always holds:</p>
+<div class="math notranslate nohighlight">
+\[
+    N=P-Z.
+\]</div>
+<div class="proof remark admonition" id="remark-6">
+<p class="admonition-title"><span class="caption-number">Remark 11 </span></p>
+<section class="remark-content" id="proof-content">
+<p>Note that a clockwise encirclement around <span class="math notranslate nohighlight">\(-1\)</span> counts as a negative value for <span class="math notranslate nohighlight">\(N\)</span>. That is, if we have two clockwise encirclements around <span class="math notranslate nohighlight">\(-1\)</span>, then <span class="math notranslate nohighlight">\(N=-2\)</span>.</p>
+</section>
+</div><section id="exercise-1">
+<h3>Exercise 1<a class="headerlink" href="#exercise-1" title="Link to this heading">#</a></h3>
+<p>Consider the unit feedback system with</p>
+<div class="math notranslate nohighlight">
+\[
+C(s)=1,\quad P(s)=\frac{150}{(s+2)(s+5)(s+10)}.
+\]</div>
+<p>Determine, using the Nyquist stability criterion, whether the closed-loop system is stable.</p>
+</section>
+<section id="solution">
+<h3>Solution<a class="headerlink" href="#solution" title="Link to this heading">#</a></h3>
+<p>In this case</p>
+<div class="math notranslate nohighlight">
+\[
+    G(s)=C(s)P(s)=\frac{150}{(s+2)(s+5)(s+10)}.
+\]</div>
+<ol class="arabic simple">
+<li><p><strong>Substitute <span class="math notranslate nohighlight">\(s=j\omega\)</span></strong>:</p></li>
+</ol>
+<p>Substituting <span class="math notranslate nohighlight">\(s=j\omega\)</span> we have</p>
+<div class="math notranslate nohighlight">
+\[
+    G(j\omega)=\frac{150}{(j\omega+2)(j\omega+5)(j\omega+10)}.
+\]</div>
+<ol class="arabic simple" start="2">
+<li><p><strong>Compute the Argument and Magnitude of <span class="math notranslate nohighlight">\(G(j\omega)\)</span></strong>:</p></li>
+</ol>
+<p>In this case we have</p>
+<div class="math notranslate nohighlight">
+\[
+    \big|G(j\omega)\big|=\frac{150}{\sqrt{\omega^2+4}\sqrt{\omega^2+25}\sqrt{\omega^2+100}}.
+\]</div>
+<p>Moreover,</p>
+<div class="math notranslate nohighlight">
+\[
+    \angle G(j\omega)=-\tan^{-1}\big(\frac{\omega}{2}\big)-\tan^{-1}\big(\frac{\omega}{5}\big)-\tan^{-1}\big(\frac{\omega}{10}\big).
+\]</div>
+<ol class="arabic simple" start="3">
+<li><p><strong>Limits of Phase and Magnitude</strong>:</p></li>
+</ol>
+<p>By substitution:</p>
+<div class="math notranslate nohighlight">
+\[
+    \big|G(j\cdot0)\big|=\frac{150}{\sqrt{4}\sqrt{25}\sqrt{100}}=\frac{150}{2\cdot5\cdot10}=1.5.
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+    \angle G(j\cdot0)=-\tan^{-1}(0)-\tan^{-1}(0)-\tan^{-1}(0)=0^\circ.
+\]</div>
+<p>This implies that for <span class="math notranslate nohighlight">\(\omega=0\)</span> we have the real number <span class="math notranslate nohighlight">\(1.5\)</span>. Continuing:</p>
+<div class="math notranslate nohighlight">
+\[
+    \big|G(j\omega\rightarrow\infty)\big|=\frac{150}{&quot;\infty&quot;}=0.
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+    \angle G(j\omega\rightarrow\infty)=-90^\circ-90^\circ-90^\circ=-270^\circ.
+\]</div>
+<p>This implies that for <span class="math notranslate nohighlight">\(\omega\rightarrow\infty\)</span> we converge to the origin, from above.</p>
+<ol class="arabic simple" start="4">
+<li><p><strong>Trend of the Nyquist Curve</strong>:</p></li>
+</ol>
+<p>It is evident that the  phase decrease as <span class="math notranslate nohighlight">\(\omega\)</span> increases. Thus, we start at <span class="math notranslate nohighlight">\(|G(j0)|\)</span> with zero phase and end at <span class="math notranslate nohighlight">\(|G(j\infty)|\)</span> with phase <span class="math notranslate nohighlight">\(-180^\circ\)</span>. Since the phase decreases, the trend will be clockwise.</p>
+<ol class="arabic simple" start="5">
+<li><p><strong>Intersection with the Real Axis</strong>:</p></li>
+</ol>
+<p>We compare the argument of <span class="math notranslate nohighlight">\(G(j\omega)\)</span> to <span class="math notranslate nohighlight">\(-180^\circ\)</span> to find the values of <span class="math notranslate nohighlight">\(\omega\)</span> for which we cross the real axis:</p>
+<div class="math notranslate nohighlight" id="equation-eq-phase-real">
+<span class="eqno">(23)<a class="headerlink" href="#equation-eq-phase-real" title="Link to this equation">#</a></span>\[    -\Big(\tan^{-1}\big(\frac{\omega}{2}\big)+\tan^{-1}\big(\frac{\omega}{5}\big)+\tan^{-1}\big(\frac{\omega}{10}\big)\Big)=-180^\circ.\]</div>
+<p>We use <a class="reference internal" href="#equation-eq-arctan-formula">(22)</a> twice to unify the left hand term into one single <span class="math notranslate nohighlight">\(tan^{-1}\)</span>:</p>
+<div class="seealso dropdown admonition">
+<p class="admonition-title">Click here for the derivation of the table elements</p>
+<div class="math notranslate nohighlight">
+\[
+    \tan^{-1}\big(\frac{\omega}{2}\big)+\tan^{-1}\big(\frac{\omega}{5}\big)=tan^{-1}\Big(\frac{7\omega}{10-\omega^2}\Big).
+\]</div>
+<p>Derivation:</p>
+<div class="math notranslate nohighlight">
+\[
+    \tan^{-1}\big(\frac{\omega}{2}\big)+\tan^{-1}\big(\frac{\omega}{5}\big)=\tan^{-1}\Big(\frac{\frac{\omega}{2}+\frac{\omega}{5}}{1-\frac{\omega}{2}\frac{\omega}{5}}\Big).
+\]</div>
+<p>Simplifying the expression in the brackets we have:</p>
+<div class="math notranslate nohighlight">
+\[
+    \frac{\frac{\omega}{2}+\frac{\omega}{5}}{1-\frac{\omega}{2}\frac{\omega}{5}}=\frac{\frac{5\omega+2\omega}{10}}{\frac{10-\omega^2}{10}}=\frac{7\omega}{10-\omega^2}.
+\]</div>
+<p>Finally we have</p>
+<div class="math notranslate nohighlight">
+\[
+    tan^{-1}\Big(\frac{7\omega}{10-\omega^2}\Big)+\tan^{-1}\big(\frac{\omega}{10}\big)=\tan^{-1}\Big(\frac{\omega(80-\omega^2)}{100-17\omega^2}\Big).
+\]</div>
+<p>Derivation:</p>
+<div class="math notranslate nohighlight">
+\[
+    tan^{-1}\Big(\frac{7\omega}{10-\omega^2}\Big)+\tan^{-1}\big(\frac{\omega}{10}\big)=\tan^{-1}\Big(\frac{\omega(80-\omega^2)}{100-17\omega^2}\Big)=\tan^{-1}\Bigg(\frac{\frac{7\omega}{10-\omega^2}+\frac{\omega}{10}}{1-\frac{7\omega}{10-\omega^2}\frac{\omega}{10}}\Bigg).
+\]</div>
+<p>Simplifying the expression in the brackets we have:</p>
+<div class="math notranslate nohighlight">
+\[
+    \frac{\frac{7\omega}{10-\omega^2}+\frac{\omega}{10}}{1-\frac{7\omega}{10-\omega^2}\frac{\omega}{10}}=\frac{\frac{70\omega+\omega(10-\omega^2)}{10(10-\omega^2)}}{\frac{10(10-\omega^2)-4\omega^2}{10(10-\omega^2)}}=\frac{\omega(80-\omega^2)}{100-17\omega^2}.
+\]</div>
+<p>Substituting back in <a class="reference internal" href="#equation-eq-phase-real">(23)</a> we have:</p>
+</div>
+<div class="math notranslate nohighlight">
+\[
+    \tan^{-1}\Big(\frac{\omega(80-\omega^2)}{100-17\omega^2}\Big)=180^\circ.
+\]</div>
+<p>Taking <span class="math notranslate nohighlight">\(tan(\cdot)\)</span> on both sides we have:</p>
+<div class="math notranslate nohighlight">
+\[
+    \frac{\omega(80-\omega^2)}{100-17\omega^2}=0.
+\]</div>
+<p>Clearly one solution is <span class="math notranslate nohighlight">\(\omega\rightarrow\infty\)</span> which we already know is an intersection of the real axis. The solutions for the numerator are</p>
+<div class="math notranslate nohighlight">
+\[
+    \omega=0,\sqrt{80}.
+\]</div>
+<p>We know that <span class="math notranslate nohighlight">\(\omega=0\)</span> is an intersection. We need to substitute <span class="math notranslate nohighlight">\(\omega=\sqrt{80}\)</span> to see where the plot intersects for this value of <span class="math notranslate nohighlight">\(\omega\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+    \big|G(j\sqrt{80})\big|\approx0.12,\quad \angle G(j\sqrt{80})=-180^\circ.
+\]</div>
+<p>To the intersection is of the negative real axis. Here we skip the intersection of the imaginary axis. Try finding it as a homework exercise.</p>
+<p>We can now plot the Nyquist curve:</p>
+<figure class="align-default" id="fig-r6-ex1">
+<a class="reference internal image-reference" href="_images/r6_ex1_nyquist.png"><img alt="_images/r6_ex1_nyquist.png" src="_images/r6_ex1_nyquist.png" style="width: 70%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 23 </span><span class="caption-text">Nyquist Plot of <span class="math notranslate nohighlight">\(G(s)=\frac{150}{(s+2)(s+5)(s+10)}\)</span>.</span><a class="headerlink" href="#fig-r6-ex1" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>We move on to stability. <span class="math notranslate nohighlight">\(G(s)\)</span> has no right-handed poles, so <span class="math notranslate nohighlight">\(P=0\)</span>. We have no encirclements of <span class="math notranslate nohighlight">\(-1\)</span> in Figure <a class="reference internal" href="#fig-r6-ex1"><span class="std std-numref">Fig. 23</span></a>, so <span class="math notranslate nohighlight">\(N=0\)</span>. We thus have</p>
+<div class="math notranslate nohighlight">
+\[
+    N=P-Z\rightarrow 0=0-Z\rightarrow Z=0.
+\]</div>
+<p>We obtained that the closed-loop transfer function is stable.</p>
+</section>
+</section>
+<section id="affect-of-gain-on-the-nyquist-plot">
+<h2>Affect of Gain on the Nyquist Plot<a class="headerlink" href="#affect-of-gain-on-the-nyquist-plot" title="Link to this heading">#</a></h2>
+<p>One of the factors determining stability is the intersection of the Nyquist curve with the negative real axis. The location of this intersection can be found by substituting the relevant frequency into the magnitude expression. Multiplying a transfer function by a constant gain simply scales the magnitude of the transfer function by that gain, thereby shifting the Nyquist curve accordingly.</p>
+<p>More precisely, for a given transfer function <span class="math notranslate nohighlight">\(G(s)\)</span> and a real constant <span class="math notranslate nohighlight">\(k\)</span>, we have:</p>
+<div class="math notranslate nohighlight">
+\[
+\big|kG(s)\big|=|k|\cdot\big|G(s)\big|.
+\]</div>
+<ol class="arabic simple">
+<li><p>If <span class="math notranslate nohighlight">\(k &gt; 1\)</span>, the Nyquist curve expands.</p></li>
+<li><p>If <span class="math notranslate nohighlight">\(0 &lt; k &lt; 1\)</span>, the Nyquist curve contracts.</p></li>
+<li><p>If <span class="math notranslate nohighlight">\(k &lt; 0\)</span>, the Nyquist curve rotates by <span class="math notranslate nohighlight">\(180^\circ\)</span> and undergoes expansion or contraction as per rules 1. and 2. <strong>The trend of the curves remains unchanged!</strong></p></li>
+</ol>
+<section id="id1">
+<h3>Example<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+<p>The following is the the Nyquist plot of the transfer function:</p>
+<div class="math notranslate nohighlight">
+\[
+G(s) = \frac{k}{s+2},\quad k=-1,0.5,1,2.
+\]</div>
+<figure class="align-default" id="fig-r6-different-k">
+<a class="reference internal image-reference" href="_images/r6_nyquist_different_k.png"><img alt="_images/r6_nyquist_different_k.png" src="_images/r6_nyquist_different_k.png" style="width: 70%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 24 </span><span class="caption-text">Nyquist Plot of <span class="math notranslate nohighlight">\(G(s)=\frac{k}{s+2}\)</span> for <span class="math notranslate nohighlight">\(k=-1,0.5,1,2\)</span>.</span><a class="headerlink" href="#fig-r6-different-k" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<div class="proof remark admonition" id="remark-7">
+<p class="admonition-title"><span class="caption-number">Remark 12 </span></p>
+<section class="remark-content" id="proof-content">
+<p>Note that if <span class="math notranslate nohighlight">\(a_1,...,a_n\)</span> are the intersection points of the Nyquist plot of <span class="math notranslate nohighlight">\(G(s)\)</span> with the real axis, then <span class="math notranslate nohighlight">\(ka_1,...,ka_n\)</span> are the intersection points of the Nyquist plot of <span class="math notranslate nohighlight">\(kG(s)\)</span> with the real axis.</p>
+</section>
+</div><div class="proof remark admonition" id="remark-8">
+<p class="admonition-title"><span class="caption-number">Remark 13 </span></p>
+<section class="remark-content" id="proof-content">
+<p>Note that for negative <span class="math notranslate nohighlight">\(k\)</span>, the trend of the Nyquist plot remains the same.</p>
+</section>
+</div></section>
+<section id="exercise-2">
+<h3>Exercise 2<a class="headerlink" href="#exercise-2" title="Link to this heading">#</a></h3>
+<p>Draw the Nyquist plot of</p>
+<div class="math notranslate nohighlight">
+\[
+    G(s)=\frac{k}{(s+1)(s-1)},\quad k&gt;0.
+\]</div>
+</section>
+</section>
+<section id="id2">
+<h2>Solution<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p><strong>Substitute <span class="math notranslate nohighlight">\(s=j\omega\)</span></strong>:</p></li>
+</ol>
+<p>In this case</p>
+<div class="math notranslate nohighlight">
+\[
+    G(j\omega)=\frac{k}{(j\omega+1)(j\omega-1)}=-\frac{k}{\omega^2+1}.
+\]</div>
+<p>Note that for every <span class="math notranslate nohighlight">\(\omega\geq0\)</span>, <span class="math notranslate nohighlight">\(k&gt;0\)</span>, <span class="math notranslate nohighlight">\(G(j\omega)\in\mathbb{R}_-\)</span>. We will always get a negative real number so there is no need to calculate the expression for the magnitude and phase. The phase is always <span class="math notranslate nohighlight">\(-180^\circ\)</span>. The magnitude is the value for any given <span class="math notranslate nohighlight">\(\omega\)</span>.</p>
+<ol class="arabic simple" start="2">
+<li><p><strong>Value at <span class="math notranslate nohighlight">\(\omega\rightarrow0\)</span> and <span class="math notranslate nohighlight">\(\omega\rightarrow\infty\)</span></strong>:</p></li>
+</ol>
+<p>Calculating explicitly we have:</p>
+<div class="math notranslate nohighlight">
+\[
+\lim_{\omega \to 0} G(j\omega) = -k, \quad \lim_{\omega \to \infty} G(j\omega) = 0.
+\]</div>
+<p>Observing that the magnitude decreases as <span class="math notranslate nohighlight">\(\omega\)</span> increases, the Nyquist plot starts at <span class="math notranslate nohighlight">\(-k\)</span>, moves along the real axis to zero, and completes a clockwise encirclement:</p>
+<figure class="align-default" id="fig-r6-ex2">
+<a class="reference internal image-reference" href="_images/download(2).png"><img alt="_images/download%282%29.png" src="_images/download%282%29.png" style="width: 70%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 25 </span><span class="caption-text">Nyquist Plot of <span class="math notranslate nohighlight">\(G(s)=\frac{2}{(s+1)(s-1)}\)</span>.</span><a class="headerlink" href="#fig-r6-ex2" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p><span class="math notranslate nohighlight">\(G(s)\)</span> has one right-hand pole, meaning:</p>
+<div class="math notranslate nohighlight">
+\[
+P = 1.
+\]</div>
+<p>By applying the Nyquist criterion:</p>
+<div class="math notranslate nohighlight">
+\[
+N=P-Z\rightarrow N=1-Z\rightarrow Z=1-N.
+\]</div>
+<p>For stability, we need to have one counter-clockwise encirclement around <span class="math notranslate nohighlight">\(-1\)</span>. It is important to emphasize that here we only pass through <span class="math notranslate nohighlight">\(-1\)</span>, and we never encircle it. So in this case, the system is no stable for any value of <span class="math notranslate nohighlight">\(k\)</span>.</p>
+<div class="proof remark admonition" id="remark-9">
+<p class="admonition-title"><span class="caption-number">Remark 14 </span></p>
+<section class="remark-content" id="proof-content">
+<p>It is important to emphasize that if the Nyquist plot of <span class="math notranslate nohighlight">\(G(s)\)</span> passes through <span class="math notranslate nohighlight">\(-1\)</span>, we will not have stability. This case corresponds to being on the verge if stability, that is, the closed-loop transfer function will have purely imaginary poles.</p>
+</section>
+</div></section>
+<section id="nyquist-plot-of-a-transfer-function-with-imaginary-poles">
+<h2>Nyquist Plot of a Transfer Function with Imaginary Poles<a class="headerlink" href="#nyquist-plot-of-a-transfer-function-with-imaginary-poles" title="Link to this heading">#</a></h2>
+<p><span class="math notranslate nohighlight">\(\Gamma_s\)</span> encircles all right-handed poles and zeros. If we have a pole on the imaginary axis, they will not be encircled by <span class="math notranslate nohighlight">\(\Gamma_s\)</span>. In order to make up for this, we encircle the pole itself and take the radius go to zero.</p>
+<figure class="align-default" id="id3">
+<a class="reference internal image-reference" href="_images/r6_pole_at_Zero.png"><img alt="_images/r6_pole_at_Zero.png" src="_images/r6_pole_at_Zero.png" style="width: 70%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 26 </span><span class="caption-text">Nyquist Plot of <span class="math notranslate nohighlight">\(G(s)=\frac{k}{s+2}\)</span> for <span class="math notranslate nohighlight">\(k=-1,0.5,1,2\)</span>.</span><a class="headerlink" href="#id3" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>We draw the Nyquist plot per usual, and for the pole at the origin, we take</p>
+<div class="math notranslate nohighlight">
+\[
+    s=\varepsilon e^{j\theta},\; \varepsilon\rightarrow0,\;\theta\in[-90^\circ,90^\circ].
+\]</div>
+<p>We obtain that <span class="math notranslate nohighlight">\(\angle G(s=\varepsilon e^{j\theta},\;\varepsilon\rightarrow0)\)</span> is in some range of angles. The trend of the angles will imply clock-wise or counter-clockwise rotation around the right or left handed plane.</p>
+<section id="exercise-3">
+<h3>Exercise 3<a class="headerlink" href="#exercise-3" title="Link to this heading">#</a></h3>
+<p>Draw the Nyquist plot of</p>
+<div class="math notranslate nohighlight">
+\[
+    G(s)=\frac{s+1}{s(s+3)(s+10)}.
+\]</div>
+<p>For what values of <span class="math notranslate nohighlight">\(k\in\mathbb{R}\)</span> is the closed-loop system stable?</p>
+</section>
+<section id="id4">
+<h3>Solution<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p><strong>Substituting <span class="math notranslate nohighlight">\(s = j\omega\)</span></strong>:</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[
+G(j\omega) = \frac{j\omega+1}{j\omega (j\omega + 3)(j\omega+10)}.
+\]</div>
+<ol class="arabic simple" start="2">
+<li><p><strong>Magnitude and Phase Expressions</strong>:</p></li>
+</ol>
+<p>The magnitude is given by:</p>
+<div class="math notranslate nohighlight">
+\[
+|G(j\omega)| = \sqrt{\frac{\omega^2+1}{\omega^2(\omega^2+9)(\omega^2+100)}}.
+\]</div>
+<p>The expression for the phase is:</p>
+<div class="math notranslate nohighlight">
+\[
+    \angle G(j\omega)=-90^\circ+\tan^{-1}(\omega)-\tan^{-1}\big(\frac{\omega}{3}\big)-\tan^{-1}\big(\frac{\omega}{10}\big).
+\]</div>
+<p>Note that <span class="math notranslate nohighlight">\(-90^\circ\)</span> is due to the pole at the origin.</p>
+<ol class="arabic simple" start="3">
+<li><p><strong>Boundary Analysis</strong>:</p></li>
+</ol>
+<p>Checking the limits:</p>
+<div class="math notranslate nohighlight">
+\[
+    \big|G(j\cdot0)\big|=\sqrt{\frac{1}{0\cdot9\cdot100}}\rightarrow\infty.
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+    \angle G(j\cdot0)=-90^\circ.
+\]</div>
+<p>The Nyquist plot begins at infinity along the negative imaginary axis.</p>
+<div class="math notranslate nohighlight">
+\[
+    \big|G(j\omega\rightarrow\infty)\big|\rightarrow\infty,
+\]</div>
+<p>since the denominator is dominant.</p>
+<div class="math notranslate nohighlight">
+\[
+    \angle G(j\omega\rightarrow\infty)=-90^\circ+90^\circ-90^\circ-90^\circ=-180^\circ.
+\]</div>
+<p>We converge to the origin along the negative real axis.</p>
+<p>As <span class="math notranslate nohighlight">\(\omega\)</span> increases, the magnitude decreases, meaning the curve follows the imaginary axis from negative infinity up to the origin, where it approaches from the left. Since the curve starts from an infinite value, we examine the asymptotic behavior along the real axis.</p>
+<p>We explicitly write the real and imaginary parts of the transfer function:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    G(j\omega) &amp;= \frac{j\omega+1}{j\omega (j\omega + 3)(j\omega+10)}\\
+     &amp;=\frac{j\omega+1}{-13\omega^2+j\omega(30-\omega^2)}\\
+     &amp;=\frac{j\omega+1}{-13\omega^2+j\omega(30-\omega^2)}\cdot\frac{-13\omega^2-j\omega(30-\omega^2)}{-13\omega^2-j\omega(30-\omega^2)}.
+\end{split}\]</div>
+<p>After simplifying the expression and separating real and imaginary parts we obtain</p>
+<div class="math notranslate nohighlight" id="equation-eq-g-real-img">
+<span class="eqno">(24)<a class="headerlink" href="#equation-eq-g-real-img" title="Link to this equation">#</a></span>\[    G(j\omega)=\frac{17-\omega^2}{(30-\omega^2)^2+169\omega^2}-j\frac{12\omega^2+30}{\omega\big((30-\omega^2)^2+169\omega^2\big)}.\]</div>
+<p>We are interested in the real part when <span class="math notranslate nohighlight">\(\omega \to 0\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+    \frac{17-0^2}{(30-0^2)^2}=\frac{17}{30^2}\approx0.02.
+\]</div>
+<p>The curve begins at negative infinity along the imaginary axis, and raises upwards along the vertical asymptote “x=0.02”.</p>
+<ol class="arabic simple" start="4">
+<li><p><strong>Intersection with the Imaginary Axes</strong>:</p></li>
+</ol>
+<p>To find intersections with the imaginary axis, we set the real part to zero:</p>
+<div class="math notranslate nohighlight">
+\[
+\text{Re}\big(G(j\omega)\big)=\frac{17-\omega^2}{(30-\omega^2)^2+169\omega^2}=0.
+\]</div>
+<p>This holds for <span class="math notranslate nohighlight">\(\omega\rightarrow0\)</span>, which we already know corresponds to an intersection with the origin (the imaginary axis). Nullifying the numerator we have:</p>
+<div class="math notranslate nohighlight">
+\[
+    17-\omega^2=0\rightarrow \omega=\sqrt{17}.
+\]</div>
+<p>Substituting this value in the imaginary part, we determine the intersection point:</p>
+<div class="math notranslate nohighlight">
+\[
+\text{Im}(G(j\cdot\sqrt{17})) = -\frac{12\cdot17+30}{\sqrt{17}\big((30-17)^2+169\cdot17\big)}\approx-0.02.
+\]</div>
+<p>It is evident that there are no intersections with the real axis since setting the imaginary part to zero yields a complex frequency. So far, we obtain:</p>
+<figure class="align-default" id="id5">
+<a class="reference internal image-reference" href="_images/r6_ex3_half.png"><img alt="_images/r6_ex3_half.png" src="_images/r6_ex3_half.png" style="width: 70%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 27 </span><span class="caption-text">Nyquist Plot of <span class="math notranslate nohighlight">\(G(s)=\frac{k}{s+2}\)</span> for <span class="math notranslate nohighlight">\(k=-1,0.5,1,2\)</span>.</span><a class="headerlink" href="#id5" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<ol class="arabic simple" start="5">
+<li><p><strong>Handling the Pole at the Origin</strong>:</p></li>
+</ol>
+<p>We substitute <span class="math notranslate nohighlight">\(s=\varepsilon e^{j\theta}\)</span> in <span class="math notranslate nohighlight">\(G(s)\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+G(s=\varepsilon e^{j\theta}) = \frac{\varepsilon e^{j\theta}+1}{\varepsilon e^{j\theta}(\varepsilon e^{j\theta}+3)(\varepsilon e^{j\theta}+10)}.
+\]</div>
+<p>We evaluate each expression in brackets separately for <span class="math notranslate nohighlight">\(\varepsilon\rightarrow0\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    \varepsilon e^{j\theta}+1\approx1,\\
+    \varepsilon e^{j\theta}+3\approx3,\\
+    \varepsilon e^{j\theta}+10\approx10.
+\end{split}\]</div>
+<p>We thus have</p>
+<div class="math notranslate nohighlight">
+\[
+    G(s=\varepsilon e^{j\theta})\underbrace{\approx}_{\varepsilon\rightarrow0}\frac{1}{30\varepsilon}e^{-j\theta}.
+\]</div>
+<p>Clearly, as <span class="math notranslate nohighlight">\(\varepsilon\rightarrow0\)</span>,</p>
+<div class="math notranslate nohighlight">
+\[
+    \Big|\frac{1}{30\varepsilon}e^{-j\theta}\Big|\rightarrow\infty.
+\]</div>
+<p>Clearly,</p>
+<div class="math notranslate nohighlight">
+\[
+    \angle \frac{1}{30\varepsilon}e^{-j\theta}=-\theta.
+\]</div>
+<p>Since <span class="math notranslate nohighlight">\(\theta\in[-90^\circ,90^\circ]\)</span>, <span class="math notranslate nohighlight">\(-\theta\in[90^\circ,-90^\circ]\)</span>, so we encircle starting from <span class="math notranslate nohighlight">\(\infty\)</span> along the positive imaginary axis, all the way to <span class="math notranslate nohighlight">\(-\infty\)</span> along the negative imaginary axis.</p>
+<p>Altogether, the Nyquist plot is:</p>
+<figure class="align-default" id="fig-r6-ex3">
+<a class="reference internal image-reference" href="_images/r6_ex3.png"><img alt="_images/r6_ex3.png" src="_images/r6_ex3.png" style="width: 70%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 28 </span><span class="caption-text">Nyquist Plot of <span class="math notranslate nohighlight">\(G(s)=\frac{s+1}{s(s+3)(s+10)}\)</span>.</span><a class="headerlink" href="#fig-r6-ex3" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Note that here the encirclement is around the entire right-half plane, not as depicted in the figure.</p>
+<p>Regarding stability, <span class="math notranslate nohighlight">\(G(s)\)</span> has no right-handed poles, so <span class="math notranslate nohighlight">\(P=0\)</span>. We have</p>
+<div class="math notranslate nohighlight">
+\[
+    N=P-Z\rightarrow Z=P-N\rightarrow Z=-N.
+\]</div>
+<p>We want there to be no encirclements around <span class="math notranslate nohighlight">\(-1\)</span>. This holds as long as <span class="math notranslate nohighlight">\(k&gt;0\)</span> since the only intersection of the real axis is at <span class="math notranslate nohighlight">\(\infty\)</span>. For <span class="math notranslate nohighlight">\(k=-1\)</span>, we have:</p>
+<figure class="align-default" id="id6">
+<a class="reference internal image-reference" href="_images/r6_ex3_negative.png"><img alt="_images/r6_ex3_negative.png" src="_images/r6_ex3_negative.png" style="width: 70%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 29 </span><span class="caption-text">Nyquist Plot of <span class="math notranslate nohighlight">\(G(s)=-\frac{s+1}{s(s+3)(s+10)}\)</span>.</span><a class="headerlink" href="#id6" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>This will be the Nyquist for any value of <span class="math notranslate nohighlight">\(k&lt;0\)</span>. In this case there is one clockwise encirclement around <span class="math notranslate nohighlight">\(-1\)</span>, so <span class="math notranslate nohighlight">\(-N=1\)</span>, in this case</p>
+<div class="math notranslate nohighlight">
+\[
+    Z=-N=1.
+\]</div>
+<p>The closed-loop system is not stable. To summarize, the closed-loop system is stable for any <span class="math notranslate nohighlight">\(k&gt;0\)</span> and unstable for any <span class="math notranslate nohighlight">\(k&lt;0\)</span>.</p>
+</section>
+<section id="exercise-4">
+<h3>Exercise - 4<a class="headerlink" href="#exercise-4" title="Link to this heading">#</a></h3>
+<p>Draw the Nyquist plot of</p>
+<div class="math notranslate nohighlight">
+\[
+    G(s)=\frac{8(s-25)}{s^2+4s+70}.
+\]</div>
+<p>For which values of <span class="math notranslate nohighlight">\(k\in\mathbb{R}\)</span> is the closed-loop system stable?</p>
+</section>
+<section id="id7">
+<h3>Solution<a class="headerlink" href="#id7" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p><strong>Substitute <span class="math notranslate nohighlight">\(s=j\omega\)</span></strong>:</p></li>
+</ol>
+<p>We have</p>
+<div class="math notranslate nohighlight">
+\[
+    G(j\omega)=\frac{8(j\omega-25)}{(j\omega)^2+4j\omega+70}=\frac{8(j\omega-25)}{70-\omega^2+4j\omega}.
+\]</div>
+<ol class="arabic simple" start="2">
+<li><p><strong>Magnitude and Phase Analysis</strong>:</p></li>
+</ol>
+<p>We compute the magnitude function for <span class="math notranslate nohighlight">\(G(j\omega)\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+    \big|G(j\omega)\big|=\frac{\sqrt{64\omega^2+(200)^2}}{\sqrt{\big(70-\omega^2\big)^2+16\omega^2}}.
+\]</div>
+<p>Computing for <span class="math notranslate nohighlight">\(\omega\rightarrow0\)</span> and <span class="math notranslate nohighlight">\(\omega\rightarrow\infty\)</span> we have</p>
+<div class="math notranslate nohighlight">
+\[
+    \big|G(j\cdot0)\big|=\frac{\sqrt{200^2}}{\sqrt{70^2}}=2.85,\quad \big|G(j\cdot\omega\rightarrow\infty)\big|\rightarrow\infty.
+\]</div>
+<p>The last result holds since the denominator is dominant.</p>
+<p>Note that the roots of the denominator are complex, we cannot write the denominator in the form:</p>
+<div class="math notranslate nohighlight">
+\[
+(s + a)(s + b)
+\]</div>
+<p>which is a problem when expressing the phase of the transfer function, since a denominator of this form contributes specific phase shifts.</p>
+<p>Instead of computing a closed-form expression for the phase, we compute <span class="math notranslate nohighlight">\(G(j\omega)\)</span> as <span class="math notranslate nohighlight">\(s\rightarrow0\)</span> and <span class="math notranslate nohighlight">\(s\rightarrow\infty\)</span> and figure the phase.</p>
+<div class="math notranslate nohighlight">
+\[
+    G(0)=-\frac{8\cdot25}{70}.
+\]</div>
+<p>This is a negative real number. The phase which corresponds to such a number is <span class="math notranslate nohighlight">\(-180^\circ\)</span>. for <span class="math notranslate nohighlight">\(s\rightarrow\infty\)</span> we do an asymptotic analysis, we only keep the dominant terms in the denominator and numerator:</p>
+<div class="math notranslate nohighlight">
+\[
+    G(s)\underbrace{\approx}_{s\rightarrow\infty}\frac{8s}{s^2}=\frac{8}{s}.
+\]</div>
+<p>Clearly,</p>
+<div class="math notranslate nohighlight">
+\[
+    \angle \frac{8}{s}=-90^\circ,
+\]</div>
+<p>so,</p>
+<div class="math notranslate nohighlight">
+\[
+    \angle G(j\omega\rightarrow\infty)=-90^\circ.
+\]</div>
+<p>To summarize,</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    \big|G(j\cdot0)\big|=2.85,\quad \angle G(j\cdot0)=-180^\circ,\\
+    \big|G(j\omega\rightarrow\infty)\big|=0,\quad \angle G(j\omega\rightarrow\infty)=-90^\circ.
+\end{split}\]</div>
+<ol class="arabic simple" start="3">
+<li><p><strong>Curve Trend</strong>:</p></li>
+</ol>
+<p>We know that complex poles in the denominator contribute to a decrease in phase. The numerator will contribute an increase, but for <span class="math notranslate nohighlight">\(\omega\ll1\)</span>, the phase will decrease, so the phase decreases and the trend is clockwise.</p>
+<ol class="arabic simple" start="4">
+<li><p><strong>Intersections with the Real Axis</strong>:</p></li>
+</ol>
+<p>Since computing <span class="math notranslate nohighlight">\(G(j\omega)\)</span> explicitly is complex, we decompose it into real and imaginary parts. The intersection with the real axis occurs where the imaginary part is zero:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    G(j\omega)&amp;=\frac{8(j\omega-25)}{70-\omega^2+4j\omega}\cdot\frac{70-\omega^2-4j\omega}{70-\omega^2-4j\omega}\\
+    &amp;=\frac{32\omega^2-200(70-\omega^2)}{(70-\omega^2)^2+16\omega^2}+j\frac{8\omega(70-\omega^2)+800\omega}{(70-\omega^2)^2+16\omega^2}.
+\end{split}\]</div>
+<p>Setting the imaginary part to zero:</p>
+<div class="math notranslate nohighlight">
+\[
+8\omega(70-\omega^2)+800\omega=0.
+\]</div>
+<p>Solving for <span class="math notranslate nohighlight">\(\omega\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+\omega=0,\quad\omega=\pm\sqrt{170}.
+\]</div>
+<p>For <span class="math notranslate nohighlight">\(\omega = 0\)</span>, we already found the intersection where the Nyquist curve begins. The valid solution corresponds to the positive root (no such thing as a negative frequency), yielding an intersection on the positive real axis:</p>
+<div class="math notranslate nohighlight">
+\[
+G(j\sqrt{170})=\frac{32\cdot(\sqrt{170})^2-200\big(70-(\sqrt{170})^2\big)}{\big(70-(\sqrt{170})^2\big)^2+16\cdot(\sqrt{170})^2}=2.
+\]</div>
+<p>That is, <span class="math notranslate nohighlight">\(\big|G(j\sqrt{170})\big|=2\)</span>, <span class="math notranslate nohighlight">\(\angle G(j\sqrt{170})=0^\circ\)</span>.</p>
+<p>We can now draw the Nyquist plot:</p>
+<figure class="align-default" id="id8">
+<a class="reference internal image-reference" href="_images/r6_ex4_nyquist1.png"><img alt="_images/r6_ex4_nyquist1.png" src="_images/r6_ex4_nyquist1.png" style="width: 70%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 30 </span><span class="caption-text">Nyquist Plot of <span class="math notranslate nohighlight">\(G(s)=\frac{8(s-25)}{s^2+4s+70}\)</span>.</span><a class="headerlink" href="#id8" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>We now move on to stability. The poles of <span class="math notranslate nohighlight">\(G(s)\)</span> are</p>
+<div class="math notranslate nohighlight">
+\[
+    s^2+4s+70=0\rightarrow s=-2\pm j\sqrt{66}.
+\]</div>
+<p>There are no poles in the right half plane, so <span class="math notranslate nohighlight">\(P=0\)</span>. We have</p>
+<div class="math notranslate nohighlight">
+\[
+    N=P-Z\rightarrow Z=P-N=-N.
+\]</div>
+<p>We have one clockwise rotation around <span class="math notranslate nohighlight">\(-1\)</span>, so <span class="math notranslate nohighlight">\(-N=1\)</span>, and we have</p>
+<div class="math notranslate nohighlight">
+\[
+    Z=1,
+\]</div>
+<p>and the system is not stable. Now, assume we add gain <span class="math notranslate nohighlight">\(k&gt;0\)</span>. The Nyquist plot will be:</p>
+<figure class="align-default" id="id9">
+<a class="reference internal image-reference" href="_images/r6_ex4_nyquistk.png"><img alt="_images/r6_ex4_nyquistk.png" src="_images/r6_ex4_nyquistk.png" style="width: 70%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 31 </span><span class="caption-text">Nyquist Plot of <span class="math notranslate nohighlight">\(kG(s)=k\frac{8(s-25)}{s^2+4s+70}\)</span>.</span><a class="headerlink" href="#id9" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>If <span class="math notranslate nohighlight">\(k&gt;1\)</span>, the gain <span class="math notranslate nohighlight">\(k\)</span> will increase the distance of the intersection points from the origin. If <span class="math notranslate nohighlight">\(0&lt;k&lt;1\)</span>, the gain will decrease the intersection points to the origin. We want no rotation around <span class="math notranslate nohighlight">\(-1\)</span>. For <span class="math notranslate nohighlight">\(k=\frac{1}{2.85}\)</span>, we obtain:</p>
+<figure class="align-default" id="id10">
+<a class="reference internal image-reference" href="_images/r6_ex4_nyquist_verge.png"><img alt="_images/r6_ex4_nyquist_verge.png" src="_images/r6_ex4_nyquist_verge.png" style="width: 70%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 32 </span><span class="caption-text">Nyquist Plot of <span class="math notranslate nohighlight">\(\frac{1}{2.85}\cdot G(s)=\frac{1}{2.85}\cdot\frac{8(s-25)}{s^2+4s+70}\)</span>.</span><a class="headerlink" href="#id10" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Note that in this case, the Nyquist plot crosses the point <span class="math notranslate nohighlight">\(-1\)</span>. This implies the closed-loop system is on the verge of stability (but is not stable). As we decrease <span class="math notranslate nohighlight">\(k\)</span>, the intersection point will go towards the origin, and there will be no rotation around <span class="math notranslate nohighlight">\(-1\)</span>. This implies that if <span class="math notranslate nohighlight">\(k&gt;0\)</span>, the closed-loop system is stable for</p>
+<div class="math notranslate nohighlight">
+\[
+    0&lt;k&lt;\frac{1}{2.85}.
+\]</div>
+<p>If we take  <span class="math notranslate nohighlight">\(-k\)</span>, we obtain:</p>
+<figure class="align-default" id="id11">
+<a class="reference internal image-reference" href="_images/r6_ex4_nyquist_negative_k.png"><img alt="_images/r6_ex4_nyquist_negative_k.png" src="_images/r6_ex4_nyquist_negative_k.png" style="width: 70%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 33 </span><span class="caption-text">Nyquist Plot of <span class="math notranslate nohighlight">\(-kG(s)=-k\frac{8(s-25)}{s^2+4s+70}\)</span>.</span><a class="headerlink" href="#id11" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Note that the Nyquist is rotated with respect to the imaginary axis, but the phase tendency is the same. If we take <span class="math notranslate nohighlight">\(k=\frac{1}{2}\)</span>, we exactly cross the point <span class="math notranslate nohighlight">\(-1\)</span>:</p>
+<figure class="align-default" id="id12">
+<a class="reference internal image-reference" href="_images/r6_ex4_nyquist_negative_k_half.png"><img alt="_images/r6_ex4_nyquist_negative_k_half.png" src="_images/r6_ex4_nyquist_negative_k_half.png" style="width: 70%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 34 </span><span class="caption-text">Nyquist Plot of <span class="math notranslate nohighlight">\(-\frac{1}{2}\cdot G(s)=-\frac{1}{2}\cdot\frac{8(s-25)}{s^2+4s+70}\)</span>.</span><a class="headerlink" href="#id12" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Again, since the Nyquist crosses <span class="math notranslate nohighlight">\(-1\)</span> the closed-loop system will be on the verge of stability (but not stable). As we decrease <span class="math notranslate nohighlight">\(k\)</span> the intersection moves closer to the origin, so there will be no rotations around <span class="math notranslate nohighlight">\(-1\)</span> and the closed-loop system will be stable. So we have</p>
+<div class="math notranslate nohighlight">
+\[
+    -\frac{1}{2}&lt;k&lt;0.
+\]</div>
+<p>Combining both cases, we have that the closed-loop system is stable for</p>
+<div class="math notranslate nohighlight">
+\[
+    -\frac{1}{2}&lt;k&lt;\frac{1}{2.85}.
+\]</div>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "executablebooks/jupyter-book",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="rec5.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Introduction to Control – Recitation 5</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nyquist-plot">Nyquist Plot</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reminder-cauchys-principle">Reminder – Cauchy’s Principle</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example">Example</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#magnitude-function-of-a-transfer-function">Magnitude Function of a Transfer Function</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#phase-function-of-a-transform-function">Phase Function of a Transform Function</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nyquist-plot-drawing-rules">Nyquist Plot Drawing Rules</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stability-condition">Stability Condition</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1">Exercise 1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution">Solution</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#affect-of-gain-on-the-nyquist-plot">Affect of Gain on the Nyquist Plot</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Example</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2">Exercise 2</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Solution</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nyquist-plot-of-a-transfer-function-with-imaginary-poles">Nyquist Plot of a Transfer Function with Imaginary Poles</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3">Exercise 3</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Solution</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4">Exercise - 4</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">Solution</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Omri Dalin
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
