@@ -115,7 +115,19 @@ We also note that for $|\theta|\ll1$, then $\tan^{-1}(\theta)\approx\theta$. Fin
     \tan^{-1}(\alpha)\pm\tan^{-1}(\beta)=\tan^{-1}\Big(\frac{\alpha\pm\beta}{1\mp \alpha\beta}\Big).
 ```
 
+```{prf:remark}
+Note that every complex number $z=x+jy$ can be written in terms of magnitude and phase: $z=re^{j\theta}$, where $r$, the magnitude, is the distance of the complex number from the origin, and $\theta$, the phase, is the angle with respect to the positive real axis, where positive angle trend is in the counter-clockwise direction. 
 
+<center>
+<a href="https://mybinder.org/v2/gh/Omrid1994/intro_to_control_recs/main?urlpath=voila/render/complex_number.ipynb" target="_blank">
+    <button style="font-size:18px; padding:10px 20px; background-color:#0078D4; color:white; border:none; border-radius:5px; cursor:pointer;">
+        💡 Click to Open Interactive Complex Number Plot
+    </button>
+</a>
+</center>
+
+
+```
 ## Nyquist Plot Drawing Rules
 
 
@@ -441,7 +453,7 @@ For stability, we need to have one counter-clockwise encirclement around $-1$. I
 <center>
 <a href="https://mybinder.org/v2/gh/Omrid1994/intro_to_control_recs/main?urlpath=voila/render/Nyquist_ex2.ipynb" target="_blank">
     <button style="font-size:18px; padding:10px 20px; background-color:#0078D4; color:white; border:none; border-radius:5px; cursor:pointer;">
-        📊 Click to Open Nyquist Example 2
+        📊 Click to Open Interactive Nyquist of Exercise 2
     </button>
 </a>
 </center>
