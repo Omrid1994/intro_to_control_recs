@@ -337,7 +337,7 @@ name: fig:R6_EX1
 Nyquist Plot of $G(s)=\frac{150}{(s+2)(s+5)(s+10)}$.
 ```
 
-We move on to stability. $G(s)$ has no right-handed poles, so $P=0$. We have no encirclements of $-1$ in Figure {numref}`fig:R6_EX1`, so $N=0$. We thus have
+We move on to stability. $G(s)$ has no right-handed poles, so $P=0$. We have no encirclements of $-1$ in {numref}`fig:R6_EX1`, so $N=0$. We thus have
 
 $$
     N=P-Z\rightarrow 0=0-Z\rightarrow Z=0.
@@ -437,6 +437,14 @@ N=P-Z\rightarrow N=1-Z\rightarrow Z=1-N.
 $$
 
 For stability, we need to have one counter-clockwise encirclement around $-1$. It is important to emphasize that here we only pass through $-1$, and we never encircle it. So in this case, the system is no stable for any value of $k$.
+
+<center>
+<a href="https://mybinder.org/v2/gh/Omrid1994/intro_to_control_recs/main?urlpath=voila/render/nyquist_slider.ipynb" target="_blank">
+    <button style="font-size:18px; padding:10px 20px; background-color:#0078D4; color:white; border:none; border-radius:5px; cursor:pointer;">
+        🚀 Click to Open Interactive Nyquist Plot
+    </button>
+</a>
+</center>
 
 ```{prf:remark}
 It is important to emphasize that if the Nyquist plot of $G(s)$ passes through $-1$, we will not have stability. This case corresponds to being on the verge if stability, that is, the closed-loop transfer function will have purely imaginary poles.
