@@ -438,14 +438,6 @@ $$
 
 For stability, we need to have one counter-clockwise encirclement around $-1$. It is important to emphasize that here we only pass through $-1$, and we never encircle it. So in this case, the system is no stable for any value of $k$.
 
-<center>
-<a href="https://mybinder.org/v2/gh/Omrid1994/intro_to_control_recs/main?urlpath=voila/render/nyquist_slider.ipynb" target="_blank">
-    <button style="font-size:18px; padding:10px 20px; background-color:#0078D4; color:white; border:none; border-radius:5px; cursor:pointer;">
-        🚀 Click to Open Interactive Nyquist Plot
-    </button>
-</a>
-</center>
-
 ```{prf:remark}
 It is important to emphasize that if the Nyquist plot of $G(s)$ passes through $-1$, we will not have stability. This case corresponds to being on the verge if stability, that is, the closed-loop transfer function will have purely imaginary poles.
 ```
@@ -841,6 +833,14 @@ name: fig:r6_ex3
 ---
 Nyquist Plot of $-\frac{1}{2}\cdot G(s)=-\frac{1}{2}\cdot\frac{8(s-25)}{s^2+4s+70}$.
 ```
+
+<center>
+<a href="https://mybinder.org/v2/gh/Omrid1994/intro_to_control_recs/main?urlpath=voila/render/nyquist_slider.ipynb" target="_blank">
+    <button style="font-size:18px; padding:10px 20px; background-color:#0078D4; color:white; border:none; border-radius:5px; cursor:pointer;">
+        🚀 Click to Open Interactive Nyquist Plot
+    </button>
+</a>
+</center>
 
 Again, since the Nyquist crosses $-1$ the closed-loop system will be on the verge of stability (but not stable). As we decrease $k$ the intersection moves closer to the origin, so there will be no rotations around $-1$ and the closed-loop system will be stable. So we have
 
