@@ -1,5 +1,5 @@
-jupyter-book
-matplotlib
 numpy
+matplotlib
 control
 ipywidgets
+voila
