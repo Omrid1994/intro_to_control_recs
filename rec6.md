@@ -438,6 +438,14 @@ $$
 
 For stability, we need to have one counter-clockwise encirclement around $-1$. It is important to emphasize that here we only pass through $-1$, and we never encircle it. So in this case, the system is no stable for any value of $k$.
 
+<center>
+<a href="https://mybinder.org/v2/gh/Omrid1994/intro_to_control_recs/main?urlpath=voila/render/Nyquist_ex2.ipynb" target="_blank">
+    <button style="font-size:18px; padding:10px 20px; background-color:#0078D4; color:white; border:none; border-radius:5px; cursor:pointer;">
+        📊 Click to Open Interactive Nyquist of Exercise 2
+    </button>
+</a>
+</center>
+
 ```{prf:remark}
 It is important to emphasize that if the Nyquist plot of $G(s)$ passes through $-1$, we will not have stability. This case corresponds to being on the verge if stability, that is, the closed-loop transfer function will have purely imaginary poles.
 ```
