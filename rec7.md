@@ -96,7 +96,7 @@ The gain margin is the distance in the magnitude plot of the Bode diagram, betwe
 
 Essentially, the gain margin tells us how much gain variation is allowed before instability occurs at the phase crossover frequency, and the phase margin tells us how much phase variation is allowed before instability occurs at the gain crossover frequency.
 
-```{figure} images/Rec7/gain_phase_margin_fixed.png
+```{figure} images/Rec7/gain_phase_margin.svg
 ---
 width: 80%
 name: fig:r6_ex3
