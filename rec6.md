@@ -703,7 +703,7 @@ $$
 Computing for $\omega\rightarrow0$ and $\omega\rightarrow\infty$ we have
 
 $$
-    \big|G(j\cdot0)\big|=\frac{\sqrt{200^2}}{\sqrt{70^2}}=2.85,\quad \big|G(j\cdot\omega\rightarrow\infty)\big|\rightarrow\infty.
+    \big|G(j\cdot0)\big|=\frac{\sqrt{200^2}}{\sqrt{70^2}}=2.85,\quad \big|G(j\cdot\omega\rightarrow\infty)\big|\rightarrow0.
 $$
 
 The last result holds since the denominator is dominant.

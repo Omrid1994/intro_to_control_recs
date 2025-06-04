@@ -298,7 +298,7 @@ Designing a lead controller:
 4. $\phi_m$ gives the value for $\alpha$ using {eq}`eq:phi_m`.
 5. Find $\omega_m$ using:
 
-```{matn}
+```{math}
 :label: eq:find_omega_m
         |P(j\omega_m)|_{dB}=20\log_{10}(\sqrt{\alpha})\iff|P(j\omega_m)|=\sqrt{\alpha}.
 ```	
@@ -370,13 +370,13 @@ $$
 $$
 
 ```{prf:remark}
-Note that for any $\omega>0$, $P(j\omega)\in\mathbb{C}$, that is, $P(j\omega)=a_\omega+jb_\omega$ for some $a_\omega,\;b_\omega\in\R$. The phase is $\angle P(j\omega)=tan^{-1}\big(\frac{b_\omega}{a_\omega}\big)$ adding $\pm180$ if needed. The magnitude is $|P(j\omega)|=\sqrt{a_\omega^2+b_\omega^2}$.
+Note that for any $\omega>0$, $P(j\omega)\in\mathbb{C}$, that is, $P(j\omega)=a_\omega+jb_\omega$ for some $a_\omega,\;b_\omega\in\mathbb{R}$. The phase is $\angle P(j\omega)=tan^{-1}\big(\frac{b_\omega}{a_\omega}\big)$ adding $\pm180$ if needed. The magnitude is $|P(j\omega)|=\sqrt{a_\omega^2+b_\omega^2}$.
 ```
 
 We have
 
 $$
-    P(j\omega_g=0.396)&=\frac{0.09(0.09-0.396^2)}{(0.09-0.396^2)^2+(0.15\cdot0.396)^2}-j\frac{0.0135\cdot0.396}{(0.09-0.396^2)^2+(0.15\cdot0.396)^2}&\\=-0.75-j0.66.
+    P(j\omega_g=0.396)&=\frac{0.09(0.09-0.396^2)}{(0.09-0.396^2)^2+(0.15\cdot0.396)^2}-j\frac{0.0135\cdot0.396}{(0.09-0.396^2)^2+(0.15\cdot0.396)^2}&\\&=-0.75-j0.66.
 $$
 
 Since $-0.75-j0.66$ is in the third quadrant, we deduct $-180^\circ$ from the phase:
