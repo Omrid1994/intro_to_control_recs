@@ -637,6 +637,8 @@ t_1=8.95,\quad t_{2,3}=-9.47\pm j9.4.
 <li><p><span class="math notranslate nohighlight">\(\phi_m\)</span> gives the value for <span class="math notranslate nohighlight">\(\alpha\)</span> using <a class="reference internal" href="#equation-eq-phi-m">(31)</a>.</p></li>
 <li><p>Find <span class="math notranslate nohighlight">\(\omega_m\)</span> using:</p></li>
 </ol>
+<div class="math notranslate nohighlight" id="equation-eq-find-omega-m">
+<span class="eqno">(32)<a class="headerlink" href="#equation-eq-find-omega-m" title="Link to this equation">#</a></span>\[        |P(j\omega_m)|_{dB}=20\log_{10}(\sqrt{\alpha})\iff|P(j\omega_m)|=\sqrt{\alpha}.\]</div>
 <ol class="arabic simple" start="6">
 <li><p>Obtain <span class="math notranslate nohighlight">\(\tau\)</span> from <a class="reference internal" href="#equation-eq-omega-m">(30)</a>.</p></li>
 </ol>
@@ -644,7 +646,7 @@ t_1=8.95,\quad t_{2,3}=-9.47\pm j9.4.
 <h3>Exercise<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
 <p>Consider the plant</p>
 <div class="math notranslate nohighlight" id="equation-eq-p">
-<span class="eqno">(32)<a class="headerlink" href="#equation-eq-p" title="Link to this equation">#</a></span>\[    P(s)=\frac{0.09}{s^2+0.15s+0.09}.\]</div>
+<span class="eqno">(33)<a class="headerlink" href="#equation-eq-p" title="Link to this equation">#</a></span>\[    P(s)=\frac{0.09}{s^2+0.15s+0.09}.\]</div>
 <ol class="arabic simple">
 <li><p>Find the phase and gain margins of <span class="math notranslate nohighlight">\(P\)</span>.</p></li>
 <li><p>Design a lead controller such that the phase margin is <span class="math notranslate nohighlight">\(60^\circ\)</span>.</p></li>
@@ -692,12 +694,12 @@ t_1=8.95,\quad t_{2,3}=-9.47\pm j9.4.
 <div class="proof remark admonition" id="remark-6">
 <p class="admonition-title"><span class="caption-number">Remark 18 </span></p>
 <section class="remark-content" id="proof-content">
-<p>Note that for any <span class="math notranslate nohighlight">\(\omega&gt;0\)</span>, <span class="math notranslate nohighlight">\(P(j\omega)\in\mathbb{C}\)</span>, that is, <span class="math notranslate nohighlight">\(P(j\omega)=a_\omega+jb_\omega\)</span> for some <span class="math notranslate nohighlight">\(a_\omega,\;b_\omega\in\R\)</span>. The phase is <span class="math notranslate nohighlight">\(\angle P(j\omega)=tan^{-1}\big(\frac{b_\omega}{a_\omega}\big)\)</span> adding <span class="math notranslate nohighlight">\(\pm180\)</span> if needed. The magnitude is <span class="math notranslate nohighlight">\(|P(j\omega)|=\sqrt{a_\omega^2+b_\omega^2}\)</span>.</p>
+<p>Note that for any <span class="math notranslate nohighlight">\(\omega&gt;0\)</span>, <span class="math notranslate nohighlight">\(P(j\omega)\in\mathbb{C}\)</span>, that is, <span class="math notranslate nohighlight">\(P(j\omega)=a_\omega+jb_\omega\)</span> for some <span class="math notranslate nohighlight">\(a_\omega,\;b_\omega\in\mathbb{R}\)</span>. The phase is <span class="math notranslate nohighlight">\(\angle P(j\omega)=tan^{-1}\big(\frac{b_\omega}{a_\omega}\big)\)</span> adding <span class="math notranslate nohighlight">\(\pm180\)</span> if needed. The magnitude is <span class="math notranslate nohighlight">\(|P(j\omega)|=\sqrt{a_\omega^2+b_\omega^2}\)</span>.</p>
 </section>
 </div><p>We have</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
-    P(j\omega_g=0.396)&amp;=\frac{0.09(0.09-0.396^2)}{(0.09-0.396^2)^2+(0.15\cdot0.396)^2}-j\frac{0.0135\cdot0.396}{(0.09-0.396^2)^2+(0.15\cdot0.396)^2}&amp;\\=-0.75-j0.66.
+    P(j\omega_g=0.396)&amp;=\frac{0.09(0.09-0.396^2)}{(0.09-0.396^2)^2+(0.15\cdot0.396)^2}-j\frac{0.0135\cdot0.396}{(0.09-0.396^2)^2+(0.15\cdot0.396)^2}&amp;\\&amp;=-0.75-j0.66.
 \end{split}\]</div>
 <p>Since <span class="math notranslate nohighlight">\(-0.75-j0.66\)</span> is in the third quadrant, we deduct <span class="math notranslate nohighlight">\(-180^\circ\)</span> from the phase:</p>
 <div class="math notranslate nohighlight">
@@ -745,7 +747,7 @@ t_1=8.95,\quad t_{2,3}=-9.47\pm j9.4.
 \[
     0.868(1+\alpha)=1-\alpha\rightarrow \alpha=0.07.
 \]</div>
-<p>Note that in fact <span class="math notranslate nohighlight">\(0&lt;\alpha&lt;1\)</span>. Next, we find <span class="math notranslate nohighlight">\(\omega_m\)</span> using <code class="xref eq docutils literal notranslate"><span class="pre">eq:find_omega_m</span></code>. We have</p>
+<p>Note that in fact <span class="math notranslate nohighlight">\(0&lt;\alpha&lt;1\)</span>. Next, we find <span class="math notranslate nohighlight">\(\omega_m\)</span> using <a class="reference internal" href="#equation-eq-find-omega-m">(32)</a>. We have</p>
 <div class="math notranslate nohighlight">
 \[
     |P(j\omega_m)|=\frac{0.09}{\sqrt{(0.09-\omega_m^2)^2+(0.15\omega_m)^2}}=\sqrt{\alpha}\approx0.26.
