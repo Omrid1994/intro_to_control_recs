@@ -390,6 +390,15 @@
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution">Solution</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#phase-lead-controller">Phase Lead Controller</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Exercise</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Solution</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#drawing-nyquist-from-a-bode-plot">Drawing Nyquist from a Bode Plot</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">Exercise</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -439,7 +448,7 @@ G(j\omega) = -1.
 </div><div class="proof definition admonition" id="definition-1">
 <p class="admonition-title"><span class="caption-number">Definition 4 </span></p>
 <section class="definition-content" id="proof-content">
-<p>If <span class="math notranslate nohighlight">\(\omega_g\)</span> is unique, then the \textbf{phase margin} is</p>
+<p>If <span class="math notranslate nohighlight">\(\omega_g\)</span> is unique, then the <strong>phase margin</strong> is</p>
 <div class="math notranslate nohighlight" id="equation-eq-phase-margin">
 <span class="eqno">(26)<a class="headerlink" href="#equation-eq-phase-margin" title="Link to this equation">#</a></span>\[    \varphi_m=\arg\big(G(j\omega_g)\big)-(-180^\circ).\]</div>
 </section>
@@ -597,6 +606,265 @@ t_1=8.95,\quad t_{2,3}=-9.47\pm j9.4.
 </figure>
 </section>
 </section>
+<section id="phase-lead-controller">
+<h2>Phase Lead Controller<a class="headerlink" href="#phase-lead-controller" title="Link to this heading">#</a></h2>
+<p>The phase lead controller is a controller of the form</p>
+<div class="math notranslate nohighlight" id="equation-eq-lead-compensator">
+<span class="eqno">(29)<a class="headerlink" href="#equation-eq-lead-compensator" title="Link to this equation">#</a></span>\[    C(s)=\frac{1+\tau s}{1+\alpha\tau s},\quad 0&lt;\alpha&lt;1,\;\tau&gt;0.\]</div>
+<figure class="align-default" id="id2">
+<a class="reference internal image-reference" href="_images/lead_compensator.png"><img alt="_images/lead_compensator.png" src="_images/lead_compensator.png" style="width: 85%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 35 </span><span class="caption-text">Bode plot of <a class="reference internal" href="#equation-eq-lead-compensator">(29)</a>.</span><a class="headerlink" href="#id2" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>There is no additional gain for low frequencies. The controller contributes phase which will increase the phase margin.</p>
+<p>The maximum phase in <span class="math notranslate nohighlight">\(C\)</span> is obtained for</p>
+<div class="math notranslate nohighlight" id="equation-eq-omega-m">
+<span class="eqno">(30)<a class="headerlink" href="#equation-eq-omega-m" title="Link to this equation">#</a></span>\[    \boxed{\omega_m=\frac{1}{\sqrt{\alpha}\tau}}\]</div>
+<p>The maximal phase value, <span class="math notranslate nohighlight">\(\phi_m\)</span> is given by</p>
+<div class="math notranslate nohighlight" id="equation-eq-phi-m">
+<span class="eqno">(31)<a class="headerlink" href="#equation-eq-phi-m" title="Link to this equation">#</a></span>\[    \boxed{\sin(\phi_m)=\frac{1-\alpha}{1+\alpha}}\]</div>
+<p>The magnitude at <span class="math notranslate nohighlight">\(\omega_m\)</span> is</p>
+<div class="math notranslate nohighlight">
+\[
+    |C(j\omega_m)|_{dB}=20\log_{10}(\frac{1}{\sqrt{\alpha}})\iff |C(j\omega_m)|=\frac{1}{\sqrt{\alpha}}.
+\]</div>
+<p>Designing a lead controller:</p>
+<ol class="arabic simple">
+<li><p>Draw the Bode plot of <span class="math notranslate nohighlight">\(P(j\omega)\)</span>.</p></li>
+<li><p>Find the gain and phase margins.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\phi_m=PM_{requirement}-PM_{of\;P}\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\phi_m\)</span> gives the value for <span class="math notranslate nohighlight">\(\alpha\)</span> using <a class="reference internal" href="#equation-eq-phi-m">(31)</a>.</p></li>
+<li><p>Find <span class="math notranslate nohighlight">\(\omega_m\)</span> using:</p></li>
+</ol>
+<ol class="arabic simple" start="6">
+<li><p>Obtain <span class="math notranslate nohighlight">\(\tau\)</span> from <a class="reference internal" href="#equation-eq-omega-m">(30)</a>.</p></li>
+</ol>
+<section id="id3">
+<h3>Exercise<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
+<p>Consider the plant</p>
+<div class="math notranslate nohighlight" id="equation-eq-p">
+<span class="eqno">(32)<a class="headerlink" href="#equation-eq-p" title="Link to this equation">#</a></span>\[    P(s)=\frac{0.09}{s^2+0.15s+0.09}.\]</div>
+<ol class="arabic simple">
+<li><p>Find the phase and gain margins of <span class="math notranslate nohighlight">\(P\)</span>.</p></li>
+<li><p>Design a lead controller such that the phase margin is <span class="math notranslate nohighlight">\(60^\circ\)</span>.</p></li>
+</ol>
+</section>
+<section id="id4">
+<h3>Solution<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
+<p>The Bode plot of <span class="math notranslate nohighlight">\(P\)</span> is:</p>
+<figure class="align-default" id="id5">
+<a class="reference internal image-reference" href="_images/Bode_exercise_2.png"><img alt="_images/Bode_exercise_2.png" src="_images/Bode_exercise_2.png" style="width: 85%;" /></a>
+</figure>
+<ol class="arabic simple">
+<li><p>We find the magnitude function of <span class="math notranslate nohighlight">\(P\)</span>:</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[
+    P(j\omega)=\frac{0.09}{0.09-\omega^2+j0.15\omega}.
+\]</div>
+<p>The magnitude is</p>
+<div class="math notranslate nohighlight">
+\[
+    |P(j\omega)|=\frac{0.09}{\sqrt{(0.09-\omega^2)^2+(0.15\omega)^2}}.
+\]</div>
+<p>We find the gain crossover frequency, <span class="math notranslate nohighlight">\(\omega_g\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+    |P(j\omega_g)|=\frac{0.09}{\sqrt{(0.09-\omega_g^2)^2+(0.15\omega_g)^2}}=1.
+\]</div>
+<p>We have</p>
+<div class="math notranslate nohighlight">
+\[
+    8\cdot10^{-1}=(0.09-\omega_g^2)^2+(0.15\omega_g)^2.
+\]</div>
+<p>From which we obtain</p>
+<div class="math notranslate nohighlight">
+\[
+    \omega_g\approx0.396.
+\]</div>
+<p>We cannot find an explicit expression for the phase of <span class="math notranslate nohighlight">\(P\)</span>, so we write:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    P(j\omega)&amp;=\frac{0.09}{0.09-\omega^2+j0.15\omega}\cdot\frac{0.09-\omega^2-j0.15\omega}{0.09-\omega^2-j0.15\omega}\\
+    &amp;=\frac{0.09(0.09-\omega^2)}{(0.09-\omega^2)^2+(0.15\omega)^2}-j\frac{0.0135\omega}{(0.09-\omega^2)^2+(0.15\omega)^2}.
+\end{split}\]</div>
+<div class="proof remark admonition" id="remark-6">
+<p class="admonition-title"><span class="caption-number">Remark 18 </span></p>
+<section class="remark-content" id="proof-content">
+<p>Note that for any <span class="math notranslate nohighlight">\(\omega&gt;0\)</span>, <span class="math notranslate nohighlight">\(P(j\omega)\in\mathbb{C}\)</span>, that is, <span class="math notranslate nohighlight">\(P(j\omega)=a_\omega+jb_\omega\)</span> for some <span class="math notranslate nohighlight">\(a_\omega,\;b_\omega\in\R\)</span>. The phase is <span class="math notranslate nohighlight">\(\angle P(j\omega)=tan^{-1}\big(\frac{b_\omega}{a_\omega}\big)\)</span> adding <span class="math notranslate nohighlight">\(\pm180\)</span> if needed. The magnitude is <span class="math notranslate nohighlight">\(|P(j\omega)|=\sqrt{a_\omega^2+b_\omega^2}\)</span>.</p>
+</section>
+</div><p>We have</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    P(j\omega_g=0.396)&amp;=\frac{0.09(0.09-0.396^2)}{(0.09-0.396^2)^2+(0.15\cdot0.396)^2}-j\frac{0.0135\cdot0.396}{(0.09-0.396^2)^2+(0.15\cdot0.396)^2}&amp;\\=-0.75-j0.66.
+\end{split}\]</div>
+<p>Since <span class="math notranslate nohighlight">\(-0.75-j0.66\)</span> is in the third quadrant, we deduct <span class="math notranslate nohighlight">\(-180^\circ\)</span> from the phase:</p>
+<div class="math notranslate nohighlight">
+\[
+    \angle P(j\omega_g=0.396)=-180^\circ+\tan^{-1}\big(\frac{0.66}{0.75}\big)=-180^\circ+41.34^\circ=-138.65^\circ.
+\]</div>
+<p>To reach <span class="math notranslate nohighlight">\(-138.65^\circ\)</span> from <span class="math notranslate nohighlight">\(-180^\circ\)</span> we need an <strong>increase</strong> in phase of <span class="math notranslate nohighlight">\(41.34^\circ\)</span>, thus</p>
+<div class="math notranslate nohighlight">
+\[
+    PM_{\text{of }P}=41.34^\circ.
+\]</div>
+<p>It is clear from the Bode plot of <span class="math notranslate nohighlight">\(P\)</span> that we never reach <span class="math notranslate nohighlight">\(-180^\circ\)</span>, this implies that <span class="math notranslate nohighlight">\(\omega_c\rightarrow\infty\)</span>, and the gain margin is infinite,</p>
+<div class="math notranslate nohighlight">
+\[
+    GM_{dB}=\infty.
+\]</div>
+<ol class="arabic simple" start="2">
+<li><p>We design a controller of the form:</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[
+    C(s)=\frac{1+\tau s}{1+\alpha\tau s},\quad 0&lt;\alpha&lt;1,\;\tau&gt;0.
+\]</div>
+<p>The additional phase we need is:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    \phi_m&amp;=PM_{requirement}-PM_{of\;P}\\
+    &amp;=60^\circ-41.34^\circ\\
+    &amp;=18.66^\circ.
+\end{split}\]</div>
+<div class="proof remark admonition" id="remark-7">
+<p class="admonition-title"><span class="caption-number">Remark 19 </span></p>
+<section class="remark-content" id="proof-content">
+<p>Sometimes, we take margin of safety, adding <span class="math notranslate nohighlight">\(10-15\%\)</span> to the required increase in phase. For example, we would sometimes take <span class="math notranslate nohighlight">\(\phi_m=18.66\cdot1.1^\circ\)</span>.</p>
+</section>
+</div><p>From <a class="reference internal" href="#equation-eq-phi-m">(31)</a> we have</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    \sin(\phi_m)&amp;=\sin(18.66)\\
+                &amp;=0.868\\
+                &amp;=\frac{1-\alpha}{1+\alpha}.
+\end{split}\]</div>
+<p>We have</p>
+<div class="math notranslate nohighlight">
+\[
+    0.868(1+\alpha)=1-\alpha\rightarrow \alpha=0.07.
+\]</div>
+<p>Note that in fact <span class="math notranslate nohighlight">\(0&lt;\alpha&lt;1\)</span>. Next, we find <span class="math notranslate nohighlight">\(\omega_m\)</span> using <code class="xref eq docutils literal notranslate"><span class="pre">eq:find_omega_m</span></code>. We have</p>
+<div class="math notranslate nohighlight">
+\[
+    |P(j\omega_m)|=\frac{0.09}{\sqrt{(0.09-\omega_m^2)^2+(0.15\omega_m)^2}}=\sqrt{\alpha}\approx0.26.
+\]</div>
+<p>Solving for <span class="math notranslate nohighlight">\(\omega_m\)</span> we have:</p>
+<div class="math notranslate nohighlight">
+\[
+    \omega_m\approx0.5.
+\]</div>
+<div class="seealso dropdown admonition">
+<p class="admonition-title">Click here for the derivation</p>
+<p>Raising to the power of two we have</p>
+<div class="math notranslate nohighlight">
+\[
+    \frac{(0.09)^2}{(0.09-\omega_m^2)^2+(0.15\omega_m)^2}=(0.26)^2\rightarrow(0.09)^2=(0.26)^2\big((0.09-\omega_m^2)^2+(0.15\omega_m)^2\big).
+\]</div>
+<p>Denote <span class="math notranslate nohighlight">\(t=\omega^2\)</span>. Then we have</p>
+<div class="math notranslate nohighlight">
+\[
+    (0.09)^2=(0.26)^2\big((0.09-t)^2+(0.15)^2t\big)\rightarrow t^2-0.1575t-0.1117=0.
+\]</div>
+<p>The roots are:</p>
+<div class="math notranslate nohighlight">
+\[
+    t_1=0.422151,\quad t_2=-0.4194.
+\]</div>
+<p>We only consider real positive <span class="math notranslate nohighlight">\(t\)</span>. Then</p>
+<div class="math notranslate nohighlight">
+\[
+    \omega_m^2=t=0.422151\rightarrow \omega_m=\sqrt{0.422151}\approx0.65.
+\]</div>
+</div>
+<p>Finally, from <a class="reference internal" href="#equation-eq-omega-m">(30)</a> we have</p>
+<div class="math notranslate nohighlight">
+\[
+    0.65=\frac{1}{0.26\cdot\tau}\rightarrow\tau\approx6.
+\]</div>
+<p>Note that in fact <span class="math notranslate nohighlight">\(\tau&gt;1\)</span>. We obtained:</p>
+<div class="math notranslate nohighlight">
+\[
+    C(s)=\frac{1+6s}{1+0.42s}.
+\]</div>
+<p>The Bode plot of <span class="math notranslate nohighlight">\(C\)</span> is:</p>
+<figure class="align-default" id="id6">
+<a class="reference internal image-reference" href="_images/lead_compensator_q2.png"><img alt="_images/lead_compensator_q2.png" src="_images/lead_compensator_q2.png" style="width: 85%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 36 </span><span class="caption-text">Bode plot of <a class="reference internal" href="#equation-eq-lead-compensator">(29)</a>.</span><a class="headerlink" href="#id6" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>The Bode plot of <span class="math notranslate nohighlight">\(PC\)</span> is:</p>
+<figure class="align-default" id="id7">
+<a class="reference internal image-reference" href="_images/P_with_PC.png"><img alt="_images/P_with_PC.png" src="_images/P_with_PC.png" style="width: 85%;" /></a>
+</figure>
+</section>
+</section>
+<section id="drawing-nyquist-from-a-bode-plot">
+<h2>Drawing Nyquist from a Bode Plot<a class="headerlink" href="#drawing-nyquist-from-a-bode-plot" title="Link to this heading">#</a></h2>
+<p>For any <span class="math notranslate nohighlight">\(\omega&gt;0\)</span>, <span class="math notranslate nohighlight">\(G(j\omega)\in\mathbb{C}\)</span>. That is, for any <span class="math notranslate nohighlight">\(\omega&gt;0\)</span>, <span class="math notranslate nohighlight">\(G(j\omega)=a_\omega+jb_\omega\)</span>, where <span class="math notranslate nohighlight">\(a_\omega,\;b_\omega\in\mathbb{R}\)</span>. The Nyquist plot is a literal plot of <span class="math notranslate nohighlight">\(G(j\omega)\)</span> for any <span class="math notranslate nohighlight">\(\omega\in[0,\infty)\)</span>  on the complex plane, and then reflecting to account for <span class="math notranslate nohighlight">\(\omega\in(-\infty,0]\)</span>. Any complex number <span class="math notranslate nohighlight">\(a_\omega+jb_\omega\)</span> can be written in terms of magnitude (distance from origin) and phase (angle with respect to the positive real axis), <span class="math notranslate nohighlight">\(a_\omega+jb_\omega=r_\omega e^{j\theta_\omega}\)</span>. The Bode plot depicts these magnitudes and phases for any <span class="math notranslate nohighlight">\(\omega\)</span> (on a logarithmic scale).</p>
+<p>This implies that the Nyquist plot and the Bode plot are two representations of the same thing - all complex numbers produces by <span class="math notranslate nohighlight">\(G(j\omega)\)</span>.</p>
+<p>First note that for any <span class="math notranslate nohighlight">\(\omega&gt;0\)</span></p>
+<div class="math notranslate nohighlight">
+\[
+    |G(j\omega)|_{dB}=20\log_{10}(|G(j\omega)|_{linear})\rightarrow |G(j\omega)|_{linear}=10^{\frac{|G(j\omega)|_{dB}}{20}}.
+\]</div>
+<p>From the Bode plot, we obtain gain and phase values for <span class="math notranslate nohighlight">\(\omega=0,\;\omega\rightarrow\infty\)</span>, the intersections with the real axis (values where the phase plot crosses <span class="math notranslate nohighlight">\(0^\circ\)</span> and <span class="math notranslate nohighlight">\(-180^\circ\)</span>, intersections with the imaginary axis (values where the phase plot crosses <span class="math notranslate nohighlight">\(90^\circ\)</span>, <span class="math notranslate nohighlight">\(270^\circ\)</span>). The trend of the phase plot implies the trend of the Nyquist curve.</p>
+<section id="id8">
+<h3>Exercise<a class="headerlink" href="#id8" title="Link to this heading">#</a></h3>
+<p>Consider</p>
+<div class="math notranslate nohighlight">
+\[
+    G(s)=\frac{(s+1)(s+5)}{(s^2-2)(s^2+s+1)}.
+\]</div>
+<p>The magnitude Bode plot of <span class="math notranslate nohighlight">\(G\)</span> is:</p>
+<figure class="align-default" id="id9">
+<a class="reference internal image-reference" href="_images/Bode_For_Recitation_2.png"><img alt="_images/Bode_For_Recitation_2.png" src="_images/Bode_For_Recitation_2.png" style="width: 85%;" /></a>
+</figure>
+<p>The phase Bode plot of <span class="math notranslate nohighlight">\(G\)</span> is:</p>
+<figure class="align-default" id="id10">
+<a class="reference internal image-reference" href="_images/Bode_For_Recitation.png"><img alt="_images/Bode_For_Recitation.png" src="_images/Bode_For_Recitation.png" style="width: 85%;" /></a>
+</figure>
+<p>By observing the phase plot, it is clear that we do not intersect the imaginary axis, since the phase plot does not intersect <span class="math notranslate nohighlight">\(-90^\circ,\;-270^\circ\)</span>. It is also clear that we intersect the negative real axis three times, once for <span class="math notranslate nohighlight">\(\omega=0\)</span>, once for <span class="math notranslate nohighlight">\(\omega\rightarrow\infty\)</span>, and one other time, at <span class="math notranslate nohighlight">\(\omega_c\)</span>.</p>
+<p>It is clear from the Bode plot that</p>
+<div class="math notranslate nohighlight">
+\[
+    |G(j\cdot0)|_{dB}=7.5 [dB]\rightarrow |G(j\cdot0)|=10^{\frac{7.5}{20}}=2.371.
+\]</div>
+<p>At <span class="math notranslate nohighlight">\(\omega\rightarrow\infty\)</span>,</p>
+<div class="math notranslate nohighlight">
+\[
+    |G(j\omega\rightarrow\infty)|_{dB}\rightarrow-\infty.
+\]</div>
+<p>This corresponds to</p>
+<div class="math notranslate nohighlight">
+\[
+    |G(j\omega\rightarrow\infty)|=0,
+\]</div>
+<p>since <span class="math notranslate nohighlight">\(20\log_{10}(0)=-\infty\)</span>. We are also given</p>
+<div class="math notranslate nohighlight">
+\[
+    |G(j\omega_c)|_{dB}=9.31[dB]\rightarrow |G(j\omega_c)|=10^{\frac{9.31}{20}}=2.921.
+\]</div>
+<p>To summarize</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    |G(j0)|=2.371,&amp;\quad\angle G(j0)=-180^\circ,\\
+    |G(j\omega_c)|=2.921,&amp;\quad \angle G(j\omega_c)=-180^\circ,\\
+    |G(j\omega\rightarrow\infty)|=0,&amp;\quad \angle G(j\omega\rightarrow\infty)=-180^\circ.
+\end{split}\]</div>
+<p>We also know that we do not intersect the imaginary axis. It is clear from the phase plot that for small values of <span class="math notranslate nohighlight">\(\omega\)</span>, the phase increases as we increase <span class="math notranslate nohighlight">\(\omega\)</span>, this implies that the Nyquist plot initially trends “downwards” that is, counter-clockwise. This defines the trend of the entire Nyquist curve.</p>
+<p>We are ready to draw the Nyquist plot of <span class="math notranslate nohighlight">\(G\)</span>:</p>
+<figure class="align-default" id="id11">
+<a class="reference internal image-reference" href="_images/Nyquist_For_Rec.png"><img alt="_images/Nyquist_For_Rec.png" src="_images/Nyquist_For_Rec.png" style="width: 85%;" /></a>
+</figure>
+<p>We zoom in on the origin:</p>
+<figure class="align-default" id="id12">
+<a class="reference internal image-reference" href="_images/Nyquist_For_Rec_2.png"><img alt="_images/Nyquist_For_Rec_2.png" src="_images/Nyquist_For_Rec_2.png" style="width: 85%;" /></a>
+</figure>
+</section>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -659,6 +927,15 @@ t_1=8.95,\quad t_{2,3}=-9.47\pm j9.4.
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#definitions">Definitions</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise">Exercise</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution">Solution</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#phase-lead-controller">Phase Lead Controller</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Exercise</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Solution</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#drawing-nyquist-from-a-bode-plot">Drawing Nyquist from a Bode Plot</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">Exercise</a></li>
 </ul>
 </li>
 </ul>
