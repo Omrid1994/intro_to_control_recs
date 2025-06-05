@@ -3,3 +3,4 @@ matplotlib
 control
 ipywidgets
 voila
+scipy
