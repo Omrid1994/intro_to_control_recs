@@ -1,0 +1,1139 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Introduction to Control – Recitation 8 &#8212; Recitations - Omri Dalin</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/proof.css?v=b4b7a797" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-E2TD05MHVH"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-E2TD05MHVH');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-E2TD05MHVH');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'rec8';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Introduction to Control – Recitation 7" href="rec7.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="title.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="Recitations - Omri Dalin - Home"/>
+    <img src="_static/logo.png" class="logo__image only-dark pst-js-only" alt="Recitations - Omri Dalin - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="title.html">
+                    Intro to Control
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="rec1.html">Introduction to Control – Recitation 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rec2.html">Introduction to Control – Recitation 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rec3.html">Introduction to Control – Recitation 3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rec4.html">Introduction to Control – Recitation 4</a></li>
+<li class="toctree-l1"><a class="reference internal" href="RecSummary.html">Suammary – Transfer Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rec5.html">Introduction to Control – Recitation 5</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rec6.html">Introduction to Control – Recitation 6</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rec7.html">Introduction to Control – Recitation 7</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Introduction to Control – Recitation 8</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Frec8.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/rec8.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Introduction to Control – Recitation 8</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lti-systems">LTI Systems</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise">Exercise</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution">Solution</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#observability">Observability</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#kalman-rank-condition-for-observability">Kalman Rank Condition for Observability</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#popov-belevitch-hautus-test-for-observability">Popov-Belevitch-Hautus Test for Observability</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Exercise</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Solution</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Exercise</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Solution</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="introduction-to-control-recitation-8">
+<h1>Introduction to Control – Recitation 8<a class="headerlink" href="#introduction-to-control-recitation-8" title="Link to this heading">#</a></h1>
+<section id="lti-systems">
+<h2>LTI Systems<a class="headerlink" href="#lti-systems" title="Link to this heading">#</a></h2>
+<p>Consider the system</p>
+<div class="math notranslate nohighlight" id="equation-eq-state-space">
+<span class="eqno">(34)<a class="headerlink" href="#equation-eq-state-space" title="Link to this equation">#</a></span>\[\begin{split}  \dot x(t)&amp;=Ax(t)+B u(t),\\
+y(t)&amp;=C x(t)+D u(t).\end{split}\]</div>
+<p>Here, <span class="math notranslate nohighlight">\(x:[0,\infty)\to \mathbb{R}^n\)</span>
+is the state vector that describes the internal state of the system, <span class="math notranslate nohighlight">\(u:[0,\infty)\to\mathbb{R}^m\)</span>
+is the input, and <span class="math notranslate nohighlight">\(y:[0,\infty)\to \mathbb{R}^p\)</span> is the output. The dimensions of the matrices are then</p>
+<div class="math notranslate nohighlight">
+\[
+A\in\mathbb{R}^{n\times n},\; 
+B\in \mathbb{R}^{n\times m},\; 
+C\in \mathbb{R}^{p\times n},\; 
+D\in \mathbb{R}^{p\times m}.
+\]</div>
+<p>The solution of  is</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    x(t)&amp;= e^{At}x(0)+\int_0^t e^{A(t-s)}Bu(s)ds,\\
+    y(t)&amp;= C \left  (e^{At}x(0)+\int_0^t e^{A(t-s)}Bu(s)ds \right )+Du(t),\nonumber
+\end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\(e^A\)</span> is the matrix exponential of <span class="math notranslate nohighlight">\(A\)</span>. The Laplace representation of <a class="reference internal" href="#equation-eq-state-space">(34)</a> is</p>
+<div class="math notranslate nohighlight">
+\[
+\boxed{\frac{\hat y(s)}{\hat u(s)}  = C (sI_n-A)^{-1} B+D}
+\]</div>
+<section id="exercise">
+<h3>Exercise<a class="headerlink" href="#exercise" title="Link to this heading">#</a></h3>
+<p>Consider the LTI system</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    \dot{x}_1(t)=a_{11}x_1(t)+b_11(t),\\
+    \dot{x}_2(t)=a_{22}x_2(t)+b_21(t),
+\end{split}\]</div>
+<p>with initial conditions <span class="math notranslate nohighlight">\(x_1(0)=x_1,\;x_2(0)=x_2\)</span>.</p>
+<ol class="arabic simple">
+<li><p>Write the equations in matrix form. What is <span class="math notranslate nohighlight">\(A,B\)</span>?</p></li>
+<li><p>Find the solution <span class="math notranslate nohighlight">\(x(t)\)</span>.</p></li>
+</ol>
+</section>
+<section id="solution">
+<h3>Solution<a class="headerlink" href="#solution" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+        \begin{bmatrix}
+            \dot{x}_1(t)\\
+            \dot{x}_2(t)
+        \end{bmatrix}=\begin{bmatrix}
+            a_{11}&amp;0\\0&amp;a_{22}
+        \end{bmatrix}\begin{bmatrix}
+            x_1(t)\\x_2(t)
+        \end{bmatrix}+\begin{bmatrix}
+            b_1\\b_2
+        \end{bmatrix}1(t).
+\end{split}\]</div>
+<p>In this case,</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+        A=\begin{bmatrix}
+            a_{11}&amp;0\\0&amp;a_{22}
+        \end{bmatrix},\quad B=\begin{bmatrix}
+            b_1\\b_2
+        \end{bmatrix},\quad u(t)=1(t).
+\end{split}\]</div>
+<p>The initial condition is <span class="math notranslate nohighlight">\(\vec{x}(0)=\begin{bmatrix}
+        x_1\\x_2
+    \end{bmatrix}\)</span>.</p>
+<ol class="arabic simple" start="2">
+<li><p>First we compute the matrix exponential <span class="math notranslate nohighlight">\(e^{At}\)</span>. Since <span class="math notranslate nohighlight">\(A\)</span> is diagonal,</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+        e^{At}=\begin{bmatrix}
+            e^{a_{11}t}&amp;0\\0&amp;e^{a_{22}t}
+        \end{bmatrix}
+\end{split}\]</div>
+<p>Next, we have</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+        e^{A(t-s)}Bu(s)&amp;=\begin{bmatrix}
+            e^{a_{11}(t-s)}&amp;0\\0&amp;e^{a_{22}(t-s)}
+        \end{bmatrix}\begin{bmatrix}
+            b_1\\b_2
+        \end{bmatrix}1(t)\\
+        &amp;=\begin{bmatrix}
+            b_1e^{a_{11}(t-s)}\\
+            b_2e^{a_{22}(t-s)}
+        \end{bmatrix}1(t).
+\end{split}\]</div>
+<p>Since we integrate over <span class="math notranslate nohighlight">\(s\in[0,t]\)</span>, <span class="math notranslate nohighlight">\(1(s)=1\)</span>. We have:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+        \int_0^t e^{A(t-s)}Bu(s)ds&amp;=\int_0^t\begin{bmatrix}
+            b_1e^{a_{11}(t-s)}\\
+            b_2e^{a_{22}(t-s)}
+        \end{bmatrix}ds\\
+        &amp;=\begin{bmatrix}
+            -\frac{b_1}{a_{11}}e^{a_{11}(t-s)}\\
+            -\frac{b_2}{a_{22}}e^{a_{22}(t-s)}
+        \end{bmatrix}\Bigg|_{s=0}^{s=t}\\
+        &amp;=\begin{bmatrix}
+            \frac{b_1}{a_{11}}\big(e^{a_{11}t}-1\big)\\
+            \frac{b_2}{a_{22}}\big(e^{a_{22}t}-1\big)
+        \end{bmatrix}.
+\end{split}\]</div>
+<p>Putting everything together, we have</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+        x(t)&amp;= e^{At}x(0)+\int_0^t e^{A(t-s)}Bu(s)ds\\
+        &amp;=\begin{bmatrix}
+            e^{a_{11}t}&amp;0\\0&amp;e^{a_{22}t}
+        \end{bmatrix}\begin{bmatrix}
+            x_1\\x_2
+        \end{bmatrix}+\begin{bmatrix}
+            \frac{b_1}{a_{11}}\big(e^{a_{11}t}-1\big)\\
+            \frac{b_2}{a_{22}}\big(e^{a_{22}t}-1\big)
+        \end{bmatrix}\\
+        &amp;=\begin{bmatrix}
+            x_1e^{a_{11}t}+\frac{b_1}{a_{11}}\big(e^{a_{11}t}-1\big)\\
+            x_2e^{a_{22}t}+\frac{b_2}{a_{22}}\big(e^{a_{22}t}-1\big)
+        \end{bmatrix}.
+\end{split}\]</div>
+<div class="proof remark admonition" id="remark-0">
+<p class="admonition-title"><span class="caption-number">Remark 20 </span></p>
+<section class="remark-content" id="proof-content">
+<p>Note that <span class="math notranslate nohighlight">\(\vec{x}(t)\xrightarrow{t\rightarrow\infty}0\)</span> if and only if <span class="math notranslate nohighlight">\(a_{11}&lt;0\)</span> and <span class="math notranslate nohighlight">\(a_{22}&lt;0\)</span>. This implies that an LTI system is asymptotically stable if and only if <span class="math notranslate nohighlight">\(\text{Re}(\lambda)&lt;0\)</span> for all <span class="math notranslate nohighlight">\(\lambda\in\sigma(A)\)</span>.</p>
+</section>
+</div></section>
+</section>
+<section id="observability">
+<h2>Observability<a class="headerlink" href="#observability" title="Link to this heading">#</a></h2>
+<p>Consider the system <a class="reference internal" href="#equation-eq-state-space">(34)</a> is called observable on the time interval <span class="math notranslate nohighlight">\([0,T]\)</span> if it is possible to uniquely determine <span class="math notranslate nohighlight">\(x(0)\)</span> from observing <span class="math notranslate nohighlight">\(u(t),y(t)\)</span> for <span class="math notranslate nohighlight">\(t\in[0,T]\)</span>. Since we assume that the input is known, it is enough to consider the system:</p>
+<div class="math notranslate nohighlight" id="equation-eq-system-obsvr">
+<span class="eqno">(35)<a class="headerlink" href="#equation-eq-system-obsvr" title="Link to this equation">#</a></span>\[\begin{split}        \dot{x}(t)&amp;=Ax(t),\\
+        y(t)&amp;=Cx(t).\end{split}\]</div>
+<p>Note that this implies that</p>
+<div class="math notranslate nohighlight" id="equation-eq-yt-obser">
+<span class="eqno">(36)<a class="headerlink" href="#equation-eq-yt-obser" title="Link to this equation">#</a></span>\[  y(t)=Ce^{At}x(0) \text{ for all } t\geq0.   \]</div>
+<div class="proof definition admonition" id="definition-1">
+<p class="admonition-title"><span class="caption-number">Definition 7 </span></p>
+<section class="definition-content" id="proof-content">
+<p>The system <a class="reference internal" href="#equation-eq-system-obsvr">(35)</a> is called observable on the time interval <span class="math notranslate nohighlight">\([0,T]\)</span> if it is possible to uniquely determine <span class="math notranslate nohighlight">\(x(0)\)</span> from   observing <span class="math notranslate nohighlight">\( y(t)\)</span> for <span class="math notranslate nohighlight">\(t\in[0,T]\)</span>.</p>
+</section>
+</div><p>Since the system is defined by the pair of matrices <span class="math notranslate nohighlight">\((A,C)\)</span>,  we will sometimes use the terminology <span class="math notranslate nohighlight">\((A,C)\)</span> is observable rather than <a class="reference internal" href="#equation-eq-system-obsvr">(35)</a> is observable.</p>
+<p>Define the <span class="math notranslate nohighlight">\(L_2\)</span> norm of the vector <span class="math notranslate nohighlight">\(y(t)\in\mathbb{R}^p\)</span> by</p>
+<div class="math notranslate nohighlight">
+\[
+| y(t)  |_2 : =(|y_1(t)|^2+|y_2(t)|^2+\cdots+|y_p(t)|^2)^{1/2}.
+\]</div>
+<div class="proof proposition admonition" id="prop:obser_y2">
+<p class="admonition-title"><span class="caption-number">Proposition 2 </span></p>
+<section class="proposition-content" id="proof-content">
+<p>The system <a class="reference internal" href="#equation-eq-system-obsvr">(35)</a> is  observable on <span class="math notranslate nohighlight">\([0,T]\)</span> if and only if for every <span class="math notranslate nohighlight">\(x(0)\in\mathbb{R}^n\)</span>, <span class="math notranslate nohighlight">\(x(0)\neq0\)</span>, the output <span class="math notranslate nohighlight">\(y\)</span> that corresponds to the initial state <span class="math notranslate nohighlight">\(x(0)\)</span> satisfies
+$<span class="math notranslate nohighlight">\(
+        \int_0^T | y(t) |_2^2 dt&gt;0.
+\)</span>$</p>
+</section>
+</div><p>In other words, <span class="math notranslate nohighlight">\(y(t)\)</span> is not zero on   the entire time   interval <span class="math notranslate nohighlight">\(t\in[0,T]\)</span>.</p>
+<section id="kalman-rank-condition-for-observability">
+<h3>Kalman Rank Condition for Observability<a class="headerlink" href="#kalman-rank-condition-for-observability" title="Link to this heading">#</a></h3>
+<p>We define the observability matrix of <a class="reference internal" href="#equation-eq-system-obsvr">(35)</a> as</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\mathcal O(A,C):= \begin{bmatrix} 
+C\\CA\\CA^2\\ \vdots\\CA^{n-1}
+\end{bmatrix}.
+\end{split}\]</div>
+<p>Note that <span class="math notranslate nohighlight">\(\mathcal{O}(A,C)\)</span> has dimensions <span class="math notranslate nohighlight">\((np) \times n\)</span>.</p>
+<div class="proof theorem admonition" id="theorem-3">
+<p class="admonition-title"><span class="caption-number">Theorem 1 </span></p>
+<section class="theorem-content" id="proof-content">
+<p>The system <a class="reference internal" href="#equation-eq-system-obsvr">(35)</a> is observable if and only if</p>
+<div class="math notranslate nohighlight">
+\[
+   \text{rank}( \mathcal{O} (A,C))=n. 
+\]</div>
+</section>
+</div></section>
+<section id="popov-belevitch-hautus-test-for-observability">
+<h3>Popov-Belevitch-Hautus Test for Observability<a class="headerlink" href="#popov-belevitch-hautus-test-for-observability" title="Link to this heading">#</a></h3>
+<p>Another important way to verify  observability is the Popov-Belevitch-Hautus (PBH)test for observability.</p>
+<div class="proof theorem admonition" id="theorem-4">
+<p class="admonition-title"><span class="caption-number">Theorem 2 </span></p>
+<section class="theorem-content" id="proof-content">
+<p>(PBH Test for Observability) Consider the system <a class="reference internal" href="#equation-eq-system-obsvr">(35)</a>.
+Let <span class="math notranslate nohighlight">\(\sigma(A)\)</span> denote the set of eigenvalues of <span class="math notranslate nohighlight">\(A\)</span>.
+Then <span class="math notranslate nohighlight">\((A,C)\)</span> is observable if and only if</p>
+<div class="math notranslate nohighlight" id="equation-eq-pbh-test">
+<span class="eqno">(37)<a class="headerlink" href="#equation-eq-pbh-test" title="Link to this equation">#</a></span>\[\begin{split}        rank\begin{bmatrix}
+            \lambda I_n-A\\
+            C
+        \end{bmatrix}=n,\text{ for any }\lambda\in\sigma(A).\end{split}\]</div>
+</section>
+</div><div class="proof remark admonition" id="remark-5">
+<p class="admonition-title"><span class="caption-number">Remark 21 </span></p>
+<section class="remark-content" id="proof-content">
+<p>Notice that the above tests depend only on the matrices <span class="math notranslate nohighlight">\( A \)</span> and <span class="math notranslate nohighlight">\( C \)</span>. Therefore, controllability is a property of the pair <span class="math notranslate nohighlight">\( (A, C) \)</span>. Since <span class="math notranslate nohighlight">\( A \)</span> and <span class="math notranslate nohighlight">\( C \)</span> are constant matrices in time-invariant systems, the controllability property does not change over time. If a system is controllable at a certain time, it is controllable at all times.</p>
+</section>
+</div></section>
+<section id="id1">
+<h3>Exercise<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+<p>Consider the following system:</p>
+<figure class="align-default" id="fig-r6-ex3">
+<a class="reference internal image-reference" href="_images/ex1fig.png"><img alt="_images/ex1fig.png" src="_images/ex1fig.png" style="width: 85%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 37 </span><span class="caption-text">Water Level Control System.</span><a class="headerlink" href="#fig-r6-ex3" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p><code class="xref std std-numref docutils literal notranslate"><span class="pre">fig:r8_ex1_fig</span></code> describes a water level control system for two water tanks using inlet flow rates. The water levels are <span class="math notranslate nohighlight">\(h_1\)</span> and <span class="math notranslate nohighlight">\(h_2\)</span>. The inlet flow rates are <span class="math notranslate nohighlight">\(q_1\)</span> and <span class="math notranslate nohighlight">\(q_2\)</span>. We know that:
+Cross-sectional areas of the tanks:</p>
+<div class="math notranslate nohighlight">
+\[
+  A_1=1,\quad A_2=0.5.
+\]</div>
+<p>Valve resistance coefficients:</p>
+<div class="math notranslate nohighlight">
+\[
+  R_1=R_2=1.
+\]</div>
+<p>Moreover, we know that:</p>
+<div class="math notranslate nohighlight">
+\[
+q_{12}=\frac{h_1}{R_1}, \quad q_{out} = \frac{h_2}{R_2}.
+\]</div>
+<p>We treat the variables as deviation variables around some operating point, meaning that it is possible that <span class="math notranslate nohighlight">\(h&lt;0\)</span> and <span class="math notranslate nohighlight">\(q&lt;0\)</span>.</p>
+<ol class="arabic simple">
+<li><p>Write a physical realization of the system with state vectors <span class="math notranslate nohighlight">\(\vec{x}=\begin{bmatrix}h_1\\h_2\end{bmatrix}\)</span>  and inputs  <span class="math notranslate nohighlight">\(\vec{u}=\begin{bmatrix}q_1\\q_2\end{bmatrix}\)</span>.</p></li>
+</ol>
+<p>We want to determine whether the water levels in the tanks can be reconstructed (that is, if the system is observable) using:</p>
+<ol class="arabic simple" start="2">
+<li><p>A single measured outflow rate, <span class="math notranslate nohighlight">\( q_{1,2} \)</span>.</p></li>
+<li><p>A single measured outflow rate, <span class="math notranslate nohighlight">\(q_{out}\)</span>.</p></li>
+<li><p>Both measured outflow rates <span class="math notranslate nohighlight">\( q_{1,2} \)</span> and <span class="math notranslate nohighlight">\( q_{out} \)</span>.</p></li>
+</ol>
+</section>
+<section id="id2">
+<h3>Solution<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p>The difference between the inflow rate and the outflow rate equals the rate of change of the water volume in the tank. Therefore, the system equations are:</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[
+q_1-q_{12}=\dot{V}_1=A_1\dot{h}_1.
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+q_{12}+q_2-q_{out}=\dot{V}_2=A_2\dot{h}_2.
+\]</div>
+<p>We know that:</p>
+<div class="math notranslate nohighlight">
+\[
+q_{12}=\frac{h_1}{R_1}, \quad q_{out} = \frac{h_2}{R_2}.
+\]</div>
+<p>Substituting the expressions for the outflow rates into the system equations and inserting numerical values, we obtain:</p>
+<div class="math notranslate nohighlight">
+\[
+\dot{h}_1=-\frac{1}{R_1A_1}h_1+\frac{1}{A_1}q_1=-h_1+q_1.
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\dot{h}_2=\frac{1}{R_1A_2}h_1=\frac{1}{R_2A_2}h_2+\frac{1}{A_2}q_2=2h_1-2h_2+2q_2.
+\]</div>
+<p>The state vector consists of the water levels:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\vec{x} = \begin{bmatrix} h_1 \\ h_2 \end{bmatrix}.
+\end{split}\]</div>
+<p>The input vector consists of the flow rates:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\vec{u} = \begin{bmatrix} q_{1} \\ q_{2} \end{bmatrix}.
+\end{split}\]</div>
+<p>Thus, the physical realization of the system is:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    \dot{\vec{x}}=A\vec{x}+B\vec{u}=\begin{bmatrix}
+        -1&amp;0\\2&amp;-2
+    \end{bmatrix}\vec{x}+\begin{bmatrix}
+        1&amp;0\\0&amp;2
+    \end{bmatrix}\vec{u}.
+\end{split}\]</div>
+<p>In this case</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    A=\begin{bmatrix}
+        -1&amp;0\\2&amp;-2
+    \end{bmatrix},\quad B=\begin{bmatrix}
+        1&amp;0\\0&amp;2
+    \end{bmatrix}.
+\end{split}\]</div>
+<p><strong>Eigenvalues and Characteristic Polynomial</strong>:</p>
+<p>The characteristic polynomial of the system is given by:</p>
+<div class="math notranslate nohighlight">
+\[
+p_A(\lambda)=\det(\lambda I - A) .
+\]</div>
+<p>The eigenvalues of the system are the eigenvalues of <span class="math notranslate nohighlight">\(A\)</span>, which are the roots of <span class="math notranslate nohighlight">\(p_A(s)\)</span>.</p>
+<p>We have</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    \lambda I-A=\begin{bmatrix}
+        \lambda+1&amp;0\\-2&amp;\lambda+2
+    \end{bmatrix}.
+\end{split}\]</div>
+<p>Then</p>
+<div class="math notranslate nohighlight">
+\[
+    p_A(\lambda)=(\lambda+1)(\lambda+2).
+\]</div>
+<p>The roots are <span class="math notranslate nohighlight">\(\lambda_1=-1\)</span> and <span class="math notranslate nohighlight">\(\lambda_2=-2\)</span>, thus</p>
+<div class="math notranslate nohighlight">
+\[
+    \sigma(A)=\{-1,\;-2\}.
+\]</div>
+<ol class="arabic simple" start="2">
+<li><p>We check observability with respect to a single outflow measurement <span class="math notranslate nohighlight">\(q_{1,2}\)</span>.</p></li>
+</ol>
+<p>In this case:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+y(t) = q_{1,2}(t)=h_1(t)=\begin{bmatrix}
+    1&amp;0
+\end{bmatrix}\begin{bmatrix}
+    h_1(t)\\h_2(t)
+\end{bmatrix}.
+\end{split}\]</div>
+<p>Thus, the output equation is:</p>
+<div class="math notranslate nohighlight">
+\[
+y(t) = \underbrace{\begin{bmatrix}
+    1&amp;0
+\end{bmatrix}}_{C} \vec{x}(t).
+\]</div>
+<p>To check observability using Kalman’s test, we compute the observability matrix:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\mathcal{O} = \begin{bmatrix} C \\ C A \end{bmatrix}.
+\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    CA=\begin{bmatrix}
+        1&amp;0
+    \end{bmatrix}\begin{bmatrix}
+        -1&amp;0\\2&amp;-2
+    \end{bmatrix}=\begin{bmatrix}
+        2&amp;-2
+    \end{bmatrix}.
+\end{split}\]</div>
+<p>So</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    \mathcal{O}=\begin{bmatrix}
+        0&amp;1\\2&amp;-2
+    \end{bmatrix}.
+\end{split}\]</div>
+<p>Evaluating the determinant:</p>
+<div class="math notranslate nohighlight">
+\[
+\det(\mathcal{O}) \neq 0.
+\]</div>
+<p>Since the rank of <span class="math notranslate nohighlight">\( O \)</span> is equal to the state dimension, the system is observable. This result makes sense, as the outermost outflow includes information about both tank levels. Thus, given knowledge of the inflow, we can fully reconstruct the tank states.</p>
+<p>Using the PBH Test for Observability:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    \lambda_1 I-A=\begin{bmatrix}
+        0&amp;0\\-2&amp;1
+    \end{bmatrix},\;\lambda_2I-A=\begin{bmatrix}
+        -1&amp;0\\-2&amp;0
+    \end{bmatrix}.
+\end{split}\]</div>
+<p>Then we have</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    \begin{bmatrix}
+        \lambda_1 I-A\\C
+    \end{bmatrix}=\begin{bmatrix}
+        0&amp;0\\-2&amp;1\\0&amp;1
+    \end{bmatrix}.
+\end{split}\]</div>
+<p>Clearly the rank is <span class="math notranslate nohighlight">\(2\)</span> which is the order of the system. Moreover, we have</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    \begin{bmatrix}
+        \lambda_2 I-A\\C
+    \end{bmatrix}=\begin{bmatrix}
+        -1&amp;0\\-2&amp;0\\0&amp;1
+    \end{bmatrix}.
+\end{split}\]</div>
+<p>In this case as well, the rank is <span class="math notranslate nohighlight">\(2\)</span> which is the order of the system. Then according to the PBH test, the system is observable.</p>
+<ol class="arabic simple" start="3">
+<li><p>We check observability with respect to the second outflow measurement, <span class="math notranslate nohighlight">\(q_{out}\)</span>. In this case</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[
+y(t) = q_{out}=h_2=\begin{bmatrix}
+    0&amp;1
+\end{bmatrix}\vec{x}(t).
+\]</div>
+<p>Thus, the output matrix is:</p>
+<div class="math notranslate nohighlight">
+\[
+C=\begin{bmatrix}
+    0&amp;1
+\end{bmatrix}.
+\]</div>
+<p>Note that</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    CA=\begin{bmatrix}
+        0&amp;1
+    \end{bmatrix}\begin{bmatrix}
+        -1&amp;0\\2&amp;-2
+    \end{bmatrix}=\begin{bmatrix}
+        -1&amp;0
+    \end{bmatrix}.
+\end{split}\]</div>
+<p>The observability matrix:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\mathcal{O} = \begin{bmatrix} C \\ C A \end{bmatrix}=\begin{bmatrix}
+    1&amp;0\\-1&amp;0
+\end{bmatrix}.
+\end{split}\]</div>
+<p>Clealry the rank is <span class="math notranslate nohighlight">\(1\)</span>.</p>
+<p>Since this rank is less than the state dimension, the system is not observable. This result aligns with intuition: measuring only the second outflow provides no information about the upper tank, meaning we cannot reconstruct the full state.</p>
+<p>Checking the PBH test:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{bmatrix}
+    \lambda_1 I-A\\C
+\end{bmatrix}=\begin{bmatrix}
+    0&amp;0\\-2&amp;1\\1&amp;0
+\end{bmatrix}.
+\end{split}\]</div>
+<p>The rank is <span class="math notranslate nohighlight">\(2\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    \begin{bmatrix}
+        \lambda_2 I-A\\C
+    \end{bmatrix}=\begin{bmatrix}
+        -1&amp;0\\-2&amp;0\\1&amp;0
+    \end{bmatrix}.
+\end{split}\]</div>
+<p>The rank is <span class="math notranslate nohighlight">\(1\)</span> so the PBH test fails (the rank should be <span class="math notranslate nohighlight">\(2\)</span> for all eigenvalues of <span class="math notranslate nohighlight">\(A\)</span>). The system is not observable.</p>
+<ol class="arabic simple" start="4">
+<li><p>We check observability with respect to both outflow measurements, <span class="math notranslate nohighlight">\(q_{1,2}\)</span> and <span class="math notranslate nohighlight">\(q_{out}\)</span>. In this case</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+y(t) = \begin{bmatrix} q_{1,2} \\ q_{out} \end{bmatrix}=\begin{bmatrix}
+    h_1(t)\\h_2(t)
+\end{bmatrix}=\begin{bmatrix}
+    1&amp;0\\0&amp;1
+\end{bmatrix}\begin{bmatrix}
+    h_1(t)\\h_2(t)
+\end{bmatrix}.
+\end{split}\]</div>
+<p>The output matrix is:</p>
+<div class="math notranslate nohighlight">
+\[
+C = I_2.
+\]</div>
+<p>The observability matrix becomes:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\mathcal{O} = \begin{bmatrix} C\\CA\end{bmatrix}=\begin{bmatrix}
+    1&amp;0\\0&amp;1\\-1&amp;0\\2&amp;-2
+\end{bmatrix}.
+\end{split}\]</div>
+<p>Clearly the rank is <span class="math notranslate nohighlight">\(2\)</span>.  Since the rank matches the state dimension, the system is observable (according to the Kalman test) when measuring both outflows.</p>
+</section>
+</section>
+<section id="id3">
+<h2>Exercise<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
+<p>Consider the system</p>
+<div class="math notranslate nohighlight">
+\[
+    \dot{\vec{x}}(t)=A\vec{x}(t),\quad y(t)=C\vec{x}(t).
+\]</div>
+<p>With</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    A=\begin{bmatrix}
+        -1&amp;0\\0&amp;-2
+    \end{bmatrix},\quad C=\begin{bmatrix}
+        c_1&amp;c_2
+    \end{bmatrix},
+\end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\(c_1,\;c_2\in\mathbb{R}\)</span>. The an initial condition is:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\vec{x}(0) = \begin{bmatrix}
+    x_1^0\\x_2^0
+\end{bmatrix},
+\end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\(x_1^0\neq x_2^0\)</span>. We seek to determine for which values of <span class="math notranslate nohighlight">\( c_1,c_2 \)</span> the system is observable using the definition of observability.</p>
+<section id="id4">
+<h3>Solution<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
+<p>To check observability, we compute <span class="math notranslate nohighlight">\( y(t) \)</span> explicitly. First, we find <span class="math notranslate nohighlight">\( e^{At} \)</span>. Since <span class="math notranslate nohighlight">\(A\)</span> is diagonal,</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+e^{At} = \begin{bmatrix}
+    e^{-t}&amp;0\\0&amp;e^{-2t}
+\end{bmatrix},
+\end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\(-1,\;-2\)</span> are the eigenvalues of <span class="math notranslate nohighlight">\(A\)</span>. The homogeneous solution is:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\vec{x}(t) &amp;= e^{At} \vec{x}(0)\\
+           &amp;= \begin{bmatrix}
+    e^{-t}&amp;0\\0&amp;e^{-2t}
+\end{bmatrix}\begin{bmatrix}
+    x_1^0\\x_2^0
+\end{bmatrix}\\
+&amp;=\begin{bmatrix}
+    x_1^0e^{-t}\\ x_2^0e^{-2t}
+\end{bmatrix}.
+\end{split}\]</div>
+<p>The output equation gives:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+y(t) &amp;= C e^{At} \vec{x}(0)\\
+     &amp;=\begin{bmatrix}
+         c_1&amp;c_2
+     \end{bmatrix}\begin{bmatrix}
+    x_1^0e^{-t}\\ x_2^0e^{-2t}
+\end{bmatrix}=c_1x_1^0e^{-t}+c_2x_2^0e^{-2t}.
+\end{split}\]</div>
+<p>To check observability, we compute:</p>
+<div class="math notranslate nohighlight" id="equation-eq-ex2-observability">
+<span class="eqno">(38)<a class="headerlink" href="#equation-eq-ex2-observability" title="Link to this equation">#</a></span>\[\int_{t_0}^{t_f} y^T(t) y(t) dt.\]</div>
+<p>The system is observable if this expression is poisitive.
+By direct computation</p>
+<div class="math notranslate nohighlight">
+\[
+    y^T(t)y(t)=c_1^2(x_1^0)^2e^{-2t}+2c_1c_2x_1^0x_2^0e^{-3t}+c_2^2(x_2^0)^2e^{-4t}.
+\]</div>
+<p>Since the integrand is positive, <a class="reference internal" href="#equation-eq-ex2-observability">(38)</a> is zero only if the integrand is equal to zero for all <span class="math notranslate nohighlight">\(t\in[t_0,t_f]\)</span>.</p>
+<p>We analyze when this condition holds. For <span class="math notranslate nohighlight">\(c_1=0\)</span>,</p>
+<div class="math notranslate nohighlight">
+\[
+    y^T(t)y(t)=c_2^2(x_2^0)^2e^{-4t}.
+\]</div>
+<p>We emphasize that  must be positive for any non-zero initial condition. Take <span class="math notranslate nohighlight">\(\vec{x}(0)=\begin{bmatrix}
+    1\\0,
+\end{bmatrix}\)</span></p>
+<p>then <span class="math notranslate nohighlight">\(\vec{x}(0)\neq\vec{0}\)</span>, but <span class="math notranslate nohighlight">\(y^T(t)y(t)=0\)</span> for all <span class="math notranslate nohighlight">\(t\in[t_0,t_f]\)</span>.
+If <span class="math notranslate nohighlight">\(c_2=0\)</span>, then</p>
+<div class="math notranslate nohighlight">
+\[
+    y^T(t)y(t)=c_1^2(x_1^0)^2e^{-2t}.
+\]</div>
+<p>Again,  must be positive for any non-zero initial condition. Take <span class="math notranslate nohighlight">\(\vec{x}(0)=\begin{bmatrix}
+    0\\1,
+\end{bmatrix}\)</span></p>
+<p>then <span class="math notranslate nohighlight">\(\vec{x}(0)\neq\vec{0}\)</span>, but <span class="math notranslate nohighlight">\(y^T(t)y(t)=0\)</span> for all <span class="math notranslate nohighlight">\(t\in[t_0,t_f]\)</span>. So if <span class="math notranslate nohighlight">\(c_1=0\)</span> or <span class="math notranslate nohighlight">\(c_2=0\)</span> the system is not observable. Exponents of different powers are linearly independent, so it is enough that</p>
+<div class="math notranslate nohighlight">
+\[
+    c_1\neq0,\quad c_2\neq0,
+\]</div>
+<p>for observability. We confirm this result with the Kalman test for observability.</p>
+<p>Here</p>
+<div class="math notranslate nohighlight">
+\[
+    CA=\begin{bmatrix}
+        -2c_1&amp;c_2
+    \end{bmatrix}.
+\]</div>
+<p>The observability matrix is</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    \mathcal{O}=\begin{bmatrix}
+        C\\CA
+    \end{bmatrix}=\begin{bmatrix}
+        c_1&amp;c_2\\-2c_1&amp;c_2.
+    \end{bmatrix}
+\end{split}\]</div>
+<p>We know that <span class="math notranslate nohighlight">\(\text{rank}(\mathcal{O})=2\)</span> if and only if <span class="math notranslate nohighlight">\(\det(\mathcal{O})\neq0\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[
+    \det(\mathcal{O})=c_1c_2+2c_1c_2=3c_1c_2.
+\]</div>
+<p>Clearly if <span class="math notranslate nohighlight">\(c_1=0\)</span> or <span class="math notranslate nohighlight">\(c_2=0\)</span>, then <span class="math notranslate nohighlight">\(\det(\mathcal{O})=0\)</span> and the system is not observable.</p>
+<div class="proof remark admonition" id="remark-6">
+<p class="admonition-title"><span class="caption-number">Remark 22 </span></p>
+<section class="remark-content" id="proof-content">
+<p>If <span class="math notranslate nohighlight">\(A\)</span> is an invertible diagonal matrix, <span class="math notranslate nohighlight">\(C\)</span> is a vector (the system is SISO/MIMO), we can know of the system is observable by observing <span class="math notranslate nohighlight">\(C\)</span>. If <span class="math notranslate nohighlight">\(C\)</span> has a zero element, then the system is not observable.</p>
+</section>
+</div></section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "executablebooks/jupyter-book",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="rec7.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Introduction to Control – Recitation 7</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lti-systems">LTI Systems</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise">Exercise</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution">Solution</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#observability">Observability</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#kalman-rank-condition-for-observability">Kalman Rank Condition for Observability</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#popov-belevitch-hautus-test-for-observability">Popov-Belevitch-Hautus Test for Observability</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Exercise</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Solution</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Exercise</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Solution</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Omri Dalin
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
