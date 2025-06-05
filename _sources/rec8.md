@@ -142,7 +142,15 @@ $$
             x_2e^{a_{22}t}+\frac{b_2}{a_{22}}\big(e^{a_{22}t}-1\big)
         \end{bmatrix}.
 $$
-	
+
+<center>
+<a href="https://mybinder.org/v2/gh/Omrid1994/intro_to_control_recs/main?urlpath=voila/render/notebooks/interactive_system.ipynb" target="_blank">
+    <button style="font-size:18px; padding:10px 20px; background-color:#0078D4; color:white; border:none; border-radius:5px; cursor:pointer;">
+        ▶️ Click to Open Interactive System Plot
+    </button>
+</a>
+</center>
+
 ```{prf:remark}
 Note that $\vec{x}(t)\xrightarrow{t\rightarrow\infty}0$ if and only if $a_{11}<0$ and $a_{22}<0$. This implies that an LTI system is asymptotically stable if and only if $\text{Re}(\lambda)<0$ for all $\lambda\in\sigma(A)$.
 ```
