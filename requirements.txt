@@ -2,5 +2,5 @@ numpy
 matplotlib
 control
 ipywidgets
-voila
 scipy
+voila==0.3.6
