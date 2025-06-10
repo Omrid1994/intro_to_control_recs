@@ -34,9 +34,9 @@
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="_static/proof.css?v=b4b7a797" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- So that users can add custom icons -->
@@ -541,7 +541,7 @@ D\in \mathbb{R}^{p\times m}.
         \end{bmatrix}.
 \end{split}\]</div>
 <center>
-<a href="https://mybinder.org/v2/gh/Omrid1994/intro_to_control_recs/main?urlpath=voila/render/notebooks/interactive_system.ipynb" target="_blank">
+<a href="https://mybinder.org/v2/gh/Omrid1994/intro_to_control_recs/main?urlpath=voila/render/interactive_system.ipynb" target="_blank">
     <button style="font-size:18px; padding:10px 20px; background-color:#0078D4; color:white; border:none; border-radius:5px; cursor:pointer;">
         ▶️ Click to Open Interactive System Plot
     </button>
@@ -627,13 +627,13 @@ Then <span class="math notranslate nohighlight">\((A,C)\)</span> is observable i
 <section id="id1">
 <h3>Exercise<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
 <p>Consider the following system:</p>
-<figure class="align-default" id="fig-r6-ex3">
+<figure class="align-default" id="fig-r8-ex1-fig">
 <a class="reference internal image-reference" href="_images/ex1fig.png"><img alt="_images/ex1fig.png" src="_images/ex1fig.png" style="width: 85%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 37 </span><span class="caption-text">Water Level Control System.</span><a class="headerlink" href="#fig-r6-ex3" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 37 </span><span class="caption-text">Water Level Control System.</span><a class="headerlink" href="#fig-r8-ex1-fig" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p><code class="xref std std-numref docutils literal notranslate"><span class="pre">fig:r8_ex1_fig</span></code> describes a water level control system for two water tanks using inlet flow rates. The water levels are <span class="math notranslate nohighlight">\(h_1\)</span> and <span class="math notranslate nohighlight">\(h_2\)</span>. The inlet flow rates are <span class="math notranslate nohighlight">\(q_1\)</span> and <span class="math notranslate nohighlight">\(q_2\)</span>. We know that:
+<p>Here <a class="reference internal" href="#fig-r8-ex1-fig"><span class="std std-numref">Fig. 37</span></a> describes a water level control system for two water tanks using inlet flow rates. The water levels are <span class="math notranslate nohighlight">\(h_1\)</span> and <span class="math notranslate nohighlight">\(h_2\)</span>. The inlet flow rates are <span class="math notranslate nohighlight">\(q_1\)</span> and <span class="math notranslate nohighlight">\(q_2\)</span>. We know that:
 Cross-sectional areas of the tanks:</p>
 <div class="math notranslate nohighlight">
 \[
@@ -740,13 +740,69 @@ p_A(\lambda)=\det(\lambda I - A) .
     \sigma(A)=\{-1,\;-2\}.
 \]</div>
 <ol class="arabic simple" start="2">
-<li><p>We check observability with respect to a single outflow measurement <span class="math notranslate nohighlight">\(q_{1,2}\)</span>.</p></li>
+<li><p>We check observability with respect to the first outflow measurement, <span class="math notranslate nohighlight">\(q_{1,2}\)</span>.
+In this case</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[
+y(t) = q_{1,2}=h_1=\begin{bmatrix}
+    1&amp;0
+\end{bmatrix}\vec{x}(t).
+\]</div>
+<p>Thus, the output matrix is:</p>
+<div class="math notranslate nohighlight">
+\[
+C=\begin{bmatrix}
+    1&amp;0
+\end{bmatrix}.
+\]</div>
+<p>Note that</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    CA=\begin{bmatrix}
+        1&amp;0
+    \end{bmatrix}\begin{bmatrix}
+        -1&amp;0\\2&amp;-2
+    \end{bmatrix}=\begin{bmatrix}
+        -1&amp;0
+    \end{bmatrix}.
+\end{split}\]</div>
+<p>The observability matrix:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\mathcal{O} = \begin{bmatrix} C \\ C A \end{bmatrix}=\begin{bmatrix}
+    1&amp;0\\-1&amp;0
+\end{bmatrix}.
+\end{split}\]</div>
+<p>Clearly the rank is <span class="math notranslate nohighlight">\(1\)</span>.</p>
+<p>Since this rank is less than the state dimension, the system is not observable. This result aligns with intuition: measuring only the second outflow provides no information about the upper tank, meaning we cannot reconstruct the full state.</p>
+<p>Checking the PBH test:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{bmatrix}
+    \lambda_1 I-A\\C
+\end{bmatrix}=\begin{bmatrix}
+    0&amp;0\\-2&amp;1\\1&amp;0
+\end{bmatrix}.
+\end{split}\]</div>
+<p>The rank is <span class="math notranslate nohighlight">\(2\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    \begin{bmatrix}
+        \lambda_2 I-A\\C
+    \end{bmatrix}=\begin{bmatrix}
+        -1&amp;0\\-2&amp;0\\1&amp;0
+    \end{bmatrix}.
+\end{split}\]</div>
+<p>The rank is <span class="math notranslate nohighlight">\(1\)</span> so the PBH test fails (the rank should be <span class="math notranslate nohighlight">\(2\)</span> for all eigenvalues of <span class="math notranslate nohighlight">\(A\)</span>). The system is not observable.</p>
+<ol class="arabic simple" start="3">
+<li><p>We check observability with respect to a single outflow measurement <span class="math notranslate nohighlight">\(q_{out}\)</span>.</p></li>
 </ol>
 <p>In this case:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
-y(t) = q_{1,2}(t)=h_1(t)=\begin{bmatrix}
-    1&amp;0
+y(t) = q_{out}(t)=h_2(t)=\begin{bmatrix}
+    0&amp;1
 \end{bmatrix}\begin{bmatrix}
     h_1(t)\\h_2(t)
 \end{bmatrix}.
@@ -755,7 +811,7 @@ y(t) = q_{1,2}(t)=h_1(t)=\begin{bmatrix}
 <div class="math notranslate nohighlight">
 \[
 y(t) = \underbrace{\begin{bmatrix}
-    1&amp;0
+    0&amp;1
 \end{bmatrix}}_{C} \vec{x}(t).
 \]</div>
 <p>To check observability using Kalman’s test, we compute the observability matrix:</p>
@@ -763,17 +819,17 @@ y(t) = \underbrace{\begin{bmatrix}
 \[\begin{split}
 \mathcal{O} = \begin{bmatrix} C \\ C A \end{bmatrix}.
 \end{split}\]</div>
-<div class="math notranslate nohighlight">
-\[\begin{split}
+<p>That is
+$<span class="math notranslate nohighlight">\(
     CA=\begin{bmatrix}
-        1&amp;0
+        0&amp;1
     \end{bmatrix}\begin{bmatrix}
         -1&amp;0\\2&amp;-2
     \end{bmatrix}=\begin{bmatrix}
         2&amp;-2
     \end{bmatrix}.
-\end{split}\]</div>
-<p>So</p>
+\)</span>$
+So</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
     \mathcal{O}=\begin{bmatrix}
@@ -814,61 +870,6 @@ y(t) = \underbrace{\begin{bmatrix}
     \end{bmatrix}.
 \end{split}\]</div>
 <p>In this case as well, the rank is <span class="math notranslate nohighlight">\(2\)</span> which is the order of the system. Then according to the PBH test, the system is observable.</p>
-<ol class="arabic simple" start="3">
-<li><p>We check observability with respect to the second outflow measurement, <span class="math notranslate nohighlight">\(q_{out}\)</span>. In this case</p></li>
-</ol>
-<div class="math notranslate nohighlight">
-\[
-y(t) = q_{out}=h_2=\begin{bmatrix}
-    0&amp;1
-\end{bmatrix}\vec{x}(t).
-\]</div>
-<p>Thus, the output matrix is:</p>
-<div class="math notranslate nohighlight">
-\[
-C=\begin{bmatrix}
-    0&amp;1
-\end{bmatrix}.
-\]</div>
-<p>Note that</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-    CA=\begin{bmatrix}
-        0&amp;1
-    \end{bmatrix}\begin{bmatrix}
-        -1&amp;0\\2&amp;-2
-    \end{bmatrix}=\begin{bmatrix}
-        -1&amp;0
-    \end{bmatrix}.
-\end{split}\]</div>
-<p>The observability matrix:</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\mathcal{O} = \begin{bmatrix} C \\ C A \end{bmatrix}=\begin{bmatrix}
-    1&amp;0\\-1&amp;0
-\end{bmatrix}.
-\end{split}\]</div>
-<p>Clealry the rank is <span class="math notranslate nohighlight">\(1\)</span>.</p>
-<p>Since this rank is less than the state dimension, the system is not observable. This result aligns with intuition: measuring only the second outflow provides no information about the upper tank, meaning we cannot reconstruct the full state.</p>
-<p>Checking the PBH test:</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{bmatrix}
-    \lambda_1 I-A\\C
-\end{bmatrix}=\begin{bmatrix}
-    0&amp;0\\-2&amp;1\\1&amp;0
-\end{bmatrix}.
-\end{split}\]</div>
-<p>The rank is <span class="math notranslate nohighlight">\(2\)</span>.</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-    \begin{bmatrix}
-        \lambda_2 I-A\\C
-    \end{bmatrix}=\begin{bmatrix}
-        -1&amp;0\\-2&amp;0\\1&amp;0
-    \end{bmatrix}.
-\end{split}\]</div>
-<p>The rank is <span class="math notranslate nohighlight">\(1\)</span> so the PBH test fails (the rank should be <span class="math notranslate nohighlight">\(2\)</span> for all eigenvalues of <span class="math notranslate nohighlight">\(A\)</span>). The system is not observable.</p>
 <ol class="arabic simple" start="4">
 <li><p>We check observability with respect to both outflow measurements, <span class="math notranslate nohighlight">\(q_{1,2}\)</span> and <span class="math notranslate nohighlight">\(q_{out}\)</span>. In this case</p></li>
 </ol>
@@ -968,18 +969,18 @@ By direct computation</p>
 \[
     y^T(t)y(t)=c_2^2(x_2^0)^2e^{-4t}.
 \]</div>
-<p>We emphasize that  must be positive for any non-zero initial condition. Take <span class="math notranslate nohighlight">\(\vec{x}(0)=\begin{bmatrix}
-    1\\0,
-\end{bmatrix}\)</span></p>
+<p>We emphasize that <a class="reference internal" href="#equation-eq-ex2-observability">(38)</a> must be positive for any non-zero initial condition. Take <span class="math notranslate nohighlight">\(\vec{x}(0)=\begin{bmatrix}
+    1\\0
+\end{bmatrix},\)</span></p>
 <p>then <span class="math notranslate nohighlight">\(\vec{x}(0)\neq\vec{0}\)</span>, but <span class="math notranslate nohighlight">\(y^T(t)y(t)=0\)</span> for all <span class="math notranslate nohighlight">\(t\in[t_0,t_f]\)</span>.
 If <span class="math notranslate nohighlight">\(c_2=0\)</span>, then</p>
 <div class="math notranslate nohighlight">
 \[
     y^T(t)y(t)=c_1^2(x_1^0)^2e^{-2t}.
 \]</div>
-<p>Again,  must be positive for any non-zero initial condition. Take <span class="math notranslate nohighlight">\(\vec{x}(0)=\begin{bmatrix}
-    0\\1,
-\end{bmatrix}\)</span></p>
+<p>Again, <a class="reference internal" href="#equation-eq-ex2-observability">(38)</a> must be positive for any non-zero initial condition. Take <span class="math notranslate nohighlight">\(\vec{x}(0)=\begin{bmatrix}
+    0\\1
+\end{bmatrix},\)</span></p>
 <p>then <span class="math notranslate nohighlight">\(\vec{x}(0)\neq\vec{0}\)</span>, but <span class="math notranslate nohighlight">\(y^T(t)y(t)=0\)</span> for all <span class="math notranslate nohighlight">\(t\in[t_0,t_f]\)</span>. So if <span class="math notranslate nohighlight">\(c_1=0\)</span> or <span class="math notranslate nohighlight">\(c_2=0\)</span> the system is not observable. Exponents of different powers are linearly independent, so it is enough that</p>
 <div class="math notranslate nohighlight">
 \[

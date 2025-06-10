@@ -144,12 +144,13 @@ $$
 $$
 
 <center>
-<a href="https://mybinder.org/v2/gh/Omrid1994/intro_to_control_recs/main?urlpath=voila/render/notebooks/interactive_system.ipynb" target="_blank">
+<a href="https://mybinder.org/v2/gh/Omrid1994/intro_to_control_recs/main?urlpath=voila/render/interactive_system.ipynb" target="_blank">
     <button style="font-size:18px; padding:10px 20px; background-color:#0078D4; color:white; border:none; border-radius:5px; cursor:pointer;">
         ▶️ Click to Open Interactive System Plot
     </button>
 </a>
 </center>
+
 
 ```{prf:remark}
 Note that $\vec{x}(t)\xrightarrow{t\rightarrow\infty}0$ if and only if $a_{11}<0$ and $a_{22}<0$. This implies that an LTI system is asymptotically stable if and only if $\text{Re}(\lambda)<0$ for all $\lambda\in\sigma(A)$.
@@ -248,12 +249,12 @@ Consider the following system:
 ```{figure} images/Rec8/ex1fig.png
 ---
 width: 85%
-name: fig:r6_ex3
+name: fig:r8_ex1_fig
 ---
 Water Level Control System.
 ```
 
-{numref}`fig:r8_ex1_fig` describes a water level control system for two water tanks using inlet flow rates. The water levels are $h_1$ and $h_2$. The inlet flow rates are $q_1$ and $q_2$. We know that: 
+Here {numref}`fig:r8_ex1_fig` describes a water level control system for two water tanks using inlet flow rates. The water levels are $h_1$ and $h_2$. The inlet flow rates are $q_1$ and $q_2$. We know that: 
 Cross-sectional areas of the tanks:
 
 $$
@@ -374,13 +375,77 @@ $$
     \sigma(A)=\{-1,\;-2\}.
 $$
 
-2. We check observability with respect to a single outflow measurement $q_{1,2}$.
+2. We check observability with respect to the first outflow measurement, $q_{1,2}$.
+In this case
+
+
+$$
+y(t) = q_{1,2}=h_1=\begin{bmatrix}
+    1&0
+\end{bmatrix}\vec{x}(t).
+$$
+
+Thus, the output matrix is:
+
+$$
+C=\begin{bmatrix}
+    1&0
+\end{bmatrix}.
+$$
+
+Note that
+
+$$
+    CA=\begin{bmatrix}
+        1&0
+    \end{bmatrix}\begin{bmatrix}
+        -1&0\\2&-2
+    \end{bmatrix}=\begin{bmatrix}
+        -1&0
+    \end{bmatrix}.
+$$
+
+The observability matrix:
+
+$$
+\mathcal{O} = \begin{bmatrix} C \\ C A \end{bmatrix}=\begin{bmatrix}
+    1&0\\-1&0
+\end{bmatrix}.
+$$
+
+Clearly the rank is $1$.
+
+Since this rank is less than the state dimension, the system is not observable. This result aligns with intuition: measuring only the second outflow provides no information about the upper tank, meaning we cannot reconstruct the full state.
+
+Checking the PBH test:
+
+$$
+\begin{bmatrix}
+    \lambda_1 I-A\\C
+\end{bmatrix}=\begin{bmatrix}
+    0&0\\-2&1\\1&0
+\end{bmatrix}.
+$$
+
+The rank is $2$.
+
+$$
+    \begin{bmatrix}
+        \lambda_2 I-A\\C
+    \end{bmatrix}=\begin{bmatrix}
+        -1&0\\-2&0\\1&0
+    \end{bmatrix}.
+$$
+
+The rank is $1$ so the PBH test fails (the rank should be $2$ for all eigenvalues of $A$). The system is not observable.
+
+3. We check observability with respect to a single outflow measurement $q_{out}$.
 
 In this case:
 
 $$
-y(t) = q_{1,2}(t)=h_1(t)=\begin{bmatrix}
-    1&0
+y(t) = q_{out}(t)=h_2(t)=\begin{bmatrix}
+    0&1
 \end{bmatrix}\begin{bmatrix}
     h_1(t)\\h_2(t)
 \end{bmatrix}.
@@ -390,7 +455,7 @@ Thus, the output equation is:
 
 $$
 y(t) = \underbrace{\begin{bmatrix}
-    1&0
+    0&1
 \end{bmatrix}}_{C} \vec{x}(t).
 $$
 
@@ -400,16 +465,16 @@ $$
 \mathcal{O} = \begin{bmatrix} C \\ C A \end{bmatrix}.
 $$
 
+That is
 $$
     CA=\begin{bmatrix}
-        1&0
+        0&1
     \end{bmatrix}\begin{bmatrix}
         -1&0\\2&-2
     \end{bmatrix}=\begin{bmatrix}
         2&-2
     \end{bmatrix}.
 $$
-
 So
 
 $$
@@ -459,72 +524,7 @@ $$
     \end{bmatrix}.
 $$
 
-In this case as well, the rank is $2$ which is the order of the system. Then according to the PBH test, the system is observable. 
-
-
-3. We check observability with respect to the second outflow measurement, $q_{out}$. In this case
-
-
-$$
-y(t) = q_{out}=h_2=\begin{bmatrix}
-    0&1
-\end{bmatrix}\vec{x}(t).
-$$
-
-Thus, the output matrix is:
-
-$$
-C=\begin{bmatrix}
-    0&1
-\end{bmatrix}.
-$$
-
-Note that
-
-$$
-    CA=\begin{bmatrix}
-        0&1
-    \end{bmatrix}\begin{bmatrix}
-        -1&0\\2&-2
-    \end{bmatrix}=\begin{bmatrix}
-        -1&0
-    \end{bmatrix}.
-$$
-
-The observability matrix:
-
-$$
-\mathcal{O} = \begin{bmatrix} C \\ C A \end{bmatrix}=\begin{bmatrix}
-    1&0\\-1&0
-\end{bmatrix}.
-$$
-
-Clealry the rank is $1$.
-
-Since this rank is less than the state dimension, the system is not observable. This result aligns with intuition: measuring only the second outflow provides no information about the upper tank, meaning we cannot reconstruct the full state.
-
-Checking the PBH test:
-
-$$
-\begin{bmatrix}
-    \lambda_1 I-A\\C
-\end{bmatrix}=\begin{bmatrix}
-    0&0\\-2&1\\1&0
-\end{bmatrix}.
-$$
-
-The rank is $2$.
-
-$$
-    \begin{bmatrix}
-        \lambda_2 I-A\\C
-    \end{bmatrix}=\begin{bmatrix}
-        -1&0\\-2&0\\1&0
-    \end{bmatrix}.
-$$
-
-The rank is $1$ so the PBH test fails (the rank should be $2$ for all eigenvalues of $A$). The system is not observable.
-
+In this case as well, the rank is $2$ which is the order of the system. Then according to the PBH test, the system is observable.
 
 
 4. We check observability with respect to both outflow measurements, $q_{1,2}$ and $q_{out}$. In this case
@@ -642,9 +642,9 @@ $$
     y^T(t)y(t)=c_2^2(x_2^0)^2e^{-4t}.
 $$
 
-We emphasize that {eqref}`eq:ex2_observability` must be positive for any non-zero initial condition. Take $\vec{x}(0)=\begin{bmatrix}
-    1\\0,
-\end{bmatrix}$
+We emphasize that {eq}`eq:ex2_observability` must be positive for any non-zero initial condition. Take $\vec{x}(0)=\begin{bmatrix}
+    1\\0
+\end{bmatrix},$
 
 then $\vec{x}(0)\neq\vec{0}$, but $y^T(t)y(t)=0$ for all $t\in[t_0,t_f]$.
 If $c_2=0$, then 
@@ -653,9 +653,9 @@ $$
     y^T(t)y(t)=c_1^2(x_1^0)^2e^{-2t}.
 $$
 
-Again, {eqref}`eq:ex2_observability` must be positive for any non-zero initial condition. Take $\vec{x}(0)=\begin{bmatrix}
-    0\\1,
-\end{bmatrix}$
+Again, {eq}`eq:ex2_observability` must be positive for any non-zero initial condition. Take $\vec{x}(0)=\begin{bmatrix}
+    0\\1
+\end{bmatrix},$
 
 then $\vec{x}(0)\neq\vec{0}$, but $y^T(t)y(t)=0$ for all $t\in[t_0,t_f]$. So if $c_1=0$ or $c_2=0$ the system is not observable. Exponents of different powers are linearly independent, so it is enough that
 
