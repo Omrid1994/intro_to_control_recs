@@ -415,7 +415,7 @@ $$
 
 Clearly the rank is $1$.
 
-Since this rank is less than the state dimension, the system is not observable. This result aligns with intuition: measuring only the second outflow provides no information about the upper tank, meaning we cannot reconstruct the full state.
+Since this rank is less than the state dimension, the system is not observable. This result aligns with intuition: measuring only the first outflow provides no information about the lower tank, meaning we cannot reconstruct the full state.
 
 Checking the PBH test:
 
