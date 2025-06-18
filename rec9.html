@@ -1,0 +1,1064 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Introduction to Control – Recitation 9 &#8212; Recitations - Omri Dalin</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/proof.css?v=b4b7a797" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-E2TD05MHVH"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-E2TD05MHVH');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-E2TD05MHVH');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'rec9';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Introduction to Control – Recitation 8" href="rec8.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="title.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="Recitations - Omri Dalin - Home"/>
+    <img src="_static/logo.png" class="logo__image only-dark pst-js-only" alt="Recitations - Omri Dalin - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="title.html">
+                    Intro to Control
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="rec1.html">Introduction to Control – Recitation 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rec2.html">Introduction to Control – Recitation 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rec3.html">Introduction to Control – Recitation 3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rec4.html">Introduction to Control – Recitation 4</a></li>
+<li class="toctree-l1"><a class="reference internal" href="RecSummary.html">Suammary – Transfer Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rec5.html">Introduction to Control – Recitation 5</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rec6.html">Introduction to Control – Recitation 6</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rec7.html">Introduction to Control – Recitation 7</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rec8.html">Introduction to Control – Recitation 8</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Introduction to Control – Recitation 9</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Frec9.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/rec9.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Introduction to Control – Recitation 9</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#controllability">Controllability</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dual-systems">Dual Systems</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stabilizability">Stabilizability</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#detectability">Detectability</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1">Exercise 1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution">Solution</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2">Exercise 2</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Solution</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3">Exercise 3</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Solution</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="introduction-to-control-recitation-9">
+<h1>Introduction to Control – Recitation 9<a class="headerlink" href="#introduction-to-control-recitation-9" title="Link to this heading">#</a></h1>
+<section id="controllability">
+<h2>Controllability<a class="headerlink" href="#controllability" title="Link to this heading">#</a></h2>
+<p>Consider the system</p>
+<div class="math notranslate nohighlight" id="equation-eq-state-space">
+<span class="eqno">(39)<a class="headerlink" href="#equation-eq-state-space" title="Link to this equation">#</a></span>\[\begin{split}\dot x(t)&amp;=Ax(t)+B u(t),\\
+y(t)&amp;=C x(t)+D u(t).\nonumber\end{split}\]</div>
+<div class="proof definition admonition" id="definition-0">
+<p class="admonition-title"><span class="caption-number">Definition 8 </span></p>
+<section class="definition-content" id="proof-content">
+<p>The system <a class="reference internal" href="#equation-eq-state-space">(39)</a> is called controllable if for any <span class="math notranslate nohighlight">\(a,b\in\mathbb{R}^n\)</span> there exists a time <span class="math notranslate nohighlight">\(T\geq 0\)</span> and a control <span class="math notranslate nohighlight">\(u(t)\)</span>, <span class="math notranslate nohighlight">\(t\in[0,T]\)</span>, such that for <span class="math notranslate nohighlight">\(x(0)=a\)</span> the solution <span class="math notranslate nohighlight">\(x(t)\)</span> of the system satisfies <span class="math notranslate nohighlight">\(x(T)=b\)</span>.</p>
+</section>
+</div><p>In other words, we can steer  the state from any initial condition <span class="math notranslate nohighlight">\(a\)</span> to any desired final condition <span class="math notranslate nohighlight">\(b\)</span> in finite time.</p>
+<div class="proof theorem admonition" id="thm:controll">
+<p class="admonition-title"><span class="caption-number">Theorem 3 </span></p>
+<section class="theorem-content" id="proof-content">
+<p>(Kalman Controllability Test) The system <a class="reference internal" href="#equation-eq-state-space">(39)</a> is controllable if and only if</p>
+<div class="math notranslate nohighlight" id="equation-eq-necc-sugg-cont">
+<span class="eqno">(40)<a class="headerlink" href="#equation-eq-necc-sugg-cont" title="Link to this equation">#</a></span>\[ \text{rank}\begin{bmatrix}
+     B&amp;AB&amp;\dots&amp;A^{n-1}B
+ \end{bmatrix}=n. \]</div>
+</section>
+</div><div class="proof proposition admonition" id="proposition-2">
+<p class="admonition-title"><span class="caption-number">Proposition 3 </span></p>
+<section class="proposition-content" id="proof-content">
+<p>(PBH test for controllability) The pair <span class="math notranslate nohighlight">\((A,B)\)</span> is controllable if and only if</p>
+<div class="math notranslate nohighlight">
+\[
+     \text{rank}\begin{bmatrix}
+         \lambda I_n-A &amp; B
+     \end{bmatrix}=n \text{ for any }\lambda\in\sigma(A). 
+\]</div>
+</section>
+</div><div class="proof remark admonition" id="remark-3">
+<p class="admonition-title"><span class="caption-number">Remark 23 </span></p>
+<section class="remark-content" id="proof-content">
+<p>Notice that the above tests depend only on the matrices <span class="math notranslate nohighlight">\( A \)</span> and <span class="math notranslate nohighlight">\( B \)</span>. Therefore, controllability is a property of the pair <span class="math notranslate nohighlight">\( (A, B) \)</span>. Since <span class="math notranslate nohighlight">\( A \)</span> and <span class="math notranslate nohighlight">\( B \)</span> are constant matrices in time-invariant systems, the controllability property does not change over time. If a system is controllable at a certain time, it is controllable at all times.</p>
+</section>
+</div></section>
+<section id="dual-systems">
+<h2>Dual Systems<a class="headerlink" href="#dual-systems" title="Link to this heading">#</a></h2>
+<div class="proof definition admonition" id="definition-4">
+<p class="admonition-title"><span class="caption-number">Definition 9 </span></p>
+<section class="definition-content" id="proof-content">
+<p>The dual system of  the system <a class="reference internal" href="#equation-eq-state-space">(39)</a> is the control system</p>
+<div class="math notranslate nohighlight" id="equation-eq-dual">
+<span class="eqno">(41)<a class="headerlink" href="#equation-eq-dual" title="Link to this equation">#</a></span>\[\begin{split}    \dot{\tilde x} &amp;=A^\top \tilde x+C^\top \tilde u ,\nonumber \\
+    \tilde y&amp;= B^\top \tilde x+D^\top \tilde u.\end{split}\]</div>
+</section>
+</div><p>Note that the matrix dimensions imply that <span class="math notranslate nohighlight">\(\tilde x(t) \in\mathbb{R}^n\)</span>, <span class="math notranslate nohighlight">\(\tilde u(t)\in\mathbb{R}^p\)</span>, and <span class="math notranslate nohighlight">\(\tilde y(t)\in\mathbb{R}^m\)</span>.</p>
+<div class="proof theorem admonition" id="thm:dula">
+<p class="admonition-title"><span class="caption-number">Theorem 4 </span></p>
+<section class="theorem-content" id="proof-content">
+<p>The system <a class="reference internal" href="#equation-eq-state-space">(39)</a> is controllable if and only if the dual system <a class="reference internal" href="#equation-eq-dual">(41)</a> is observable.</p>
+</section>
+</div></section>
+<section id="stabilizability">
+<h2>Stabilizability<a class="headerlink" href="#stabilizability" title="Link to this heading">#</a></h2>
+<p>Suppose that we have access to the entire state-space vector and we design a controller by</p>
+<div class="math notranslate nohighlight">
+\[
+u(t)=Fx(t)
+\]</div>
+<p>with a matrix <span class="math notranslate nohighlight">\(F\in\mathbb{R}^{ m\times n}\)</span>. The closed-loop system is</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    \dot x&amp;= A x+B F x\\
+    &amp;=(A+BF)x.
+\end{split}\]</div>
+<div class="proof definition admonition" id="def:stabiliz">
+<p class="admonition-title"><span class="caption-number">Definition 10 </span></p>
+<section class="definition-content" id="proof-content">
+<p>The system <a class="reference internal" href="#equation-eq-state-space">(39)</a> is called stabilizable if
+there exists a matrix <span class="math notranslate nohighlight">\(F\in\mathbb{R}^{ m\times n}\)</span> such that <span class="math notranslate nohighlight">\(A+BF\)</span> is stable
+(that is, every eigenvalue of <span class="math notranslate nohighlight">\(A+BF\)</span> has a negative real part).</p>
+</section>
+</div><div class="proof proposition admonition" id="proposition-7">
+<p class="admonition-title"><span class="caption-number">Proposition 4 </span></p>
+<section class="proposition-content" id="proof-content">
+<p>The system <a class="reference internal" href="#equation-eq-state-space">(39)</a> is stabilizable if and only if for any <span class="math notranslate nohighlight">\(x(0)\in\mathbb{R}^n\)</span> there exists a control <span class="math notranslate nohighlight">\(u:[0,\infty)\to\mathbb{R}^m\)</span>, with <span class="math notranslate nohighlight">\(\lim_{t\to\infty}u(t)=0\)</span>, such that</p>
+<div class="math notranslate nohighlight">
+\[
+    \lim_{t\to\infty}x(t)=0. 
+\]</div>
+</section>
+</div><div class="proof proposition admonition" id="proposition-8">
+<p class="admonition-title"><span class="caption-number">Proposition 5 </span></p>
+<section class="proposition-content" id="proof-content">
+<p>(PBH test for stabilizability) The pair <span class="math notranslate nohighlight">\((A,B)\)</span> is stabilizable if and only if</p>
+<div class="math notranslate nohighlight">
+\[
+     \text{rank}\begin{bmatrix}
+         \lambda I_n-A &amp; B
+     \end{bmatrix}=n \text{ for any }\lambda\in\sigma(A)\text{ with Re$(\lambda)\geq0$}. 
+\]</div>
+</section>
+</div><div class="proof lemma admonition" id="lemma-9">
+<p class="admonition-title"><span class="caption-number">Lemma 1 </span></p>
+<section class="lemma-content" id="proof-content">
+<p>If <a class="reference internal" href="#equation-eq-state-space">(39)</a> is controllable then it is stabilizable.</p>
+</section>
+</div></section>
+<section id="detectability">
+<h2>Detectability<a class="headerlink" href="#detectability" title="Link to this heading">#</a></h2>
+<div class="proof definition admonition" id="definition-10">
+<p class="admonition-title"><span class="caption-number">Definition 11 </span></p>
+<section class="definition-content" id="proof-content">
+<p>The system <a class="reference internal" href="#equation-eq-state-space">(39)</a> is called detectable if <span class="math notranslate nohighlight">\(y(t)=0\)</span> for all <span class="math notranslate nohighlight">\( t\geq 0\)</span> implies that</p>
+<div class="math notranslate nohighlight" id="equation-eq-contoze">
+<span class="eqno">(42)<a class="headerlink" href="#equation-eq-contoze" title="Link to this equation">#</a></span>\[ \lim_{t\to\infty}x(t)= 0 .\]</div>
+</section>
+</div><div class="proof theorem admonition" id="theorem-11">
+<p class="admonition-title"><span class="caption-number">Theorem 5 </span></p>
+<section class="theorem-content" id="proof-content">
+<p>(PBH Test for Detectability) Consider the system <a class="reference internal" href="rec8.html#equation-eq-system-obsvr">(35)</a>.
+Let <span class="math notranslate nohighlight">\(\sigma(A)\)</span> denote the set of eigenvalues of <span class="math notranslate nohighlight">\(A\)</span>.
+Then <span class="math notranslate nohighlight">\((A,C)\)</span> is detectable
+if and only if</p>
+<div class="math notranslate nohighlight" id="equation-eq-pbh-test-detect">
+<span class="eqno">(43)<a class="headerlink" href="#equation-eq-pbh-test-detect" title="Link to this equation">#</a></span>\[\begin{split}        rank\begin{bmatrix}
+            \lambda I_n-A\\
+            C
+        \end{bmatrix}=n,\text{ for any }\lambda\in\sigma(A) \text{ with }
+        \text{Re}(\lambda)\geq  0.\end{split}\]</div>
+</section>
+</div><div class="proof lemma admonition" id="lemma-12">
+<p class="admonition-title"><span class="caption-number">Lemma 2 </span></p>
+<section class="lemma-content" id="proof-content">
+<p>If <a class="reference internal" href="#equation-eq-state-space">(39)</a> is observable then it is detectable.</p>
+</section>
+</div><section id="exercise-1">
+<h3>Exercise 1<a class="headerlink" href="#exercise-1" title="Link to this heading">#</a></h3>
+<p>Let <span class="math notranslate nohighlight">\( x_1(t)\)</span> represent the population density of the prey (e.g., rabbits) per square kilometer.</p>
+<p>Let <span class="math notranslate nohighlight">\( x_2(t) \)</span> represent the population density of the predator (e.g., foxes) per square kilometer.</p>
+<p>Then, <span class="math notranslate nohighlight">\( \dot{x}_1(t) \)</span> and <span class="math notranslate nohighlight">\( \dot{x}_2 (t)\)</span> denote the rate of change over time of the prey and predator populations, respectively.</p>
+<p>Let <span class="math notranslate nohighlight">\( \alpha \)</span> be the natural growth rate of the prey population, and <span class="math notranslate nohighlight">\( \beta \)</span> be the effect of the predator on the prey population.</p>
+<p>Let <span class="math notranslate nohighlight">\( \gamma \)</span> be the death rate of the predator population, and <span class="math notranslate nohighlight">\( \delta \)</span> be the effect of the prey on the predator population.</p>
+<p>The system is given by:</p>
+<div class="math notranslate nohighlight">
+\[
+\dot{x}_1(t) = \alpha x_1(t) - \beta x_2(t),
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\dot{x}_2(t) = -\gamma x_2(t) + \delta x_1(t).
+\]</div>
+<p>Here <span class="math notranslate nohighlight">\(\alpha,\beta,\gamma,\delta\geq0\)</span>. Denote <span class="math notranslate nohighlight">\(\vec{x}(t)=\begin{bmatrix}x_1(t)\\x_2(t)\end{bmatrix}\)</span>, then</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    \begin{bmatrix}\dot{x}_1(t)\\\dot{x}_2(t)\end{bmatrix}=\begin{bmatrix}
+        \alpha&amp;-\beta\\\delta&amp;-\gamma
+    \end{bmatrix}\begin{bmatrix}x_1(t)\\x_2(t)\end{bmatrix}.
+\end{split}\]</div>
+<p>Assume <span class="math notranslate nohighlight">\( \alpha = \delta=0 \)</span> and <span class="math notranslate nohighlight">\( \beta = \gamma=2 \)</span>, meaning that the populations of predators and prey affect each other directly without natural birth or death. Assume also that the system has control inputs:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+B = \begin{bmatrix} 1 &amp; 0 \\ 0 &amp; 1 \end{bmatrix}.
+\end{split}\]</div>
+<p>We obtain</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    \begin{bmatrix}\dot{x}_1(t)\\\dot{x}_2(t)\end{bmatrix}=\begin{bmatrix}
+        0&amp;-2\\2&amp;0
+    \end{bmatrix}\begin{bmatrix}x_1(t)\\x_2(t)\end{bmatrix}+\begin{bmatrix} 1 &amp; 0 \\ 0 &amp; 1 \end{bmatrix}\vec{u}(t).
+\end{split}\]</div>
+<ol class="arabic simple">
+<li><p>Is the system controllable with respect to input <span class="math notranslate nohighlight">\(u_1(t)\)</span>?</p></li>
+<li><p>Is the system controllable with respect to input <span class="math notranslate nohighlight">\(u_2(t)\)</span>?</p></li>
+<li><p>Is the system controllable with respect to input <span class="math notranslate nohighlight">\(\vec{u}(t)\)</span>?</p></li>
+<li><p>Repeat items <span class="math notranslate nohighlight">\(1.-2.\)</span> using the duality theorem.</p></li>
+</ol>
+</section>
+<section id="solution">
+<h3>Solution<a class="headerlink" href="#solution" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p>In this case, <span class="math notranslate nohighlight">\( B = \begin{bmatrix} 1 \\ 0 \end{bmatrix} \)</span>, we compute the Kalman controllability matrix:</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[
+\mathcal{C} = \begin{bmatrix} B &amp; AB \end{bmatrix}.
+\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    AB=\begin{bmatrix}
+        0&amp;-2\\2&amp;0
+    \end{bmatrix}\begin{bmatrix}
+        1\\0
+    \end{bmatrix}=\begin{bmatrix}
+        0\\2
+    \end{bmatrix}.
+\end{split}\]</div>
+<p>Then</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    \mathcal{C}=\begin{bmatrix}
+        1&amp;0\\0&amp;2
+    \end{bmatrix}.
+\end{split}\]</div>
+<p>We have <span class="math notranslate nohighlight">\( \text{rank}(\mathcal{C}) = 2 \)</span>, so the system is controllable.</p>
+<ol class="arabic simple" start="2">
+<li><p>In this case</p></li>
+</ol>
+<p><span class="math notranslate nohighlight">\( B = \begin{bmatrix} 0 \\ 1 \end{bmatrix} \)</span>, we compute:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    AB=\begin{bmatrix}
+        0&amp;-2\\2&amp;0
+    \end{bmatrix}\begin{bmatrix}
+        0\\1
+    \end{bmatrix}=\begin{bmatrix}
+        -2\\0
+    \end{bmatrix}.
+\end{split}\]</div>
+<p>The controllability matrix is</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    \mathcal{C}=\begin{bmatrix}
+        B&amp;AB
+    \end{bmatrix}=\begin{bmatrix}
+        0&amp;-2\\1&amp;0
+    \end{bmatrix}.
+\end{split}\]</div>
+<p>Clearly, <span class="math notranslate nohighlight">\(\text{rank}(\mathcal{C})=2\)</span>, so the system is controllable.</p>
+<ol class="arabic simple" start="3">
+<li><p>In this case</p></li>
+</ol>
+<p>For <span class="math notranslate nohighlight">\( B = \begin{bmatrix} 1 &amp; 0 \\ 0 &amp; 1 \end{bmatrix} \)</span>, the controllability matrix is:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\mathcal{C} = \begin{bmatrix} B &amp; AB \end{bmatrix}=\begin{bmatrix}
+    0&amp;-2&amp;0&amp;-2\\2&amp;0&amp;2&amp;0
+\end{bmatrix}.
+\end{split}\]</div>
+<p>Clearly, <span class="math notranslate nohighlight">\(\text{rank}(\mathcal{C})=2\)</span>, so the system is controllable.</p>
+<p>We confirm controllability using the PBH Test</p>
+<p>Finding the eigenvalues of <span class="math notranslate nohighlight">\( A \)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+\det(A - \lambda I) = \lambda^2+\delta\beta=0\rightarrow\lambda_{1,2}=\pm j\sqrt{\delta\beta}.
+\]</div>
+<p>In this case <span class="math notranslate nohighlight">\(\beta=\delta=2\)</span>, so</p>
+<div class="math notranslate nohighlight">
+\[
+    \lambda_{1,2}=\pm j2.
+\]</div>
+<p>Checking the <strong>Hautus criterion</strong>:</p>
+<div class="math notranslate nohighlight">
+\[
+\text{rank} \begin{bmatrix} \lambda I - A &amp; B \end{bmatrix}.
+\]</div>
+<p>For <span class="math notranslate nohighlight">\(B=\begin{bmatrix}
+    1\\0
+\end{bmatrix}\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    \begin{bmatrix}
+        \lambda_{1,2}I-A&amp;B
+    \end{bmatrix}=\begin{bmatrix}
+        \pm j2&amp;2&amp;1\\-2&amp;\pm j2&amp;0
+    \end{bmatrix}\rightarrow\text{rank}\begin{bmatrix}
+        \lambda_{1,2}I-A&amp;B
+    \end{bmatrix}=2.
+\end{split}\]</div>
+<p>So the system is controllable with respect to <span class="math notranslate nohighlight">\(u_1(t)\)</span>.</p>
+<p>For <span class="math notranslate nohighlight">\(B=\begin{bmatrix}
+    0\\1
+\end{bmatrix}\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    \begin{bmatrix}
+        \lambda_{1,2}I-A&amp;B
+    \end{bmatrix}=\begin{bmatrix}
+        \pm j2&amp;2&amp;0\\-2&amp;\pm j2&amp;1
+    \end{bmatrix}\rightarrow\text{rank}\begin{bmatrix}
+        \lambda_{1,2}I-A&amp;B
+    \end{bmatrix}=2.
+\end{split}\]</div>
+<p>So the system is controllable with respect to <span class="math notranslate nohighlight">\(u_2(t)\)</span>.
+As an exercise, confirm that the system is controllable with respect to both inputs.</p>
+<ol class="arabic simple" start="4">
+<li></li>
+</ol>
+<p>The <strong>dual system</strong> is:</p>
+<div class="math notranslate nohighlight">
+\[
+\dot{\tilde{x}}(t) = A^\top \tilde{x}(t) ,\quad y(t)=B^\top \tilde{x}(t).
+\]</div>
+<p>If we consider the first output only, we have <span class="math notranslate nohighlight">\(B^\top=\begin{bmatrix}
+    1&amp;0
+\end{bmatrix}\)</span>. In this case</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    B^\top A=\begin{bmatrix}
+    1&amp;0
+\end{bmatrix}\begin{bmatrix}
+    0&amp;2\\-2&amp;0
+\end{bmatrix}=\begin{bmatrix}
+    0&amp;2
+\end{bmatrix}.
+\end{split}\]</div>
+<p>The observability matrix is</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    \mathcal{O}=\begin{bmatrix}
+        B^\top\\B^\top A
+    \end{bmatrix}=\begin{bmatrix}
+        1&amp;0\\0&amp;2
+    \end{bmatrix}.
+\end{split}\]</div>
+<p>Clearly, the rank is <span class="math notranslate nohighlight">\(2\)</span>, so the dual system is observable. Which implies that the original system is controllable.</p>
+<p>For the second output, <span class="math notranslate nohighlight">\(B^\top=\begin{bmatrix}
+    0&amp;1
+\end{bmatrix}\)</span>. In this case</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    B^\top A=\begin{bmatrix}
+    0&amp;1
+\end{bmatrix}\begin{bmatrix}
+    0&amp;2\\-2&amp;0
+\end{bmatrix}=\begin{bmatrix}
+    -2&amp;0
+\end{bmatrix}.
+\end{split}\]</div>
+<p>The observability matrix is</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    \mathcal{O}=\begin{bmatrix}
+        B^\top\\ B^\top A
+    \end{bmatrix}=\begin{bmatrix}
+        0&amp;1\\-2&amp;0
+    \end{bmatrix}.
+\end{split}\]</div>
+<p>Clearly, the rank is <span class="math notranslate nohighlight">\(2\)</span>, so the dual system is observable, and this implies that the original system is controllable.</p>
+</section>
+<section id="exercise-2">
+<h3>Exercise 2<a class="headerlink" href="#exercise-2" title="Link to this heading">#</a></h3>
+<p>Consider the system</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    \dot{\vec{x}}(t)=\begin{bmatrix}
+        2&amp;0\\3&amp;-1
+    \end{bmatrix}\vec{x}(t)+\begin{bmatrix}
+        1&amp;2\\1&amp;0
+    \end{bmatrix}\vec{u}(t),\quad y(t)=\begin{bmatrix}
+        0&amp;2
+    \end{bmatrix}\vec{x}(t).
+\end{split}\]</div>
+<ol class="arabic simple">
+<li><p>Is the system observable? Is it detectable?</p></li>
+<li><p>Is the system controllable with respect to the first input? Is it stabilizable?</p></li>
+<li><p>Is the system controllable with respect to the second input? is it stabilizable?</p></li>
+</ol>
+</section>
+<section id="id1">
+<h3>Solution<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p>We check if the system is observable.</p></li>
+</ol>
+<p>To check observability, we compute the observability matrix:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+CA=\begin{bmatrix}
+    0&amp;2
+\end{bmatrix}\begin{bmatrix}
+    2&amp;0\\3&amp;-1
+\end{bmatrix}=\begin{bmatrix}
+    6&amp;-2
+\end{bmatrix}\rightarrow \mathcal{O} = \begin{bmatrix} C \\ CA  \end{bmatrix}=\begin{bmatrix}
+    0&amp;2\\6&amp;-2
+\end{bmatrix}.
+\end{split}\]</div>
+<p>Since <span class="math notranslate nohighlight">\( \text{rank}(\mathcal{O}) = 2 \)</span>, the system is observable.</p>
+<ol class="arabic simple" start="2">
+<li><p>We find the eingevalues of <span class="math notranslate nohighlight">\(A\)</span>:</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    \lambda I-A=\begin{bmatrix}
+        \lambda-2&amp;0\\-3&amp;\lambda+1
+    \end{bmatrix}\rightarrow \det(\lambda I-A)=(\lambda-2)(\lambda+1).
+\end{split}\]</div>
+<p>The eigenvalues of <span class="math notranslate nohighlight">\(A\)</span> are <span class="math notranslate nohighlight">\(\lambda_1=-1,\;\lambda_2=2\)</span>.
+To check controllability with respect to  the first input, we use the PBH test:</p>
+<p>In this case</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    B=\begin{bmatrix}
+        1\\1
+    \end{bmatrix}.
+\end{split}\]</div>
+<p>Then, for <span class="math notranslate nohighlight">\(\lambda_1\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\text{rank} \begin{bmatrix} \lambda_1 I - A &amp; B \end{bmatrix}=\text{rank}\begin{bmatrix}
+    -3&amp;0&amp;1\\-3&amp;0&amp;1
+\end{bmatrix}=1.
+\end{split}\]</div>
+<p>Since the rank condition fails, we conclude: The system is NOT controllable with respect to the first input.</p>
+<p>The system will be stabilizable (with respect to the first input) only if the rank condition holds for <span class="math notranslate nohighlight">\(\lambda_2\)</span> since <span class="math notranslate nohighlight">\(\lambda_2&gt;0\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\text{rank} \begin{bmatrix} \lambda_2 I - A &amp; B \end{bmatrix}=\text{rank}\begin{bmatrix}
+    0&amp;0&amp;1\\-3&amp;3&amp;1
+\end{bmatrix}=2.
+\end{split}\]</div>
+<p>So the system is stabilizable.</p>
+<ol class="arabic simple" start="3">
+<li><p>We check Controllability with respect to the second input. In this case</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    B=\begin{bmatrix}
+        2\\0
+    \end{bmatrix}.
+\end{split}\]</div>
+<p>Using the PBH test:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    \text{rank}\begin{bmatrix}
+        \lambda_1-A&amp;B
+    \end{bmatrix}=\text{rank}\begin{bmatrix}
+        -3&amp;0&amp;2\\-3&amp;0&amp;0
+    \end{bmatrix}=2,
+\end{split}\]</div>
+<p>and</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    \text{rank}\begin{bmatrix}
+        \lambda_2-A&amp;B
+    \end{bmatrix}=\text{rank}\begin{bmatrix}
+        0&amp;0&amp;2\\-3&amp;3&amp;0
+    \end{bmatrix}=2.
+\end{split}\]</div>
+<p>The rank is <span class="math notranslate nohighlight">\(2\)</span> in both cases, so the system is controllable with respect to the second input.
+Since the system is controllable, it is also stabilizable.</p>
+</section>
+<section id="exercise-3">
+<h3>Exercise 3<a class="headerlink" href="#exercise-3" title="Link to this heading">#</a></h3>
+<p>Consider the system</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    \dot{\vec{x}}(t)=\begin{bmatrix}
+        -1&amp;0\\0&amp;-2
+    \end{bmatrix}\vec{x}(t)+\begin{bmatrix}
+        b_1\\b_2
+    \end{bmatrix}\vec{u}(t),\quad \vec{x}(0)=\vec{x}_0=\begin{bmatrix}
+        x_1^0\\x_2^0
+    \end{bmatrix}.
+\end{split}\]</div>
+<p>For which values of <span class="math notranslate nohighlight">\(b_1,b_2\in\mathbb{R}\)</span> is the system controllable? Prove this using the definition of controllability.</p>
+</section>
+<section id="id2">
+<h3>Solution<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
+<p>We find the explicit solution <span class="math notranslate nohighlight">\(\vec{x}(t)=\begin{bmatrix}
+    x_1(t)\\x_2(t)
+\end{bmatrix}\)</span>, and find the values of <span class="math notranslate nohighlight">\(b_1,b_2\)</span> such that for any non-zero initial condition <span class="math notranslate nohighlight">\(\vec{x}_0\)</span> and each vector <span class="math notranslate nohighlight">\(\vec{x}_f=\begin{bmatrix}
+    x_1^f\\x_2^f
+\end{bmatrix}\)</span> we can find some input <span class="math notranslate nohighlight">\(\vec{u}(t)=\begin{bmatrix}
+    u_1(t)\\u_2(t)
+\end{bmatrix}\)</span> such that <span class="math notranslate nohighlight">\(\vec{x}(T)=\vec{x}_f\)</span>. We know that</p>
+<div class="math notranslate nohighlight">
+\[
+    \vec{x}(t)=e^{At}\vec{x}_0+\int_0^t e^{A(t-\tau)}Bu(\tau)d\tau.
+\]</div>
+<p>Since <span class="math notranslate nohighlight">\(A\)</span> is diagonal,</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    e^{At}\vec{x}(t)=\begin{bmatrix}
+        e^{-t}&amp;0\\0&amp;e^{-2t}
+    \end{bmatrix}\begin{bmatrix}
+        x_1^0\\x_2^0
+    \end{bmatrix}=\begin{bmatrix}
+        x_1^0e^{-t}\\x_2^0e^{-2t}
+    \end{bmatrix}.
+\end{split}\]</div>
+<p>Moreover,</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    e^{A(t-\tau)}B=\begin{bmatrix}
+        e^{-(t-\tau)}&amp;0\\0&amp;e^{-2(t-\tau)}
+    \end{bmatrix}\begin{bmatrix}
+        b_1\\b_2
+    \end{bmatrix}=\begin{bmatrix}
+        b_1e^{-(t-\tau)}\\b_2 e^{-2(t-\tau)}
+    \end{bmatrix}.
+\end{split}\]</div>
+<p>We have</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    \vec{x}(t)=\begin{bmatrix}
+        x_1^0e^{-t}\\x_2^0e^{-2t}
+    \end{bmatrix}+\int_0^t\begin{bmatrix}
+        b_1e^{-(t-\tau)}\\b_2 e^{-2(t-\tau)}
+    \end{bmatrix}\vec{u}(\tau)d\tau.
+\end{split}\]</div>
+<p>Decomposing element wise, we have</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    x_1(t)=x_1^0e^{-t}+\int_0^tb_1e^{-(t-\tau)}u_1(\tau)d\tau,\\
+    x_2(t)=x_2^0e^{-2t}+\int_0^tb_2e^{-2(t-\tau)}u_2(\tau)d\tau.
+\end{split}\]</div>
+<p>Rearranging is</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    x_1(t)=x_1^0e^{-t}+b_1e^{-t}\int_0^te^{\tau}u_1(\tau)d\tau,\\
+    x_2(t)=x_2^0e^{-2t}+b_2e^{-2t}\int_0^tbe^{2\tau}u_2(\tau)d\tau.
+\end{split}\]</div>
+<p>The solution at time <span class="math notranslate nohighlight">\(t=T\)</span> is</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    x_1(T)=x_1^0e^{-T}+b_1e^{-T}\int_0^Te^{\tau}u_1(\tau)d\tau,\\
+    x_2(T)=x_2^0e^{-2T}+b_2e^{-2T}\int_0^Tbe^{2\tau}u_2(\tau)d\tau.
+\end{split}\]</div>
+<p>We want <span class="math notranslate nohighlight">\(\vec{x}(T)=\vec{x}_f\)</span>, that is:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    x_1^f=x_1^0e^{-T}+b_1e^{-T}\int_0^Te^{\tau}u_1(\tau)d\tau,\\
+    x_2^f=x_2^0e^{-2T}+b_2e^{-2T}\int_0^Tbe^{2\tau}u_2(\tau)d\tau.
+\end{split}\]</div>
+<p>Clearly, if <span class="math notranslate nohighlight">\(b_1=0\)</span> or <span class="math notranslate nohighlight">\(b_2=0\)</span> or both, the system won’t be controllable, since then we cannot control either <span class="math notranslate nohighlight">\(x_1(t)\)</span> or <span class="math notranslate nohighlight">\(x_2(t)\)</span> (or both) using <span class="math notranslate nohighlight">\(\vec{u}(t)\)</span>. For example, if <span class="math notranslate nohighlight">\(b_1=0\)</span>, <span class="math notranslate nohighlight">\(x_1(T)=x_1^0e^{T}\)</span>, that is, for any <span class="math notranslate nohighlight">\(\vec{u}(t)\)</span>. So clearly, unless <span class="math notranslate nohighlight">\(x_1^f=x_1^0e^{-T}\)</span>, we cannot control the system such that <span class="math notranslate nohighlight">\(x_1(t)=x_1^f\)</span>.</p>
+<div class="proof remark admonition" id="remark-13">
+<p class="admonition-title"><span class="caption-number">Remark 24 </span></p>
+<section class="remark-content" id="proof-content">
+<p>If <span class="math notranslate nohighlight">\(A\)</span> is diagonal and invertible, and <span class="math notranslate nohighlight">\(B\)</span> is a vector (the system is SISO/SIMO), then we can know if the system is controllable simply by observing the vector <span class="math notranslate nohighlight">\(B\)</span>. If <span class="math notranslate nohighlight">\(B\)</span> has a zero element, then the system is not controllable.</p>
+</section>
+</div></section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "executablebooks/jupyter-book",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="rec8.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Introduction to Control – Recitation 8</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#controllability">Controllability</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dual-systems">Dual Systems</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stabilizability">Stabilizability</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#detectability">Detectability</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1">Exercise 1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution">Solution</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2">Exercise 2</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Solution</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3">Exercise 3</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Solution</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Omri Dalin
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

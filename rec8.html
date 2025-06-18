@@ -34,9 +34,9 @@
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="_static/proof.css?v=b4b7a797" />
+    <link rel="stylesheet" type="text/css" href="_static/proof.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- So that users can add custom icons -->
@@ -79,6 +79,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'rec8';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Introduction to Control – Recitation 9" href="rec9.html" />
     <link rel="prev" title="Introduction to Control – Recitation 7" href="rec7.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -193,6 +194,7 @@
 <li class="toctree-l1"><a class="reference internal" href="rec6.html">Introduction to Control – Recitation 6</a></li>
 <li class="toctree-l1"><a class="reference internal" href="rec7.html">Introduction to Control – Recitation 7</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Introduction to Control – Recitation 8</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rec9.html">Introduction to Control – Recitation 9</a></li>
 </ul>
 
     </div>
@@ -436,7 +438,7 @@ D\in \mathbb{R}^{p\times m}.
     x(t)&amp;= e^{At}x(0)+\int_0^t e^{A(t-s)}Bu(s)ds,\\
     y(t)&amp;= C \left  (e^{At}x(0)+\int_0^t e^{A(t-s)}Bu(s)ds \right )+Du(t),\nonumber
 \end{split}\]</div>
-<p>where <span class="math notranslate nohighlight">\(e^A\)</span> is the matrix exponential of <span class="math notranslate nohighlight">\(A\)</span>. The Laplace representation of <a class="reference internal" href="#equation-eq-state-space">(34)</a> is</p>
+<p>where <span class="math notranslate nohighlight">\(e^A\)</span> is the matrix exponential of <span class="math notranslate nohighlight">\(A\)</span>. The Laplace representation of <a class="reference internal" href="rec9.html#equation-eq-state-space">(39)</a> is</p>
 <div class="math notranslate nohighlight">
 \[
 \boxed{\frac{\hat y(s)}{\hat u(s)}  = C (sI_n-A)^{-1} B+D}
@@ -556,7 +558,7 @@ D\in \mathbb{R}^{p\times m}.
 </section>
 <section id="observability">
 <h2>Observability<a class="headerlink" href="#observability" title="Link to this heading">#</a></h2>
-<p>Consider the system <a class="reference internal" href="#equation-eq-state-space">(34)</a> is called observable on the time interval <span class="math notranslate nohighlight">\([0,T]\)</span> if it is possible to uniquely determine <span class="math notranslate nohighlight">\(x(0)\)</span> from observing <span class="math notranslate nohighlight">\(u(t),y(t)\)</span> for <span class="math notranslate nohighlight">\(t\in[0,T]\)</span>. Since we assume that the input is known, it is enough to consider the system:</p>
+<p>Consider the system <a class="reference internal" href="rec9.html#equation-eq-state-space">(39)</a> is called observable on the time interval <span class="math notranslate nohighlight">\([0,T]\)</span> if it is possible to uniquely determine <span class="math notranslate nohighlight">\(x(0)\)</span> from observing <span class="math notranslate nohighlight">\(u(t),y(t)\)</span> for <span class="math notranslate nohighlight">\(t\in[0,T]\)</span>. Since we assume that the input is known, it is enough to consider the system:</p>
 <div class="math notranslate nohighlight" id="equation-eq-system-obsvr">
 <span class="eqno">(35)<a class="headerlink" href="#equation-eq-system-obsvr" title="Link to this equation">#</a></span>\[\begin{split}        \dot{x}(t)&amp;=Ax(t),\\
         y(t)&amp;=Cx(t).\end{split}\]</div>
@@ -1056,6 +1058,15 @@ If <span class="math notranslate nohighlight">\(c_2=0\)</span>, then</p>
         <p class="prev-next-subtitle">previous</p>
         <p class="prev-next-title">Introduction to Control – Recitation 7</p>
       </div>
+    </a>
+    <a class="right-next"
+       href="rec9.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Introduction to Control – Recitation 9</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
                 </footer>
