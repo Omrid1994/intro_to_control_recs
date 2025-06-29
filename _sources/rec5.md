@@ -83,13 +83,13 @@ $$
     k\tilde{G}(s) = k\frac{n(s)}{d(s)}.
 $$
 
-where $n(s)$ is a polynomial of degree $w$, and $d(s)$ is a polynomial of degree $m$. Since we are dealing with **proper** systems, $m \leq n$.
+where $n(s)$ is a polynomial of degree $w$, and $d(s)$ is a polynomial of degree $m$. Since we are dealing with **proper** systems, $w \leq m$.
 
 ### Drawing a Root Locus Diagram
 
 Below are some general rules of thumb for the Root Locus diagram:
 
-- There will be $\tilde{n}$ curves when $\tilde{n}=\max(m,w)$. If the system is proper, there will be $w$ curves.
+- There will be $\tilde{n}$ curves when $\tilde{n}=\max(m,w)$. If the system is proper, there will be $m$ curves.
 - As $k$ increases from $0$ to infinity, the curves move from the poles of $G(s)$ to the zeros of $G(s)$.
 - Complex roots always appear in conjugate pairs, making the diagram symmetric about the real axis.
 - The branches do not intersect, meaning there are no loops. If two branches meet, they split apart at that point.

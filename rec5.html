@@ -34,9 +34,9 @@
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="_static/proof.css?v=b4b7a797" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- So that users can add custom icons -->
@@ -481,12 +481,12 @@
 \[
     k\tilde{G}(s) = k\frac{n(s)}{d(s)}.
 \]</div>
-<p>where <span class="math notranslate nohighlight">\(n(s)\)</span> is a polynomial of degree <span class="math notranslate nohighlight">\(w\)</span>, and <span class="math notranslate nohighlight">\(d(s)\)</span> is a polynomial of degree <span class="math notranslate nohighlight">\(m\)</span>. Since we are dealing with <strong>proper</strong> systems, <span class="math notranslate nohighlight">\(m \leq n\)</span>.</p>
+<p>where <span class="math notranslate nohighlight">\(n(s)\)</span> is a polynomial of degree <span class="math notranslate nohighlight">\(w\)</span>, and <span class="math notranslate nohighlight">\(d(s)\)</span> is a polynomial of degree <span class="math notranslate nohighlight">\(m\)</span>. Since we are dealing with <strong>proper</strong> systems, <span class="math notranslate nohighlight">\(w \leq m\)</span>.</p>
 <section id="drawing-a-root-locus-diagram">
 <h3>Drawing a Root Locus Diagram<a class="headerlink" href="#drawing-a-root-locus-diagram" title="Link to this heading">#</a></h3>
 <p>Below are some general rules of thumb for the Root Locus diagram:</p>
 <ul class="simple">
-<li><p>There will be <span class="math notranslate nohighlight">\(\tilde{n}\)</span> curves when <span class="math notranslate nohighlight">\(\tilde{n}=\max(m,w)\)</span>. If the system is proper, there will be <span class="math notranslate nohighlight">\(w\)</span> curves.</p></li>
+<li><p>There will be <span class="math notranslate nohighlight">\(\tilde{n}\)</span> curves when <span class="math notranslate nohighlight">\(\tilde{n}=\max(m,w)\)</span>. If the system is proper, there will be <span class="math notranslate nohighlight">\(m\)</span> curves.</p></li>
 <li><p>As <span class="math notranslate nohighlight">\(k\)</span> increases from <span class="math notranslate nohighlight">\(0\)</span> to infinity, the curves move from the poles of <span class="math notranslate nohighlight">\(G(s)\)</span> to the zeros of <span class="math notranslate nohighlight">\(G(s)\)</span>.</p></li>
 <li><p>Complex roots always appear in conjugate pairs, making the diagram symmetric about the real axis.</p></li>
 <li><p>The branches do not intersect, meaning there are no loops. If two branches meet, they split apart at that point.</p></li>
