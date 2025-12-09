@@ -533,7 +533,7 @@ $$
 The Nyquist plot begins at infinity along the negative imaginary axis. 
 
 $$
-    \big|G(j\omega\rightarrow\infty)\big|\rightarrow\infty,
+    \big|G(j\omega\rightarrow\infty)\big|\rightarrow0,
 $$
 
 since the denominator is dominant.
