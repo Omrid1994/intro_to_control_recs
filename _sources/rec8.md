@@ -172,7 +172,7 @@ Note that this implies that
 
 ```{math}
 :label: eq:yt_obser
-  y(t)=Ce^{At}x(0) \text{ for all } t\geq0.   
+  y(t)=Ce^{At}x(0)\neq0 \text{ for all } t\geq0.   
 ```
  
 ```{prf:definition}
