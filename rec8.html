@@ -580,9 +580,7 @@ D\in \mathbb{R}^{p\times m}.
 <p class="admonition-title"><span class="caption-number">Proposition 2 </span></p>
 <section class="proposition-content" id="proof-content">
 <p>The system <a class="reference internal" href="#equation-eq-system-obsvr">(35)</a> is  observable on <span class="math notranslate nohighlight">\([0,T]\)</span> if and only if for every <span class="math notranslate nohighlight">\(x(0)\in\mathbb{R}^n\)</span>, <span class="math notranslate nohighlight">\(x(0)\neq0\)</span>, the output <span class="math notranslate nohighlight">\(y\)</span> that corresponds to the initial state <span class="math notranslate nohighlight">\(x(0)\)</span> satisfies
-$<span class="math notranslate nohighlight">\(
-        \int_0^T | y(t) |_2^2 dt&gt;0.
-\)</span>$</p>
+<span class="math notranslate nohighlight">\(\int_0^T | y(t) |_2^2 dt&gt;0\)</span>.</p>
 </section>
 </div><p>In other words, <span class="math notranslate nohighlight">\(y(t)\)</span> is not zero on   the entire time   interval <span class="math notranslate nohighlight">\(t\in[0,T]\)</span>.</p>
 <section id="kalman-rank-condition-for-observability">
@@ -607,7 +605,7 @@ C\\CA\\CA^2\\ \vdots\\CA^{n-1}
 </div></section>
 <section id="popov-belevitch-hautus-test-for-observability">
 <h3>Popov-Belevitch-Hautus Test for Observability<a class="headerlink" href="#popov-belevitch-hautus-test-for-observability" title="Link to this heading">#</a></h3>
-<p>Another important way to verify  observability is the Popov-Belevitch-Hautus (PBH)test for observability.</p>
+<p>Another important way to verify  observability is the Popov-Belevitch-Hautus (PBH) test for observability.</p>
 <div class="proof theorem admonition" id="theorem-4">
 <p class="admonition-title"><span class="caption-number">Theorem 2 </span></p>
 <section class="theorem-content" id="proof-content">
@@ -821,17 +819,18 @@ y(t) = \underbrace{\begin{bmatrix}
 \[\begin{split}
 \mathcal{O} = \begin{bmatrix} C \\ C A \end{bmatrix}.
 \end{split}\]</div>
-<p>That is
-$<span class="math notranslate nohighlight">\(
-    CA=\begin{bmatrix}
+<p>That is</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+	CA=\begin{bmatrix}
         0&amp;1
     \end{bmatrix}\begin{bmatrix}
         -1&amp;0\\2&amp;-2
     \end{bmatrix}=\begin{bmatrix}
         2&amp;-2
     \end{bmatrix}.
-\)</span>$
-So</p>
+\end{split}\]</div>
+<p>So</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
     \mathcal{O}=\begin{bmatrix}
