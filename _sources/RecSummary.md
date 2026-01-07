@@ -75,9 +75,9 @@ $$
 
 thus, we obtain:
 
-\[
+$$
 \frac{\hat{e}(s)}{\hat{r}(s)} = S(s) = \frac{1}{1 + G(s)H(s)}.
-\]
+$$
 
 This is also called the <b>sensitivity transfer function</b>. In our course so far, $ H(s) = 1 $, so we get:
 
