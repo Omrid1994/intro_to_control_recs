@@ -31,10 +31,10 @@ $$
 we get the closed-loop system:
 
 $$
-    P(s) = \frac{5k}{s^2+s + 5k}.
+    T(s) = \frac{k}{s^2+2s + kk}.
 $$
 
-For $k = 0$, we obtain the roots: $s = -1, 0$. For $k = 1$, we obtain the roots $s=-0.5\pm j\frac{\sqrt{19}}{2}$.
+The poles are $s_{1,2}=-1\pm\sqrt{1-k}. For any value of $k$ we get a different set of poles. For $k=1$ we have $s_{1,2}=-1$, if $k>1$ we obtain two complex conjugate poles etc.
 ````
 
 $$
@@ -115,7 +115,11 @@ For $k<0$, a real point $s\in\mathbb{R}$ is included in the root locus plot if a
 \theta = \frac{180^\circ}{m-w}\cdot\ell, 
 ```
 
-where $\ell$ runs through the first $m-w$ **odd** numbers if $k>0$ and through the first $m-w$ **even** numbers if $k<0$.
+where $\ell$ runs through the first $m-w$ **odd** numbers.
+
+```{prf:remark}
+For $k<0$, $\ell$ runs through the first $m-w$ **even** numbers.
+```
 
 The center of the asymptotes is given by:
 

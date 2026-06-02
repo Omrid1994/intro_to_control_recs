@@ -437,9 +437,9 @@
 <p>we get the closed-loop system:</p>
 <div class="math notranslate nohighlight">
 \[
-    P(s) = \frac{5k}{s^2+s + 5k}.
+    T(s) = \frac{k}{s^2+2s + kk}.
 \]</div>
-<p>For <span class="math notranslate nohighlight">\(k = 0\)</span>, we obtain the roots: <span class="math notranslate nohighlight">\(s = -1, 0\)</span>. For <span class="math notranslate nohighlight">\(k = 1\)</span>, we obtain the roots <span class="math notranslate nohighlight">\(s=-0.5\pm j\frac{\sqrt{19}}{2}\)</span>.</p>
+<p>The poles are <span class="math notranslate nohighlight">\(s_{1,2}=-1\pm\sqrt{1-k}. For any value of \)</span>k<span class="math notranslate nohighlight">\( we get a different set of poles. For \)</span>k=1<span class="math notranslate nohighlight">\( we have \)</span>s_{1,2}=-1<span class="math notranslate nohighlight">\(, if \)</span>k&gt;1$ we obtain two complex conjugate poles etc.</p>
 </section>
 </div><div class="math notranslate nohighlight">
 \[
@@ -508,8 +508,13 @@
 </ol>
 <div class="math notranslate nohighlight" id="equation-eq-asymptotoes">
 <span class="eqno">(18)<a class="headerlink" href="#equation-eq-asymptotoes" title="Link to this equation">#</a></span>\[\theta = \frac{180^\circ}{m-w}\cdot\ell, \]</div>
-<p>where <span class="math notranslate nohighlight">\(\ell\)</span> runs through the first <span class="math notranslate nohighlight">\(m-w\)</span> <strong>odd</strong> numbers if <span class="math notranslate nohighlight">\(k&gt;0\)</span> and through the first <span class="math notranslate nohighlight">\(m-w\)</span> <strong>even</strong> numbers if <span class="math notranslate nohighlight">\(k&lt;0\)</span>.</p>
-<p>The center of the asymptotes is given by:</p>
+<p>where <span class="math notranslate nohighlight">\(\ell\)</span> runs through the first <span class="math notranslate nohighlight">\(m-w\)</span> <strong>odd</strong> numbers.</p>
+<div class="proof remark admonition" id="remark-3">
+<p class="admonition-title"><span class="caption-number">Remark 4 </span></p>
+<section class="remark-content" id="proof-content">
+<p>For <span class="math notranslate nohighlight">\(k&lt;0\)</span>, <span class="math notranslate nohighlight">\(\ell\)</span> runs through the first <span class="math notranslate nohighlight">\(m-w\)</span> <strong>even</strong> numbers.</p>
+</section>
+</div><p>The center of the asymptotes is given by:</p>
 <div class="math notranslate nohighlight">
 \[
 \gamma = \frac{\sum_{i=1}^m p_i - \sum_{i=1}^w z_i}{m-w},
@@ -542,8 +547,8 @@ The Root Locus leaves complex poles and enters complex zeros at specific angles.
 \theta_{entry} = 180^\circ - \sum (\text{angles from other zeros}) + \sum (\text{angles from poles}).
 \]</div>
 <p>where the sums are taken over all other poles and zeros relative to the given pole or zero.</p>
-<div class="proof remark admonition" id="remark-3">
-<p class="admonition-title"><span class="caption-number">Remark 4 </span></p>
+<div class="proof remark admonition" id="remark-4">
+<p class="admonition-title"><span class="caption-number">Remark 5 </span></p>
 <section class="remark-content" id="proof-content">
 <p>The angles between two poles (or any two points on the complex plane) is as follows: First, we draw a straight line between the poles. Then, we draw a horizontal line to the right of the first pole. The angle between the first pole and the second pole is the angle between the horizontal line and the line connecting the poles.</p>
 <figure class="align-default" id="fig-closed-system-1">

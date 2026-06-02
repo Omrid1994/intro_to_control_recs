@@ -420,13 +420,13 @@ y(t)&amp;=C x(t)+D u(t).\nonumber\end{split}\]</div>
 <div class="proof definition admonition" id="definition-0">
 <p class="admonition-title"><span class="caption-number">Definition 8 </span></p>
 <section class="definition-content" id="proof-content">
-<p>The system <a class="reference internal" href="#equation-eq-state-space">(39)</a> is called controllable if for any <span class="math notranslate nohighlight">\(a,b\in\mathbb{R}^n\)</span> there exists a time <span class="math notranslate nohighlight">\(T\geq 0\)</span> and a control <span class="math notranslate nohighlight">\(u(t)\)</span>, <span class="math notranslate nohighlight">\(t\in[0,T]\)</span>, such that for <span class="math notranslate nohighlight">\(x(0)=a\)</span> the solution <span class="math notranslate nohighlight">\(x(t)\)</span> of the system satisfies <span class="math notranslate nohighlight">\(x(T)=b\)</span>.</p>
+<p>The system <a class="reference internal" href="rec8.html#equation-eq-state-space">(34)</a> is called controllable if for any <span class="math notranslate nohighlight">\(a,b\in\mathbb{R}^n\)</span> there exists a time <span class="math notranslate nohighlight">\(T\geq 0\)</span> and a control <span class="math notranslate nohighlight">\(u(t)\)</span>, <span class="math notranslate nohighlight">\(t\in[0,T]\)</span>, such that for <span class="math notranslate nohighlight">\(x(0)=a\)</span> the solution <span class="math notranslate nohighlight">\(x(t)\)</span> of the system satisfies <span class="math notranslate nohighlight">\(x(T)=b\)</span>.</p>
 </section>
 </div><p>In other words, we can steer  the state from any initial condition <span class="math notranslate nohighlight">\(a\)</span> to any desired final condition <span class="math notranslate nohighlight">\(b\)</span> in finite time.</p>
 <div class="proof theorem admonition" id="thm:controll">
 <p class="admonition-title"><span class="caption-number">Theorem 3 </span></p>
 <section class="theorem-content" id="proof-content">
-<p>(Kalman Controllability Test) The system <a class="reference internal" href="#equation-eq-state-space">(39)</a> is controllable if and only if</p>
+<p>(Kalman Controllability Test) The system <a class="reference internal" href="rec8.html#equation-eq-state-space">(34)</a> is controllable if and only if</p>
 <div class="math notranslate nohighlight" id="equation-eq-necc-sugg-cont">
 <span class="eqno">(40)<a class="headerlink" href="#equation-eq-necc-sugg-cont" title="Link to this equation">#</a></span>\[ \text{rank}\begin{bmatrix}
      B&amp;AB&amp;\dots&amp;A^{n-1}B
@@ -444,7 +444,7 @@ y(t)&amp;=C x(t)+D u(t).\nonumber\end{split}\]</div>
 \]</div>
 </section>
 </div><div class="proof remark admonition" id="remark-3">
-<p class="admonition-title"><span class="caption-number">Remark 23 </span></p>
+<p class="admonition-title"><span class="caption-number">Remark 24 </span></p>
 <section class="remark-content" id="proof-content">
 <p>Notice that the above tests depend only on the matrices <span class="math notranslate nohighlight">\( A \)</span> and <span class="math notranslate nohighlight">\( B \)</span>. Therefore, controllability is a property of the pair <span class="math notranslate nohighlight">\( (A, B) \)</span>. Since <span class="math notranslate nohighlight">\( A \)</span> and <span class="math notranslate nohighlight">\( B \)</span> are constant matrices in time-invariant systems, the controllability property does not change over time. If a system is controllable at a certain time, it is controllable at all times.</p>
 </section>
@@ -454,7 +454,7 @@ y(t)&amp;=C x(t)+D u(t).\nonumber\end{split}\]</div>
 <div class="proof definition admonition" id="definition-4">
 <p class="admonition-title"><span class="caption-number">Definition 9 </span></p>
 <section class="definition-content" id="proof-content">
-<p>The dual system of  the system <a class="reference internal" href="#equation-eq-state-space">(39)</a> is the control system</p>
+<p>The dual system of  the system <a class="reference internal" href="rec8.html#equation-eq-state-space">(34)</a> is the control system</p>
 <div class="math notranslate nohighlight" id="equation-eq-dual">
 <span class="eqno">(41)<a class="headerlink" href="#equation-eq-dual" title="Link to this equation">#</a></span>\[\begin{split}    \dot{\tilde x} &amp;=A^\top \tilde x+C^\top \tilde u ,\nonumber \\
     \tilde y&amp;= B^\top \tilde x+D^\top \tilde u.\end{split}\]</div>
@@ -463,7 +463,7 @@ y(t)&amp;=C x(t)+D u(t).\nonumber\end{split}\]</div>
 <div class="proof theorem admonition" id="thm:dula">
 <p class="admonition-title"><span class="caption-number">Theorem 4 </span></p>
 <section class="theorem-content" id="proof-content">
-<p>The system <a class="reference internal" href="#equation-eq-state-space">(39)</a> is controllable if and only if the dual system <a class="reference internal" href="#equation-eq-dual">(41)</a> is observable.</p>
+<p>The system <a class="reference internal" href="rec8.html#equation-eq-state-space">(34)</a> is controllable if and only if the dual system <a class="reference internal" href="#equation-eq-dual">(41)</a> is observable.</p>
 </section>
 </div></section>
 <section id="stabilizability">
@@ -482,14 +482,14 @@ u(t)=Fx(t)
 <div class="proof definition admonition" id="def:stabiliz">
 <p class="admonition-title"><span class="caption-number">Definition 10 </span></p>
 <section class="definition-content" id="proof-content">
-<p>The system <a class="reference internal" href="#equation-eq-state-space">(39)</a> is called stabilizable if
+<p>The system <a class="reference internal" href="rec8.html#equation-eq-state-space">(34)</a> is called stabilizable if
 there exists a matrix <span class="math notranslate nohighlight">\(F\in\mathbb{R}^{ m\times n}\)</span> such that <span class="math notranslate nohighlight">\(A+BF\)</span> is stable
 (that is, every eigenvalue of <span class="math notranslate nohighlight">\(A+BF\)</span> has a negative real part).</p>
 </section>
 </div><div class="proof proposition admonition" id="proposition-7">
 <p class="admonition-title"><span class="caption-number">Proposition 4 </span></p>
 <section class="proposition-content" id="proof-content">
-<p>The system <a class="reference internal" href="#equation-eq-state-space">(39)</a> is stabilizable if and only if for any <span class="math notranslate nohighlight">\(x(0)\in\mathbb{R}^n\)</span> there exists a control <span class="math notranslate nohighlight">\(u:[0,\infty)\to\mathbb{R}^m\)</span>, with <span class="math notranslate nohighlight">\(\lim_{t\to\infty}u(t)=0\)</span>, such that</p>
+<p>The system <a class="reference internal" href="rec8.html#equation-eq-state-space">(34)</a> is stabilizable if and only if for any <span class="math notranslate nohighlight">\(x(0)\in\mathbb{R}^n\)</span> there exists a control <span class="math notranslate nohighlight">\(u:[0,\infty)\to\mathbb{R}^m\)</span>, with <span class="math notranslate nohighlight">\(\lim_{t\to\infty}u(t)=0\)</span>, such that</p>
 <div class="math notranslate nohighlight">
 \[
     \lim_{t\to\infty}x(t)=0. 
@@ -509,7 +509,7 @@ there exists a matrix <span class="math notranslate nohighlight">\(F\in\mathbb{R
 </div><div class="proof lemma admonition" id="lemma-9">
 <p class="admonition-title"><span class="caption-number">Lemma 1 </span></p>
 <section class="lemma-content" id="proof-content">
-<p>If <a class="reference internal" href="#equation-eq-state-space">(39)</a> is controllable then it is stabilizable.</p>
+<p>If <a class="reference internal" href="rec8.html#equation-eq-state-space">(34)</a> is controllable then it is stabilizable.</p>
 </section>
 </div></section>
 <section id="detectability">
@@ -517,7 +517,7 @@ there exists a matrix <span class="math notranslate nohighlight">\(F\in\mathbb{R
 <div class="proof definition admonition" id="definition-10">
 <p class="admonition-title"><span class="caption-number">Definition 11 </span></p>
 <section class="definition-content" id="proof-content">
-<p>The system <a class="reference internal" href="#equation-eq-state-space">(39)</a> is called detectable if <span class="math notranslate nohighlight">\(y(t)=0\)</span> for all <span class="math notranslate nohighlight">\( t\geq 0\)</span> implies that</p>
+<p>The system <a class="reference internal" href="rec8.html#equation-eq-state-space">(34)</a> is called detectable if <span class="math notranslate nohighlight">\(y(t)=0\)</span> for all <span class="math notranslate nohighlight">\( t\geq 0\)</span> implies that</p>
 <div class="math notranslate nohighlight" id="equation-eq-contoze">
 <span class="eqno">(42)<a class="headerlink" href="#equation-eq-contoze" title="Link to this equation">#</a></span>\[ \lim_{t\to\infty}x(t)= 0 .\]</div>
 </section>
@@ -538,7 +538,7 @@ if and only if</p>
 </div><div class="proof lemma admonition" id="lemma-12">
 <p class="admonition-title"><span class="caption-number">Lemma 2 </span></p>
 <section class="lemma-content" id="proof-content">
-<p>If <a class="reference internal" href="#equation-eq-state-space">(39)</a> is observable then it is detectable.</p>
+<p>If <a class="reference internal" href="rec8.html#equation-eq-state-space">(34)</a> is observable then it is detectable.</p>
 </section>
 </div><section id="exercise-1">
 <h3>Exercise 1<a class="headerlink" href="#exercise-1" title="Link to this heading">#</a></h3>
@@ -931,7 +931,7 @@ Since the system is controllable, it is also stabilizable.</p>
 \end{split}\]</div>
 <p>Clearly, if <span class="math notranslate nohighlight">\(b_1=0\)</span> or <span class="math notranslate nohighlight">\(b_2=0\)</span> or both, the system won’t be controllable, since then we cannot control either <span class="math notranslate nohighlight">\(x_1(t)\)</span> or <span class="math notranslate nohighlight">\(x_2(t)\)</span> (or both) using <span class="math notranslate nohighlight">\(\vec{u}(t)\)</span>. For example, if <span class="math notranslate nohighlight">\(b_1=0\)</span>, <span class="math notranslate nohighlight">\(x_1(T)=x_1^0e^{T}\)</span>, that is, for any <span class="math notranslate nohighlight">\(\vec{u}(t)\)</span>. So clearly, unless <span class="math notranslate nohighlight">\(x_1^f=x_1^0e^{-T}\)</span>, we cannot control the system such that <span class="math notranslate nohighlight">\(x_1(t)=x_1^f\)</span>.</p>
 <div class="proof remark admonition" id="remark-13">
-<p class="admonition-title"><span class="caption-number">Remark 24 </span></p>
+<p class="admonition-title"><span class="caption-number">Remark 25 </span></p>
 <section class="remark-content" id="proof-content">
 <p>If <span class="math notranslate nohighlight">\(A\)</span> is diagonal and invertible, and <span class="math notranslate nohighlight">\(B\)</span> is a vector (the system is SISO/SIMO), then we can know if the system is controllable simply by observing the vector <span class="math notranslate nohighlight">\(B\)</span>. If <span class="math notranslate nohighlight">\(B\)</span> has a zero element, then the system is not controllable.</p>
 </section>
