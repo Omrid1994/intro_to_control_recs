@@ -34,7 +34,7 @@ $$
     T(s) = \frac{k}{s^2+2s + kk}.
 $$
 
-The poles are $s_{1,2}=-1\pm\sqrt{1-k}. For any value of $k$ we get a different set of poles. For $k=1$ we have $s_{1,2}=-1$, if $k>1$ we obtain two complex conjugate poles etc.
+The poles are $s_{1,2}=-1\pm\sqrt{1-k}$. For any value of $k$ we get a different set of poles. For $k=1$ we have $s_{1,2}=-1$, if $k>1$ we obtain two complex conjugate poles, for $k<1$ we obtain two real poles.
 ````
 
 $$
