@@ -172,7 +172,7 @@ Note that this implies that
 
 ```{math}
 :label: eq:yt_obser
-  y(t)=Ce^{At}x(0) \text{ for all } t\geq0.   
+  y(t)=Ce^{At}x(0)\neq0 \text{ for all } t\geq0.   
 ```
  
 ```{prf:definition}
@@ -190,9 +190,7 @@ $$
 ```{prf:proposition}
 :label: prop:obser_y2
 The system {eq}`eq:system_obsvr` is  observable on $[0,T]$ if and only if for every $x(0)\in\mathbb{R}^n$, $x(0)\neq0$, the output $y$ that corresponds to the initial state $x(0)$ satisfies
-$$
-        \int_0^T | y(t) |_2^2 dt>0.
-$$
+$\int_0^T | y(t) |_2^2 dt>0$.
 ```
 
 In other words, $y(t)$ is not zero on   the entire time   interval $t\in[0,T]$. 
@@ -221,7 +219,7 @@ $$
 
 ### Popov-Belevitch-Hautus Test for Observability
 
-Another important way to verify  observability is the Popov-Belevitch-Hautus (PBH)test for observability.
+Another important way to verify  observability is the Popov-Belevitch-Hautus (PBH) test for observability.
 
 ````{prf:theorem}
 (PBH Test for Observability) Consider the system {eq}`eq:system_obsvr`.
@@ -466,8 +464,9 @@ $$
 $$
 
 That is
+
 $$
-    CA=\begin{bmatrix}
+	CA=\begin{bmatrix}
         0&1
     \end{bmatrix}\begin{bmatrix}
         -1&0\\2&-2
@@ -475,6 +474,7 @@ $$
         2&-2
     \end{bmatrix}.
 $$
+
 So
 
 $$

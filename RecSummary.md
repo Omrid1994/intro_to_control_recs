@@ -75,9 +75,9 @@ $$
 
 thus, we obtain:
 
-\[
+$$
 \frac{\hat{e}(s)}{\hat{r}(s)} = S(s) = \frac{1}{1 + G(s)H(s)}.
-\]
+$$
 
 This is also called the <b>sensitivity transfer function</b>. In our course so far, $ H(s) = 1 $, so we get:
 
@@ -99,7 +99,7 @@ Negative Feedback Closed-Loop Block Diagram.
 
 This system is equivalent to the system shown at the beginning of the document with the addition of a disturbance signal. Simply place the controller $ C(s) $ below, but it is still connected in the same line with $ P(s) $. Note that the input $ r(t) $ enters the lower right part and the feedback enters the system in the same way as at the beginning of the document. Essentially, we can move the controller $ C(s) $ to the left of $ P(s) $ to obtain the system at the beginning of the document. Additionally, since $ d = 0 $, the signals $ v $ and $ u $ merge into a single signal.
 
-\section*{Disturbance Signal}
+## Disturbance Signal
 
 A system with a disturbance signal will be of the following form:
 
