@@ -166,7 +166,7 @@ $$
 \theta_{entry} = 180^\circ - \sum (\text{angles from other zeros}) + \sum (\text{angles from poles}).
 $$
 
-where the sums are taken over all other poles and zeros relative to the given pole or zero.
+Here the sums are taken over all other poles and zeros relative to the given pole or zero.
 
 ````{prf:remark}
 For $k<0$, replace "$180^\circ$" with "$0^\circ$".
