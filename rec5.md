@@ -163,6 +163,10 @@ $$
 where the sums are taken over all other poles and zeros relative to the given pole or zero.
 
 ````{prf:remark}
+For $k<0$, replace "$180^\circ$" with "$0^\circ$".
+````
+
+````{prf:remark}
 The angles between two poles (or any two points on the complex plane) is as follows: First, we draw a straight line between the poles. Then, we draw a horizontal line to the right of the first pole. The angle between the first pole and the second pole is the angle between the horizontal line and the line connecting the poles. 
 
 ```{figure} images/Rec5/angle_between_roots.png
