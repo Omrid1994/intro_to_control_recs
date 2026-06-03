@@ -67,11 +67,17 @@ $$
     \angle k\tilde{G}(s) = (2\ell+1) \pi, \quad \ell \in \mathbb{Z}.
 $$
 
+Since $k>0$, $\angle k=0^\circ$, and we obtain
+
+$$
+	\angle \tilde{G}(s) = (2\ell+1) \pi, \quad \ell \in \mathbb{Z}.
+$$
+
 ```{prf:remark}
 If $k<0$, the phase condition becomes
 
 $$
-        \angle k\tilde{G}(s)=2\pi\ell,\quad \ell\in\mathbb{Z}.
+        \angle \tilde{G}(s)=2\pi\ell,\quad \ell\in\mathbb{Z}.
 $$
 ```
 
