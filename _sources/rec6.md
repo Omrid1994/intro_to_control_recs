@@ -325,7 +325,7 @@ $$
     \frac{\omega(80-\omega^2)}{100-17\omega^2}=0.
 $$
 
-Clearly one solution is $\omega\rightarrow\infty$ which we already know is an intersection of the real axis. The solutions for the numerator are
+The solutions for the numerator are
 
 $$
     \omega=0,\sqrt{80}.
