@@ -48,9 +48,9 @@ $$
 
 This means there is one encirclement of the origin. The number of encirclements around the origin indicates how many more zeros exist than poles. However, we prefer to have no zeros at all (since a zero in $1+G(s)$ corresponds to a pole in the closed-loop system). Hence, we want to know the number of poles in advance.
 
-To determine if there are zeros in the right half-plane of $1 + G(s) $, we choose a contour $\Gamma_s$ that encloses the entire right half-plane. This means it extends from $-j\infty$ to $+j\infty$, encloses the right half-plane, and returns to the origin.
+To determine if there are zeros in the right half-plane of $1 + G(s) $, we choose a contour $\Gamma_N$ that encloses the entire right half-plane. This means it extends from $-j\infty$ to $+j\infty$, encloses the right half-plane, and returns to the origin.
 
-The Nyquist plot is the contour in the $\omega$-plane, $\Gamma_\omega$ corresponding to the contour $\Gamma_s$ in the $s$-plane that encloses the right half-plane.
+The Nyquist plot is the contour in the $\omega$-plane, $\Gamma_\omega=G(\Gamma_N)$ corresponding to the contour $\Gamma_N$ in the $s$-plane that encloses the right half-plane.
 
 Instead of plotting $1+G(s)$, we directly plot the Nyquist plot of $G(s)$ and analyze encirclements around $-1$. By symmetry, we can calculate only the upper half-plane and mirror it downwards.
 
